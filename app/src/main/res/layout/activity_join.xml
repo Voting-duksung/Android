@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="30dp"
+            android:text="회원가입"
+            android:textSize="30sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/join_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="2dp"
+            android:layout_marginRight="2dp"
+            android:layout_marginBottom="24dp"
+            android:ems="10"
+            android:hint="이름"
+            android:layout_below="@+id/textView"
+            android:inputType="textPersonName" />
+
+        <EditText
+            android:id="@+id/join_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="24dp"
+            android:ems="10"
+            android:hint="학번"
+            android:layout_below="@+id/join_name" />
+
+        <Button
+            android:id="@+id/btn_number_check"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/join_number"
+            android:layout_below="@+id/join_name"
+            android:text="학번 확인" />
+
+
+        <TextView
+            android:id="@+id/tv_college"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            android:text="소속대학을 선택해주세요."
+            android:layout_below="@+id/join_number">
+
+        </TextView>
+
+        <Spinner
+            android:id="@+id/spinner_college"
+            android:layout_width="210dp"
+            android:layout_height="40dp"
+            android:layout_below="@+id/tv_college"
+            android:spinnerMode="dropdown"
+            android:textColor="@color/black" />
+
+        <EditText
+            android:id="@+id/join_password"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="24dp"
+            android:ems="10"
+            android:hint="비밀번호"
+            android:layout_below="@+id/spinner_college"
+            android:inputType="textPassword" />
+
+        <EditText
+            android:id="@+id/join_pwck"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="24dp"
+            android:ems="10"
+            android:hint="비밀번호 확인"
+            android:layout_below="@+id/join_password"
+            android:inputType="textPassword" />
+
+        <Button
+            android:id="@+id/btn_join"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="가입"
+            android:layout_below="@id/join_pwck"
+            android:gravity="center"/>
+
+        <!--        <Button-->
+        <!--            android:id="@+id/btn_delete"-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:gravity="center"-->
+        <!--            android:layout_below="@+id/join_pwck"-->
+        <!--            android:layout_marginLeft="30dp"-->
+        <!--            android:layout_toRightOf="@+id/btn_join"-->
+        <!--            android:text="취소"/>-->
+
+        <Button
+            android:id="@+id/btn_self_check"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_below="@+id/join_pwck"
+            android:layout_marginLeft="30dp"
+            android:layout_toRightOf="@+id/btn_join"
+            android:text="본인 인증" />
+
+    </RelativeLayout>
+
+</RelativeLayout>

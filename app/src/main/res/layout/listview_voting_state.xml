@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <TableLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:stretchColumns="*"
+        android:layout_margin="20dp"
+        android:id="@+id/candidateTableLayout">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="8dp"
+            android:stretchColumns="*">
+
+            <ImageView
+                android:id="@+id/img_candidate"
+                android:layout_width="150dp"
+                android:layout_height="200dp"
+                android:src="@drawable/youngsun"></ImageView>
+
+            <LinearLayout
+                android:layout_gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_name"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="1dp"
+                    android:text="기호 1."
+                    android:textColor="#000000"
+                    android:textSize="20dp" />
+
+                <TextView
+                    android:id="@+id/tv_voteCount"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="5dp"
+                    android:layout_marginLeft="10dp"
+                    android:text="득표수 : 10     "
+                    android:textColor="#ffffff"
+                    android:textSize="20dp" />
+            </LinearLayout>
+
+
+        </TableRow>
+
+    </TableLayout>
+
+    <!--    <LinearLayout-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:orientation="vertical">-->
+    <!--`-->
+
+    <!--        <RelativeLayout-->
+    <!--            android:layout_width="wrap_content"-->
+    <!--            android:layout_height="match_parent">-->
+
+    <!--            <RelativeLayout-->
+    <!--                android:layout_width="wrap_content"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:layout_toRightOf="@+id/img_candidate"-->
+    <!--                android:layout_gravity="center"-->
+    <!--                android:background="@color/colorPrimaryDark"-->
+    <!--                android:orientation="vertical">-->
+
+    <!--                <TextView-->
+    <!--                    android:id="@+id/tv_text1"-->
+    <!--                    android:layout_width="match_parent"-->
+    <!--                    android:layout_height="50dp"-->
+    <!--                    android:layout_marginTop="50dp"-->
+    <!--                    android:gravity="center"-->
+    <!--                    android:text="이름"-->
+    <!--                    android:textSize="20dp"-->
+    <!--                    android:textStyle="bold"></TextView>-->
+
+    <!--                <TextView-->
+    <!--                    android:id="@+id/tv_text2"-->
+    <!--                    android:layout_width="match_parent"-->
+    <!--                    android:layout_height="wrap_content"-->
+    <!--                    android:layout_alignParentTop="true"-->
+    <!--                    android:layout_marginTop="120dp"-->
+    <!--                    android:layout_marginBottom="53dp"-->
+    <!--                    android:gravity="center"-->
+    <!--                    android:text="득표수"-->
+    <!--                    android:textSize="20sp"-->
+    <!--                    android:textStyle="bold"></TextView>-->
+    <!--            </RelativeLayout>-->
+    <!--        </RelativeLayout>-->
+    <!--    </LinearLayout>-->
+</RelativeLayout>

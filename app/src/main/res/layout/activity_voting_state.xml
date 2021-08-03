@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".VotingStateActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="50dp"
+            android:text="투표 대시보드"
+            android:gravity="center">
+        </TextView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btn_onVote"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:onClick="onButtononVote"
+                android:text="진행중" />
+
+            <Button
+                android:id="@+id/btn_doneVote"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="결과 확인" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="개표 결과"
+                android:textColor="#ffffff"
+                android:textSize="30dp"
+                android:textStyle="bold"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="30dp"
+            android:layout_marginLeft="20dp">
+
+            <TextView
+                android:id="@+id/doneCountTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:textColor="#000000"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="20dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:text="투표 결과 : "
+                android:textColor="#000000"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:layout_marginTop="10dp"/>
+
+            <!--            <TableLayout-->
+            <!--                android:layout_width="wrap_content"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:background="@color/colorPrimaryDark"-->
+
+            <!--                android:stretchColumns="*"-->
+            <!--                android:layout_margin="20dp"-->
+            <!--                android:id="@+id/candidateTableLayout">-->
+
+            <!--                <TableRow-->
+            <!--                    android:padding="8dp"-->
+            <!--                    android:stretchColumns="*">-->
+            <!--                    <TextView-->
+            <!--                        android:layout_gravity="center"-->
+            <!--                        android:textSize="20dp"-->
+            <!--                        android:textColor="#000000"-->
+            <!--                        android:text="기호 1."-->
+            <!--                        android:layout_margin="1dp"/>-->
+
+            <!--                    <TextView-->
+            <!--                        android:layout_marginLeft="10dp"-->
+            <!--                        android:layout_gravity="center"-->
+            <!--                        android:textSize="20dp"-->
+            <!--                        android:textColor="#000000"-->
+            <!--                        android:text="득표율 : 41.08%"-->
+            <!--                        android:layout_margin="1dp"/>-->
+            <!--                </TableRow>-->
+
+            <!--&lt;!&ndash;                <TableRow&ndash;&gt;-->
+            <!--&lt;!&ndash;                    android:padding="8dp"&ndash;&gt;-->
+            <!--&lt;!&ndash;                    android:stretchColumns="*">&ndash;&gt;-->
+            <!--&lt;!&ndash;                    <TextView&ndash;&gt;-->
+            <!--&lt;!&ndash;                        android:layout_gravity="center"&ndash;&gt;-->
+            <!--&lt;!&ndash;                        android:textSize="20dp"&ndash;&gt;-->
+            <!--&lt;!&ndash;                        android:textColor="#000000"&ndash;&gt;-->
+            <!--&lt;!&ndash;                        android:text="기호 2."&ndash;&gt;-->
+            <!--&lt;!&ndash;                        android:layout_margin="1dp"/>&ndash;&gt;-->
+
+            <!--&lt;!&ndash;                    <TextView&ndash;&gt;-->
+            <!--&lt;!&ndash;                        android:layout_marginLeft="10dp"&ndash;&gt;-->
+            <!--&lt;!&ndash;                        android:layout_gravity="center"&ndash;&gt;-->
+            <!--&lt;!&ndash;                        android:textSize="20dp"&ndash;&gt;-->
+            <!--&lt;!&ndash;                        android:textColor="#000000"&ndash;&gt;-->
+            <!--&lt;!&ndash;                        android:text="득표율 : 36.12%"&ndash;&gt;-->
+            <!--&lt;!&ndash;                        android:layout_margin="1dp"/>&ndash;&gt;-->
+            <!--&lt;!&ndash;                </TableRow>&ndash;&gt;-->
+
+            <!--            </TableLayout>-->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_vote_result"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            </androidx.recyclerview.widget.RecyclerView>
+        </LinearLayout>
+
+        <Button
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:onClick="onButtonMenu"
+            android:text="확인"
+            android:textColor="#ffffff"
+            android:textSize="20dp"
+            android:textStyle="bold"/>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
