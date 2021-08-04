@@ -27,8 +27,6 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate( savedInstanceState );
         setContentView( R.layout.activity_login );
 
-        System.out.println("왜 빨간줄?");
-
         login_number = findViewById( R.id.login_number );
         login_password = findViewById( R.id.login_password );
 
