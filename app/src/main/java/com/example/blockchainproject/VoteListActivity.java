@@ -10,9 +10,9 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.toolbox.Volley;
 import com.example.blockchainproject.Adapter.ListViewVoteAdapter;
-import com.example.blockchainproject.Model.ApiClient;
-import com.example.blockchainproject.Model.ApiInterface;
-import com.example.blockchainproject.Model.PlaceInfo;
+//import com.example.blockchainproject.Model.ApiClient;
+//import com.example.blockchainproject.Model.ApiInterface;
+//import com.example.blockchainproject.Model.PlaceInfo;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -40,8 +40,8 @@ public class VoteListActivity extends AppCompatActivity {
         String UserNumber = UserNumberIntent.getExtras().getString("UserNumber");
 
         //placeid가져오기
-        String placeid = "";
-        getPlaceId(placeid);
+//        String placeid = "";
+//        getPlaceId(placeid);
 
         //adapter와 recyclerView 연결
         recyclerView = findViewById(R.id.rv_vote_list);
@@ -83,25 +83,25 @@ public class VoteListActivity extends AppCompatActivity {
 
     }
 
-    private void getPlaceId(String placeid) {
-        ApiInterface apiInterface = ApiClient.getApiClient().create(ApiInterface.class);
-        Call<PlaceInfo> call = apiInterface.getPlaceid(placeid);
-        System.out.println("들어가졌지?");
-        call.enqueue(new Callback<PlaceInfo>() {
-            @Override
-            public void onResponse(Call<PlaceInfo> call, retrofit2.Response<PlaceInfo> response) {
-                if(response.isSuccessful() && response.body() != null) {
-                    String getted_placeid = response.body().getPlaceid();
-                    System.out.println("placeid는 "+getted_placeid);
-                }
-            }
-
-            @Override
-            public void onFailure(Call<PlaceInfo> call, Throwable t) {
-                System.out.println("에러났어... "+t.getMessage());
-            }
-        });
-    }
+//    private void getPlaceId(String placeid) {
+//        ApiInterface apiInterface = ApiClient.getApiClient().create(ApiInterface.class);
+//        Call<PlaceInfo> call = apiInterface.getPlaceid(placeid);
+//        System.out.println("들어가졌지?");
+//        call.enqueue(new Callback<PlaceInfo>() {
+//            @Override
+//            public void onResponse(Call<PlaceInfo> call, retrofit2.Response<PlaceInfo> response) {
+//                if(response.isSuccessful() && response.body() != null) {
+//                    String getted_placeid = response.body().getPlaceid();
+//                    System.out.println("placeid는 "+getted_placeid);
+//                }
+//            }
+//
+//            @Override
+//            public void onFailure(Call<PlaceInfo> call, Throwable t) {
+//                System.out.println("에러났어... "+t.getMessage());
+//            }
+//        });
+//    }
 
 
 }
