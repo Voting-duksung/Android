@@ -33,10 +33,10 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:onClick="onButtonDoneVote"
-            android:text="결과 확인" />
-
+            android:text="개표완료" />
 
     </LinearLayout>
+
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_vote_list"
