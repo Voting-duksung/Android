@@ -47,6 +47,8 @@ public class CandidateListActivity extends AppCompatActivity {
         String college = intent.getExtras().getString("college");
         //대학은 잘 넘어오는거 확인
 
+        System.out.println("gg");
+
         recyclerView = findViewById(R.id.rv_candidate_list);
         adapter = new ListViewCandidateAdapter(this, listViewCandidateList);
         recyclerView.setAdapter(adapter);
