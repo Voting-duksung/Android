@@ -14,89 +14,131 @@
             android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="30dp"
+            android:layout_marginTop="40.33dp"
+            android:layout_marginLeft="35.75dp"
             android:text="회원가입"
-            android:textSize="30sp"
+            android:textSize="25sp"
             android:textStyle="bold" />
 
-        <EditText
-            android:id="@+id/join_name"
-            android:layout_width="wrap_content"
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="170dp"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="2dp"
-            android:layout_marginRight="2dp"
-            android:layout_marginBottom="24dp"
-            android:ems="10"
-            android:hint="이름"
-            android:layout_below="@+id/textView"
-            android:inputType="textPersonName" />
+            android:layout_marginTop="88.29dp"
+            android:layout_marginLeft="35.75dp"
+            android:text="덕성여자대학교 전자투표시스템은 재학생만 이용 가능합니다"
+            android:textSize="12sp"
+            android:textColor="#868E96"/>
 
-        <EditText
-            android:id="@+id/join_number"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginBottom="24dp"
-            android:ems="10"
-            android:hint="학번"
-            android:layout_below="@+id/join_name" />
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="150dp"
+            android:layout_marginLeft="20dp"
+            android:layout_centerHorizontal="true"
+            android:hint="이름">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/join_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-        <Button
-            android:id="@+id/btn_number_check"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_toRightOf="@+id/join_number"
-            android:layout_below="@+id/join_name"
-            android:text="학번 확인" />
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="210dp"
+            android:layout_marginLeft="20dp"
+            android:layout_centerHorizontal="true"
+            android:hint="비밀번호">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/join_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"/>
+        </com.google.android.material.textfield.TextInputLayout>
 
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="270dp"
+            android:layout_marginLeft="20dp"
+            android:layout_centerHorizontal="true"
+            android:hint="비밀번호 확인">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/join_pwck"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"/>
+        </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
             android:id="@+id/tv_college"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="24dp"
-            android:text="소속대학을 선택해주세요."
-            android:layout_below="@+id/join_number">
-
+            android:layout_marginTop="330dp"
+            android:layout_marginLeft="20dp"
+            android:text="소속대학을 선택해주세요.">
         </TextView>
 
         <Spinner
             android:id="@+id/spinner_college"
-            android:layout_width="210dp"
-            android:layout_height="40dp"
-            android:layout_below="@+id/tv_college"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="350dp"
+            android:layout_marginLeft="20dp"
+            android:layout_centerHorizontal="true"
             android:spinnerMode="dropdown"
             android:textColor="@color/black" />
 
-        <EditText
-            android:id="@+id/join_password"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginBottom="24dp"
-            android:ems="10"
-            android:hint="비밀번호"
-            android:layout_below="@+id/spinner_college"
-            android:inputType="textPassword" />
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="240dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="410dp"
+            android:layout_marginLeft="20dp"
+            android:hint="학번">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/join_number"
+                android:textSize="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-        <EditText
-            android:id="@+id/join_pwck"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginBottom="24dp"
-            android:ems="10"
-            android:hint="비밀번호 확인"
-            android:layout_below="@+id/join_password"
-            android:inputType="textPassword" />
+        <Button
+            android:id="@+id/btn_number_check"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="410dp"
+            android:layout_marginLeft="280dp"
+            android:layout_marginRight="20dp"
+            android:backgroundTint="#495057"
+            android:text="학번 확인" />
+
 
         <Button
             android:id="@+id/btn_join"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="가입"
-            android:layout_below="@id/join_pwck"
-            android:gravity="center"/>
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_below="@id/btn_number_check"
+            android:layout_marginTop="60dp"
+            android:layout_marginLeft="20dp"
+            android:layout_centerHorizontal="true"
+            android:text="회원 가입 완료"
+            android:backgroundTint="@color/duksung_red" />
+
+        <Button
+            android:id="@+id/btn_self_check"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_centerHorizontal="true"
+            android:text="본인 인증"
+            android:layout_below="@id/btn_join"
+            android:backgroundTint="@color/duksung_red"/>
 
         <!--        <Button-->
         <!--            android:id="@+id/btn_delete"-->
@@ -107,17 +149,5 @@
         <!--            android:layout_marginLeft="30dp"-->
         <!--            android:layout_toRightOf="@+id/btn_join"-->
         <!--            android:text="취소"/>-->
-
-        <Button
-            android:id="@+id/btn_self_check"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:layout_below="@+id/join_pwck"
-            android:layout_marginLeft="30dp"
-            android:layout_toRightOf="@+id/btn_join"
-            android:text="본인 인증" />
-
     </RelativeLayout>
-
 </RelativeLayout>
