@@ -2,6 +2,9 @@ package com.example.blockchainproject;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -80,6 +83,21 @@ public class VoteListActivity extends AppCompatActivity {
         VoteListRequest votelistRequest = new VoteListRequest(UserNumber,responseListener);
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         requestQueue.add(votelistRequest);
+
+        Button btn_doneVote = (Button) findViewById(R.id.btn_doneVote);
+        btn_doneVote.setOnClickListener (new View.OnClickListener(){
+
+            //후보 선택하고 투표 완료하는 과정
+            @Override
+            public void onClick(View v){
+
+                Intent intent = new Intent(VoteListActivity.this, VotingStateActivity.class );
+                intent.putExtra("UserNumber", UserNumber);
+
+                startActivity(intent);
+
+            }
+        });
 
     }
 

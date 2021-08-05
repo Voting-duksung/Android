@@ -1,27 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical">
+    android:orientation="horizontal">
 
+    <LinearLayout
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
+        <TextView
+            android:id="@+id/tv_vote_college"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="선거장명"
+            android:layout_alignParentLeft="true"
+            android:layout_marginTop="15dp"
+            android:gravity="center_vertical"
+            android:layout_marginLeft="20dp"
+            android:textSize="25dp"
+            android:textStyle="bold">
+        </TextView>
+        <TextView
+            android:id="@+id/tv_vote_committee"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:textSize="12dp"
+            android:text="덕성여대 총학생회선거관리위원회">
+        </TextView>
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" "
+            android:textSize="35dp">
+        </TextView>
 
-    <TextView
-        android:id="@+id/tv_vote_college"
+        <TextView
+            android:id="@+id/vote_period"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="투표기간"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="20dp"
+            android:gravity="center_vertical"
+            android:textSize="12dp">
+        </TextView>
+
+        <TextView
+            android:id="@+id/tv_vote_rate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="12dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginBottom="15dp"
+            android:text="실시간 투표율">
+        </TextView>
+        
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_centerInParent="true"
-        android:text="선거장명">
-    </TextView>
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/tv_vote_committee"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_centerInParent="true"
-        android:text="덕성여대 총학생회선거관리위원회">
-    </TextView>
+        <Button
+            android:id="@+id/btn_lets_vote"
+            android:layout_width="match_parent"
+            android:layout_height="160dp"
+            android:layout_marginRight="10dp"
+            android:text="투표         행사하기">
+        </Button>
 
-</RelativeLayout>
+    </LinearLayout>
+
+        
+
+
+</LinearLayout>

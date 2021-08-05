@@ -80,7 +80,7 @@ public class VotingStateActivity extends AppCompatActivity {
                     for (int i = 0; i < response.length(); i++) {
                         JSONObject jObject = jsonArray.getJSONObject(i);
                         String candidate_name = jObject.getString("name");
-                        String imgPath = jObject.getString("imgPath");
+//                        String imgPath = jObject.getString("imgPath");
                         int voteCount = jObject.getInt("voteCount");
                         int candidateNumber = jObject.getInt("candidateNumber");
 
