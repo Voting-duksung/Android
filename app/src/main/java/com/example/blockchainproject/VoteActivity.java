@@ -72,6 +72,9 @@ public class VoteActivity extends AppCompatActivity {
         LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(layoutManager);
 
+
+        voting();
+      
         Response.Listener<String> responseListener = new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
@@ -83,9 +86,12 @@ public class VoteActivity extends AppCompatActivity {
                     for (int i = 0; i < response.length(); i++) {
                         JSONObject jObject = jsonArray.getJSONObject(i);
                         String candidate_name = jObject.getString("name");
-                        //String imgPath = jObject.getString("imgPath");
-                        int voteCount = jObject.getInt("voteCount");
-                        int candidateNumber = jObject.getInt("candidateNumber");
+
+//                        String imgPath = jObject.getString("imgPath");
+                        voteCount = jObject.getInt("voteCount");
+                        candidateNumber = jObject.getInt("candidateNumber");
+                        System.out.println("VoteActivity의 candidateNumebr" + candidateNumber);
+
                         //여기껀 정보 모두 잘 받아와짐.
 
 //                        String promisePath =jObject.getString("promisePath");
@@ -103,27 +109,31 @@ public class VoteActivity extends AppCompatActivity {
         };
 
         RecyclerView list_container = findViewById(R.id.rv_candidate_list);
-        ListViewVotingNowAdapter adapter = new ListViewVotingNowAdapter(this,listViewCandidateList);
+        ListViewVotingNowAdapter adapter = new ListViewVotingNowAdapter(this, listViewCandidateList);
         RecyclerView.LayoutManager layoutManager1 = new LinearLayoutManager(this);
 
-        CandidateListRequest candidatelistRequest = new CandidateListRequest(college,responseListener);
+        CandidateListRequest candidatelistRequest = new CandidateListRequest(college, responseListener);
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         requestQueue.add(candidatelistRequest);
+
+    }
 
 
         //SQLiteDatabase db = voteCount.getWriteableDatabase();
 
-        RadioGroup.OnCheckedChangeListener radioGroupClickListener = new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup rg_candidate, int i) {
-                if (i == R.id.rb_candidate1) {
-                    state = 1;
+
+    //투표하기 버튼
+    public void voting() {
+            RadioGroup.OnCheckedChangeListener radioGroupClickListener = new RadioGroup.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(RadioGroup rg_candidate, int i) {
+                    if (i == R.id.rb_candidate1) {
+                        state = 1;
+                    } else {
+                        state = 2;
+                    }
                 }
-                else {
-                    state = 2;
-                }
-            }
-        };
+            };
 
         Button btn_vote = (Button) findViewById(R.id.btn_vote);
         btn_vote.setOnClickListener (new View.OnClickListener(){
@@ -131,6 +141,34 @@ public class VoteActivity extends AppCompatActivity {
             //후보 선택하고 투표 완료하는 과정
             @Override
             public void onClick(View v){
+
+                Call<Vote> call_get = service.getVote(placeid, candidateNumber, UserNumber);
+                call_get.enqueue(new Callback<Vote>() {
+                    @Override
+                    public void onResponse(Call<Vote> call, retrofit2.Response<Vote> response) {
+                        //성공했을 경우
+                        System.out.println("들어감");
+                        if (response.isSuccessful()) {//응답을 잘 받은 경우
+                            System.out.println("들어감3");
+                            String result = response.body().toString();
+//                            Log.v(TAG, "result = " + result);
+                            System.out.println("result"+result);
+                            System.out.println(response.body());
+                            Toast.makeText(getApplicationContext(), result, Toast.LENGTH_SHORT).show();
+                        } else {    //통신은 성공했지만 응답에 문제있는 경우
+                            System.out.println("들어감2");
+                            System.out.println("error="+String.valueOf(response.code()));
+//                            Log.v(TAG, "error = " + String.valueOf(response.code()));
+                            Toast.makeText(getApplicationContext(), "error = " + String.valueOf(response.code()), Toast.LENGTH_SHORT).show();
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<Vote> call, Throwable t) {//통신 자체 실패
+//                       Log.v(TAG, "Fail");
+                        Toast.makeText(getApplicationContext(), "Response Fail", Toast.LENGTH_SHORT).show();
+                    }
+                });
 
                 if(state==1){
                     voteCount++;
