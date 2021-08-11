@@ -25,6 +25,7 @@ import java.util.ArrayList;
 
 import retrofit2.Call;
 import retrofit2.Callback;
+import retrofit2.Retrofit;
 
 
 public class VoteListActivity extends AppCompatActivity {
@@ -41,14 +42,12 @@ public class VoteListActivity extends AppCompatActivity {
         //로그인 한 학번 받아오기
         Intent UserNumberIntent = getIntent();
         String UserNumber = UserNumberIntent.getExtras().getString("UserNumber");
+        System.out.println(UserNumber+"VoteListActivity에서 USerNumeber");
 
-        //placeid가져오기
-//        String placeid = "";
-//        getPlaceId(placeid);
 
         //adapter와 recyclerView 연결
         recyclerView = findViewById(R.id.rv_vote_list);
-        adapter = new ListViewVoteAdapter(this, listViewVoteList);
+        adapter = new ListViewVoteAdapter(this, listViewVoteList, UserNumber);
         recyclerView.setAdapter(adapter);
 
 
@@ -87,6 +86,7 @@ public class VoteListActivity extends AppCompatActivity {
         Button btn_doneVote = (Button) findViewById(R.id.btn_doneVote);
         btn_doneVote.setOnClickListener (new View.OnClickListener(){
 
+
             //후보 선택하고 투표 완료하는 과정
             @Override
             public void onClick(View v){
@@ -100,26 +100,5 @@ public class VoteListActivity extends AppCompatActivity {
         });
 
     }
-
-//    private void getPlaceId(String placeid) {
-//        ApiInterface apiInterface = ApiClient.getApiClient().create(ApiInterface.class);
-//        Call<PlaceInfo> call = apiInterface.getPlaceid(placeid);
-//        System.out.println("들어가졌지?");
-//        call.enqueue(new Callback<PlaceInfo>() {
-//            @Override
-//            public void onResponse(Call<PlaceInfo> call, retrofit2.Response<PlaceInfo> response) {
-//                if(response.isSuccessful() && response.body() != null) {
-//                    String getted_placeid = response.body().getPlaceid();
-//                    System.out.println("placeid는 "+getted_placeid);
-//                }
-//            }
-//
-//            @Override
-//            public void onFailure(Call<PlaceInfo> call, Throwable t) {
-//                System.out.println("에러났어... "+t.getMessage());
-//            }
-//        });
-//    }
-
 
 }
