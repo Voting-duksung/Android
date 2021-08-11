@@ -8,6 +8,8 @@ import android.util.AttributeSet;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -34,6 +36,9 @@ public class VoteActivity extends AppCompatActivity {
     private ArrayList<ListViewCandidate> listViewCandidateList = new ArrayList<ListViewCandidate>();
     private ListViewVotingNowAdapter adapter;
     private Button btn_vote;
+
+    RadioGroup rg_candidate;
+    int state;
 
     public int voteCount;
     public String UserNumber;
@@ -108,6 +113,18 @@ public class VoteActivity extends AppCompatActivity {
 
         //SQLiteDatabase db = voteCount.getWriteableDatabase();
 
+        RadioGroup.OnCheckedChangeListener radioGroupClickListener = new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup rg_candidate, int i) {
+                if (i == R.id.rb_candidate1) {
+                    state = 1;
+                }
+                else {
+                    state = 2;
+                }
+            }
+        };
+
         Button btn_vote = (Button) findViewById(R.id.btn_vote);
         btn_vote.setOnClickListener (new View.OnClickListener(){
 
@@ -115,8 +132,15 @@ public class VoteActivity extends AppCompatActivity {
             @Override
             public void onClick(View v){
 
-                voteCount++;
-                System.out.println(voteCount+"플러스 1 잘 들어감?");Toast.makeText(getApplicationContext(), "투표 완료", Toast.LENGTH_LONG).show();
+                if(state==1){
+                    voteCount++;
+                }
+                else{
+                    voteCount++;
+                }
+
+                System.out.println(voteCount+"플러스 1 잘 들어감?");
+                Toast.makeText(getApplicationContext(), "투표 완료", Toast.LENGTH_LONG).show();
 
                 Intent intent = new Intent(VoteActivity.this, VoteListActivity.class );
                 intent.putExtra("college", college);
@@ -125,5 +149,7 @@ public class VoteActivity extends AppCompatActivity {
 
             }
         });
+
+
     }
 }

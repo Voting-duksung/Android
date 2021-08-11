@@ -50,7 +50,7 @@ public class VotingStateActivity extends AppCompatActivity {
 
         String college = "총학생회 학생회 선거";
 
-        collegeTextView = (TextView) findViewById(R.id.doneCountTextView);
+        //collegeTextView = (TextView) findViewById(R.id.doneCountTextView);
         candidateTableLayout = (TableLayout) findViewById(R.id.candidateTableLayout);
 
         //총 선거 가능 투표장 수 변수 추가해주기
@@ -64,9 +64,6 @@ public class VotingStateActivity extends AppCompatActivity {
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(layoutManager);
-
-
-
 
 
         Response.Listener<String> responseListener = new Response.Listener<String>() {
