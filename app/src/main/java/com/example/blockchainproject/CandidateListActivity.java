@@ -40,12 +40,11 @@ public class CandidateListActivity extends AppCompatActivity {
         Button btn_go_voting;
 
         Intent UserNumberIntent = getIntent();
-        UserNumber = UserNumberIntent.getExtras().getString("UserNumber");
+        String UserNumber = UserNumberIntent.getExtras().getString("UserNumber");
         System.out.println(UserNumber+"CandidateListActivity 여기 학번 넘어와야함");
 
         Intent intent = getIntent();
         String college = intent.getExtras().getString("college");
-        System.out.println(college+"CandidateListActivity의 college");
         //대학은 잘 넘어오는거 확인
 
         recyclerView = findViewById(R.id.rv_candidate_list);
@@ -99,7 +98,6 @@ public class CandidateListActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(CandidateListActivity.this, VoteActivity.class );
                 intent.putExtra("college", college);
-                intent.putExtra("UserNumber",UserNumber);
 
                 startActivity(intent);
             }
