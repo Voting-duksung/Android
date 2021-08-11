@@ -9,6 +9,8 @@ import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -43,7 +45,9 @@ public class VoteActivity extends AppCompatActivity {
     private ListViewVotingNowAdapter adapter;
     private Button btn_vote;
 
-    //표, 학번, 후보자번호, 선거
+    RadioGroup rg_candidate;
+    int state;
+
     public int voteCount;
     public String UserNumber;
     int candidateNumber;
@@ -130,27 +134,21 @@ public class VoteActivity extends AppCompatActivity {
 
         //SQLiteDatabase db = voteCount.getWriteableDatabase();
 
-//        Button btn_vote = (Button) findViewById(R.id.btn_vote);
-//        btn_vote.setOnClickListener (new View.OnClickListener(){
-//
-//            //후보 선택하고 투표 완료하는 과정
-//            @Override
-//            public void onClick(View v){
-//
-//                voteCount++;
-//                System.out.println(voteCount+"플러스 1 잘 들어감?");Toast.makeText(getApplicationContext(), "투표 완료", Toast.LENGTH_LONG).show();
-//
-//                Intent intent = new Intent(VoteActivity.this, VoteListActivity.class );
-//                intent.putExtra("college", college);
-//
-//                startActivity(intent);
-//
-//            }
-//        });
-    }
 
     //투표하기 버튼
     public void Voting() {
+        RadioGroup.OnCheckedChangeListener radioGroupClickListener = new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup rg_candidate, int i) {
+                if (i == R.id.rb_candidate1) {
+                    state = 1;
+                }
+                else {
+                    state = 2;
+                }
+            }
+        };
+
         Button btn_vote = (Button) findViewById(R.id.btn_vote);
 
         // 레트로핏 연결
@@ -175,27 +173,34 @@ public class VoteActivity extends AppCompatActivity {
                         if (response.isSuccessful()) {//응답을 잘 받은 경우
                             System.out.println("들어감3");
                             String result = response.body().toString();
-//                            Log.v(TAG, "result = " + result);
+                            Log.v(TAG, "result = " + result);
                             System.out.println("result"+result);
                             System.out.println(response.body());
                             Toast.makeText(getApplicationContext(), result, Toast.LENGTH_SHORT).show();
                         } else {    //통신은 성공했지만 응답에 문제있는 경우
                             System.out.println("들어감2");
                             System.out.println("error="+String.valueOf(response.code()));
-//                            Log.v(TAG, "error = " + String.valueOf(response.code()));
+                            Log.v(TAG, "error = " + String.valueOf(response.code()));
                             Toast.makeText(getApplicationContext(), "error = " + String.valueOf(response.code()), Toast.LENGTH_SHORT).show();
                         }
                     }
 
                     @Override
                     public void onFailure(Call<Vote> call, Throwable t) {//통신 자체 실패
-//                        Log.v(TAG, "Fail");
+                       Log.v(TAG, "Fail");
                         Toast.makeText(getApplicationContext(), "Response Fail", Toast.LENGTH_SHORT).show();
                     }
                 });
 
-                voteCount++;
-                System.out.println(voteCount+"플러스 1 잘 들어감?");Toast.makeText(getApplicationContext(), "투표 완료", Toast.LENGTH_LONG).show();
+                if(state==1){
+                    voteCount++;
+                }
+                else{
+                    voteCount++;
+                }
+
+                System.out.println(voteCount+"플러스 1 잘 들어감?");
+                Toast.makeText(getApplicationContext(), "투표 완료", Toast.LENGTH_LONG).show();
 
                 Intent intent = new Intent(VoteActivity.this, VoteListActivity.class);
                 intent.putExtra("UserNumber", UserNumber);

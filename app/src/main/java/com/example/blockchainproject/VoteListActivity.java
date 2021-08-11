@@ -2,6 +2,9 @@ package com.example.blockchainproject;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -10,9 +13,9 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.toolbox.Volley;
 import com.example.blockchainproject.Adapter.ListViewVoteAdapter;
-import com.example.blockchainproject.Model.ApiClient;
-import com.example.blockchainproject.Model.ApiInterface;
-import com.example.blockchainproject.Model.PlaceInfo;
+//import com.example.blockchainproject.Model.ApiClient;
+//import com.example.blockchainproject.Model.ApiInterface;
+//import com.example.blockchainproject.Model.PlaceInfo;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -41,9 +44,6 @@ public class VoteListActivity extends AppCompatActivity {
         String UserNumber = UserNumberIntent.getExtras().getString("UserNumber");
         System.out.println(UserNumber+"VoteListActivity에서 USerNumeber");
 
-        //placeid가져오기
-        String placeid = "";
-//        getPlaceId(placeid);
 
         //adapter와 recyclerView 연결
         recyclerView = findViewById(R.id.rv_vote_list);
@@ -83,27 +83,22 @@ public class VoteListActivity extends AppCompatActivity {
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         requestQueue.add(votelistRequest);
 
+        Button btn_doneVote = (Button) findViewById(R.id.btn_doneVote);
+        btn_doneVote.setOnClickListener (new View.OnClickListener(){
+
+
+            //후보 선택하고 투표 완료하는 과정
+            @Override
+            public void onClick(View v){
+
+                Intent intent = new Intent(VoteListActivity.this, VotingStateActivity.class );
+                intent.putExtra("UserNumber", UserNumber);
+
+                startActivity(intent);
+
+            }
+        });
+
     }
-
-//    private void getPlaceId(String placeid) {
-//        ApiInterface apiInterface = ApiClient.getApiClient().create(ApiInterface.class);
-//        Call<PlaceInfo> call = apiInterface.getPlaceid(placeid);
-//        System.out.println("들어가졌지?");
-//        call.enqueue(new Callback<PlaceInfo>() {
-//            @Override
-//            public void onResponse(Call<PlaceInfo> call, retrofit2.Response<PlaceInfo> response) {
-//                if(response.isSuccessful() && response.body() != null) {
-//                    String getted_placeid = response.body().getPlaceid();
-//                    System.out.println("placeid는 "+getted_placeid);
-//                }
-//            }
-//
-//            @Override
-//            public void onFailure(Call<PlaceInfo> call, Throwable t) {
-//                System.out.println("에러났어... "+t.getMessage());
-//            }
-//        });
-//    }
-
 
 }

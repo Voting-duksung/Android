@@ -1,61 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="10dp"
     tools:context="LoginActivity">
 
-    <Button
-        android:id="@+id/login_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="로그인"
-        app:layout_constraintBaseline_toBaselineOf="@+id/join_button"
-        app:layout_constraintStart_toStartOf="@+id/login_password" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:weightSum="100"
+        android:orientation="vertical"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp">
 
-    <EditText
-        android:id="@+id/login_number"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="41dp"
-        android:ems="10"
-        android:hint="학번"
-        android:inputType="textEmailAddress"
-        app:layout_constraintBottom_toTopOf="@+id/login_password"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <EditText
-        android:id="@+id/login_password"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="41dp"
-        android:ems="10"
-        android:hint="비밀번호"
-        android:inputType="textPassword"
-        app:layout_constraintBottom_toTopOf="@+id/login_button"
-        app:layout_constraintStart_toStartOf="@+id/login_number" />
-
-    <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="55dp"
-        android:layout_height="55dp"
-        android:layout_marginBottom="41dp"
-        app:layout_constraintBottom_toTopOf="@+id/login_number"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        <ImageView
+            android:layout_width="150dp"
+            android:layout_height="100dp"
+            android:layout_weight="50"
+            android:src="@drawable/splash_duksung"
+            android:layout_gravity="center"/>
 
 
-    <Button
-        android:id="@+id/join_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="190dp"
-        android:clickable="true"
-        android:text="가입"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/login_password" />
+        <EditText
+            android:id="@+id/login_number"
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            android:paddingLeft="20dp"
+            android:background="@drawable/edittext_rect"
+            android:hint="아이디" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <EditText
+            android:id="@+id/login_password"
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            android:paddingLeft="20dp"
+            android:background="@drawable/edittext_rect"
+            android:hint="비밀번호"
+            android:inputType="textPassword"
+            android:layout_marginTop="20dp"
+            app:layout_constraintStart_toStartOf="@+id/login_number" />
+
+        <Button
+            android:id="@+id/login_button"
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            android:backgroundTint="@color/duksung_red"
+            android:text="로그인"
+            android:layout_marginTop="60dp"
+            app:layout_constraintStart_toStartOf="@+id/login_password"/>
+
+
+        <Button
+            android:id="@+id/join_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:clickable="true"
+            android:text="회원가입"
+            android:textSize="15dp"
+            android:textColor="#495057"
+            android:background="#00ff0000"/>
+
+
+
+
+
+    </LinearLayout>
+
+</LinearLayout>

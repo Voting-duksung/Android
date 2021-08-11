@@ -50,7 +50,7 @@ public class VotingStateActivity extends AppCompatActivity {
 
         String college = "총학생회 학생회 선거";
 
-        collegeTextView = (TextView) findViewById(R.id.doneCountTextView);
+        //collegeTextView = (TextView) findViewById(R.id.doneCountTextView);
         candidateTableLayout = (TableLayout) findViewById(R.id.candidateTableLayout);
 
         //총 선거 가능 투표장 수 변수 추가해주기
@@ -66,9 +66,6 @@ public class VotingStateActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(layoutManager);
 
 
-
-
-
         Response.Listener<String> responseListener = new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
@@ -80,7 +77,7 @@ public class VotingStateActivity extends AppCompatActivity {
                     for (int i = 0; i < response.length(); i++) {
                         JSONObject jObject = jsonArray.getJSONObject(i);
                         String candidate_name = jObject.getString("name");
-                        String imgPath = jObject.getString("imgPath");
+//                        String imgPath = jObject.getString("imgPath");
                         int voteCount = jObject.getInt("voteCount");
                         int candidateNumber = jObject.getInt("candidateNumber");
 

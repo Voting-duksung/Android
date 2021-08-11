@@ -1,123 +1,138 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:background="#FFFFFF">
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_weight="80">
 
         <TextView
             android:id="@+id/textView"
-            android:layout_width="wrap_content"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="30dp"
+            android:layout_marginTop="65dp"
+            android:layout_marginLeft="35dp"
             android:text="회원가입"
-            android:textSize="30sp"
+            android:textSize="25sp"
             android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="170dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="35dp"
+            android:layout_below="@+id/textView"
+            android:text="덕성여자대학교 전자투표시스템은 재학생만 이용 가능합니다"
+            android:textSize="12sp"
+            android:textColor="#868E96"/>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="15dp"
+        android:layout_weight="25"
+        android:orientation="vertical">
 
         <EditText
             android:id="@+id/join_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="2dp"
-            android:layout_marginRight="2dp"
-            android:layout_marginBottom="24dp"
-            android:ems="10"
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/edittext_rect"
             android:hint="이름"
-            android:layout_below="@+id/textView"
-            android:inputType="textPersonName" />
+            android:paddingLeft="20dp" />
 
         <EditText
-            android:id="@+id/join_number"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginBottom="24dp"
-            android:ems="10"
-            android:hint="학번"
-            android:layout_below="@+id/join_name" />
+            android:id="@+id/join_password"
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/edittext_rect"
+            android:hint="비밀번호"
+            android:inputType="textPassword"
+            android:paddingLeft="20dp" />
 
-        <Button
-            android:id="@+id/btn_number_check"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_toRightOf="@+id/join_number"
-            android:layout_below="@+id/join_name"
-            android:text="학번 확인" />
-
+        <EditText
+            android:id="@+id/join_pwck"
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/edittext_rect"
+            android:hint="비밀번호 확인"
+            android:inputType="textPassword"
+            android:paddingLeft="20dp" />
 
         <TextView
             android:id="@+id/tv_college"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="24dp"
-            android:text="소속대학을 선택해주세요."
-            android:layout_below="@+id/join_number">
-
-        </TextView>
+            android:layout_marginTop="15dp"
+            android:text="소속대학을 선택해주세요." />
 
         <Spinner
             android:id="@+id/spinner_college"
-            android:layout_width="210dp"
-            android:layout_height="40dp"
-            android:layout_below="@+id/tv_college"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/edittext_rect"
             android:spinnerMode="dropdown"
             android:textColor="@color/black" />
 
-        <EditText
-            android:id="@+id/join_password"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginBottom="24dp"
-            android:ems="10"
-            android:hint="비밀번호"
-            android:layout_below="@+id/spinner_college"
-            android:inputType="textPassword" />
+            android:orientation="horizontal">
 
-        <EditText
-            android:id="@+id/join_pwck"
-            android:layout_width="wrap_content"
+            <EditText
+                android:id="@+id/join_number"
+                android:layout_width="240dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="15dp"
+                android:layout_weight="1"
+                android:background="@drawable/edittext_rect"
+                android:hint="학번"
+                android:paddingLeft="20dp" />
+
+            <Button
+                android:id="@+id/btn_number_check"
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="15dp"
+                android:layout_weight="1"
+                android:backgroundTint="#495057"
+                android:text="학번 확인" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginBottom="24dp"
-            android:ems="10"
-            android:hint="비밀번호 확인"
-            android:layout_below="@+id/join_password"
-            android:inputType="textPassword" />
-
-        <Button
+            android:orientation="vertical">
+            <Button
             android:id="@+id/btn_join"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="가입"
-            android:layout_below="@id/join_pwck"
-            android:gravity="center"/>
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="25dp"
+            android:text="회원 가입 완료"
+            android:backgroundTint="@color/duksung_red" />
 
-        <!--        <Button-->
-        <!--            android:id="@+id/btn_delete"-->
-        <!--            android:layout_width="wrap_content"-->
-        <!--            android:layout_height="wrap_content"-->
-        <!--            android:gravity="center"-->
-        <!--            android:layout_below="@+id/join_pwck"-->
-        <!--            android:layout_marginLeft="30dp"-->
-        <!--            android:layout_toRightOf="@+id/btn_join"-->
-        <!--            android:text="취소"/>-->
-
-        <Button
+            <Button
             android:id="@+id/btn_self_check"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:layout_below="@+id/join_pwck"
-            android:layout_marginLeft="30dp"
-            android:layout_toRightOf="@+id/btn_join"
-            android:text="본인 인증" />
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="15dp"
+            android:text="본인 인증"
+            android:backgroundTint="@color/duksung_red" />
 
-    </RelativeLayout>
+        </LinearLayout>
 
-</RelativeLayout>
+    </LinearLayout>
+</LinearLayout>
