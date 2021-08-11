@@ -29,7 +29,7 @@ public class ListViewVoteAdapter extends RecyclerView.Adapter {
     private ArrayList<ListViewVote> listViewVoteList = new ArrayList<ListViewVote>();
 
     //ListViewAdapter의 생성자
-    public ListViewVoteAdapter (Context tv_vote_name, ArrayList<ListViewVote> listViewVoteList, String UserNumber) {
+    public ListViewVoteAdapter (Context tv_vote_name, ArrayList<ListViewVote> listViewVoteList) {
         this.tv_vote_name = tv_vote_name;
         this.listViewVoteList = listViewVoteList;
         this.UserNumber = UserNumber;
@@ -89,7 +89,7 @@ public class ListViewVoteAdapter extends RecyclerView.Adapter {
                         Intent intent = new Intent(tv_vote_name, CandidateListActivity.class).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 
                         intent.putExtra("college", listViewVoteList.get(position).getCollege());
-                        intent.putExtra("UserNumber", UserNumber);
+                        //intent.putExtra("UserNumber", UserNumber);
                         //앞에서 UserNumber 받은 적이 없으니 안됨
 
                         tv_vote_name.startActivity(intent);
