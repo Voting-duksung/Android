@@ -42,8 +42,10 @@ public class VoteListActivity extends AppCompatActivity {
 
         //로그인 한 학번 받아오기
         Intent UserNumberIntent = getIntent();
+        int Userid = UserNumberIntent.getExtras().getInt("Userid");
         String UserNumber = UserNumberIntent.getExtras().getString("UserNumber");
         System.out.println(UserNumber+"VoteListActivity에서 USerNumeber");
+        System.out.println(Userid+"VoteListActivity에서 Userid");
 
 
         //adapter와 recyclerView 연결
@@ -97,6 +99,7 @@ public class VoteListActivity extends AppCompatActivity {
 
                 Intent intent = new Intent(VoteListActivity.this, VotingStateActivity.class );
                 intent.putExtra("UserNumber", UserNumber);
+                intent.putExtra("Userid", Userid);
 
                 startActivity(intent);
 
