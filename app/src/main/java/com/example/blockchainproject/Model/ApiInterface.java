@@ -19,10 +19,10 @@ public interface ApiInterface {
 
     //    @FormUrlEncoded
     @GET("/app/setVote")
-    Call<Vote> getVote(@Query("placeid") String placeid, @Query("candidateid") int candidateid,@Query("UserNumber") String UserNumber );
+    Call<Vote> getVote(@Query("placeid") String placeid, @Query("candidateid") int candidateid, @Query("UserNumber") String UserNumber );
 
     @GET("/app/account")
-    Call<UserAccount> getAccount(@Query("userid") String userid);
+    Call<UserAccount> getAccount(@Query("Userid") int Userid);
 
 
 }

@@ -27,6 +27,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
+import jnr.a64asm.SYSREG_CODE;
 import retrofit2.Call;
 import retrofit2.Callback;
 
@@ -38,6 +39,7 @@ public class CandidateListActivity extends AppCompatActivity {
     private ListViewCandidateAdapter adapter;
 
     public String UserNumber;
+    public int Userid;
 
     //Retrofit
     private ApiInterface service;
@@ -52,7 +54,8 @@ public class CandidateListActivity extends AppCompatActivity {
 
         Intent UserNumberIntent = getIntent();
         UserNumber = UserNumberIntent.getExtras().getString("UserNumber");
-        System.out.println(UserNumber+"CandidateListActivity 여기 학번 넘어와야함");
+        Userid = UserNumberIntent.getExtras().getInt("Userid");
+        System.out.println(Userid+"CandidateListActivity 여기 Userid 넘어와야함");
 
         Intent intent = getIntent();
         String college = intent.getExtras().getString("college");
@@ -102,6 +105,9 @@ public class CandidateListActivity extends AppCompatActivity {
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         requestQueue.add(candidatelistRequest);
 
+        //retrofit
+        service = ApiClient.getApiClient().create(ApiInterface.class);
+
         //투표하러가기 버튼 눌렀을 때
         btn_go_voting = findViewById( R.id.btn_go_voting );
         btn_go_voting.setOnClickListener( new View.OnClickListener() {
@@ -109,9 +115,9 @@ public class CandidateListActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                service = ApiClient.getApiClient().create(ApiInterface.class);
-                Call<UserAccount> call_get = service.getAccount(UserNumber);
-                call_get.enqueue(new Callback<UserAccount>() {
+
+                Call<UserAccount> call_account = service.getAccount(Userid);
+                call_account.enqueue(new Callback<UserAccount>() {
                     @Override
                     public void onResponse(Call<UserAccount> call, retrofit2.Response<UserAccount> response) {
                         //성공했을 경우

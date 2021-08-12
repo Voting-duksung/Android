@@ -22,6 +22,7 @@ public class ListViewVoteAdapter extends RecyclerView.Adapter {
 
     public String UserNumber;
     private Context tv_vote_name;
+    private int Userid;
     TextView votePeriod;
 
 
@@ -29,10 +30,11 @@ public class ListViewVoteAdapter extends RecyclerView.Adapter {
     private ArrayList<ListViewVote> listViewVoteList = new ArrayList<ListViewVote>();
 
     //ListViewAdapter의 생성자
-    public ListViewVoteAdapter (Context tv_vote_name, ArrayList<ListViewVote> listViewVoteList, String UserNumber) {
+    public ListViewVoteAdapter (Context tv_vote_name, ArrayList<ListViewVote> listViewVoteList, String UserNumber, int Userid) {
         this.tv_vote_name = tv_vote_name;
         this.listViewVoteList = listViewVoteList;
         this.UserNumber = UserNumber;
+        this.Userid=Userid;
     }
 
     //LayoutInflater를 이용하여 전 단계에서 만들었던 listview_vote.xml을 inflate 시킨다.
@@ -93,6 +95,7 @@ public class ListViewVoteAdapter extends RecyclerView.Adapter {
                         intent.putExtra("college", listViewVoteList.get(position).getCollege());
                         //intent.putExtra("startDate", startDate);
                         intent.putExtra("UserNumber", UserNumber);
+                        intent.putExtra("Userid",Userid);
                         //앞에서 UserNumber 받은 적이 없으니 안됨
 
                         tv_vote_name.startActivity(intent);

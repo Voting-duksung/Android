@@ -50,7 +50,7 @@ public class VoteListActivity extends AppCompatActivity {
 
         //adapter와 recyclerView 연결
         recyclerView = findViewById(R.id.rv_vote_list);
-        adapter = new ListViewVoteAdapter(this, listViewVoteList, UserNumber);
+        adapter = new ListViewVoteAdapter(this, listViewVoteList, UserNumber, Userid);
         recyclerView.setAdapter(adapter);
 
 

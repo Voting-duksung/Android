@@ -46,6 +46,7 @@ public class VotingStateActivity extends AppCompatActivity {
         //로그인 한 학번 받아오기
         Intent UserNumberIntent = getIntent();
         String UserNumber = UserNumberIntent.getExtras().getString("UserNumber");
+        int Userid = UserNumberIntent.getExtras().getInt("Userid");
         //학번 짱 잘나옴
 
         String college = "총학생회 학생회 선거";
