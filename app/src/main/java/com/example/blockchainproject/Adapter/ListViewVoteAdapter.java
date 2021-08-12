@@ -87,6 +87,7 @@ public class ListViewVoteAdapter extends RecyclerView.Adapter {
                         Intent intent = new Intent(tv_vote_name, CandidateListActivity.class).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 
                         intent.putExtra("college", listViewVoteList.get(position).getCollege());
+                        //intent.putExtra("startDate", startDate);
                         intent.putExtra("UserNumber", UserNumber);
                         //앞에서 UserNumber 받은 적이 없으니 안됨
 
