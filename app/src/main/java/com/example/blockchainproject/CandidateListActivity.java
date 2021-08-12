@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,12 +16,19 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.toolbox.Volley;
 import com.example.blockchainproject.Adapter.ListViewCandidateAdapter;
+import com.example.blockchainproject.Model.ApiClient;
+import com.example.blockchainproject.Model.ApiInterface;
+import com.example.blockchainproject.Model.UserAccount;
+import com.example.blockchainproject.Model.Vote;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+
+import retrofit2.Call;
+import retrofit2.Callback;
 
 
 public class CandidateListActivity extends AppCompatActivity {
@@ -30,6 +38,9 @@ public class CandidateListActivity extends AppCompatActivity {
     private ListViewCandidateAdapter adapter;
 
     public String UserNumber;
+
+    //Retrofit
+    private ApiInterface service;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -97,6 +108,31 @@ public class CandidateListActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
+
+                service = ApiClient.getApiClient().create(ApiInterface.class);
+                Call<UserAccount> call_get = service.getAccount(UserNumber);
+                call_get.enqueue(new Callback<UserAccount>() {
+                    @Override
+                    public void onResponse(Call<UserAccount> call, retrofit2.Response<UserAccount> response) {
+                        //성공했을 경우
+                        if (response.isSuccessful()) {//응답을 잘 받은 경우
+                            String result = response.body().toString();
+//                            Log.v(TAG, "result = " + result);
+//                            Toast.makeText(getApplicationContext(), result, Toast.LENGTH_SHORT).show();
+                        } else {    //통신은 성공했지만 응답에 문제있는 경우
+                            System.out.println("error="+String.valueOf(response.code()));
+//                            Log.v(TAG, "error = " + String.valueOf(response.code()));
+                            Toast.makeText(getApplicationContext(), "error = " + String.valueOf(response.code()), Toast.LENGTH_SHORT).show();
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<UserAccount> call, Throwable t) {//통신 자체 실패
+//                       Log.v(TAG, "Fail");
+                        Toast.makeText(getApplicationContext(), "Response Fail", Toast.LENGTH_SHORT).show();
+                    }
+                });
+
                 Intent intent = new Intent(CandidateListActivity.this, VoteActivity.class );
                 intent.putExtra("college", college);
                 intent.putExtra("UserNumber",UserNumber);
