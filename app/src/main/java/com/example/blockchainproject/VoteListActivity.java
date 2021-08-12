@@ -22,6 +22,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -67,9 +68,12 @@ public class VoteListActivity extends AppCompatActivity {
                     for (int i = 0; i < response.length(); i++) {
                         JSONObject jObject = jsonArray.getJSONObject(i);
                         String college = jObject.getString("college");
+                        String startDate = jObject.getString("startDate");
+                        String endDate = jObject.getString("endDate");
+
 
                         //아이템의 개수만큼 recyclerView에 객체 넣어주기
-                        listViewVoteList.add(new ListViewVote(college));
+                        listViewVoteList.add(new ListViewVote(college, startDate, endDate));
                         adapter.notifyItemInserted(0);
                     }
                 } catch (JSONException e) {

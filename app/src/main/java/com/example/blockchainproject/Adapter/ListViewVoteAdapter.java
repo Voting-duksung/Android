@@ -1,6 +1,5 @@
 package com.example.blockchainproject.Adapter;
 
-
 import android.content.Context;
 import android.content.Intent;
 import android.os.Parcelable;
@@ -23,6 +22,7 @@ public class ListViewVoteAdapter extends RecyclerView.Adapter {
 
     public String UserNumber;
     private Context tv_vote_name;
+    TextView votePeriod;
 
 
     //Adapter에 들어갈 list
@@ -74,8 +74,6 @@ public class ListViewVoteAdapter extends RecyclerView.Adapter {
 
         public VH(@NonNull View itemView) {
             super(itemView);
-
-
 
             vote_college=itemView.findViewById(R.id.tv_vote_college);
             vote_college.setClickable(true);

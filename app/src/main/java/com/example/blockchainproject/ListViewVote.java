@@ -5,6 +5,8 @@ package com.example.blockchainproject;
 public class ListViewVote {
     private String college;
     private String UserNumber;
+    private String startDate;
+    private String endDate;
 
     public void setCollege(String college) {
         college = college;
@@ -12,8 +14,10 @@ public class ListViewVote {
 
     public String getCollege() { return this.college;}
 
-    public ListViewVote(String college) {
+    public ListViewVote(String college, String startDate, String endDate) {
         this.college = college;
+        this.startDate = startDate;
+        this.endDate = endDate;
     }
 
     public void setUserNumber(String UserNumber){ UserNumber = UserNumber; }
@@ -21,6 +25,14 @@ public class ListViewVote {
     public String getUserNumber(){ return this.UserNumber;}
 
 //    public ListViewVote(String UserNumber) {this.UserNumber = UserNum; }
+
+    public void setStartDate(String startDate) { startDate = startDate; }
+
+    public String getStartDate() { return this.startDate; }
+
+    public void setEndDateDate(String endDate) { endDate = endDate; }
+
+    public String getEndDate() { return this.endDate; }
 
 
 }
