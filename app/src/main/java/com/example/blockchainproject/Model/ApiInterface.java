@@ -21,5 +21,8 @@ public interface ApiInterface {
     @GET("/app/setVote")
     Call<Vote> getVote(@Query("placeid") String placeid, @Query("candidateid") int candidateid,@Query("UserNumber") String UserNumber );
 
+    @GET("/app/account")
+    Call<Vote> getAccount(@Query("placeid") String placeid, @Query("candidateid") int candidateid,@Query("UserNumber") String UserNumber );
+
 
 }

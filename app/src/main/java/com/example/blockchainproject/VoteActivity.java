@@ -23,6 +23,7 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.toolbox.Volley;
 import com.example.blockchainproject.Adapter.ListViewVotingNowAdapter;
+import com.example.blockchainproject.Model.ApiClient;
 import com.example.blockchainproject.Model.ApiInterface;
 import com.example.blockchainproject.Model.Vote;
 
@@ -56,8 +57,6 @@ public class VoteActivity extends AppCompatActivity {
     TextView candidateName;
 
     //retrofit
-    private final String URL = "http://3.36.172.204:8080/";
-    private Retrofit retrofit;
     private ApiInterface service;
 
     //placeid를 받아와야함.
@@ -153,11 +152,7 @@ public class VoteActivity extends AppCompatActivity {
         Button btn_vote = (Button) findViewById(R.id.btn_vote);
 
         // 레트로핏 연결
-        retrofit = new Retrofit.Builder()
-                .baseUrl(URL)
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-        service = retrofit.create(ApiInterface.class);
+        service = ApiClient.getApiClient().create(ApiInterface.class);
 
         btn_vote.setOnClickListener (new View.OnClickListener(){
 
@@ -170,16 +165,11 @@ public class VoteActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(Call<Vote> call, retrofit2.Response<Vote> response) {
                         //성공했을 경우
-                        System.out.println("들어감");
                         if (response.isSuccessful()) {//응답을 잘 받은 경우
-                            System.out.println("들어감3");
                             String result = response.body().toString();
 //                            Log.v(TAG, "result = " + result);
-                            System.out.println("result"+result);
-                            System.out.println(response.body());
-                            Toast.makeText(getApplicationContext(), result, Toast.LENGTH_SHORT).show();
+//                            Toast.makeText(getApplicationContext(), result, Toast.LENGTH_SHORT).show();
                         } else {    //통신은 성공했지만 응답에 문제있는 경우
-                            System.out.println("들어감2");
                             System.out.println("error="+String.valueOf(response.code()));
 //                            Log.v(TAG, "error = " + String.valueOf(response.code()));
                             Toast.makeText(getApplicationContext(), "error = " + String.valueOf(response.code()), Toast.LENGTH_SHORT).show();
