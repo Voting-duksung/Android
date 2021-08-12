@@ -46,8 +46,6 @@ public class ListViewVotingStateAdapter extends RecyclerView.Adapter {
         ListViewCandidate item = listViewCandidateList.get(position);
         vh.candidate_name.setText("기호 "+item.getCandidateNumber()+". "+item.getName());
         vh.candidate_voteCount.setText("득표수 : "+item.getVoteCount()+1);
-
-//        Glide.with(context).load(item.getImgPath()).into(vh.candidate_image);
     }
 
     //지정한 위치(position)에 있는 데이터와 관계된 아이템(row)의 ID를 리턴

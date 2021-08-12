@@ -53,6 +53,7 @@ public class ListViewVoteAdapter extends RecyclerView.Adapter {
 
         ListViewVote item = listViewVoteList.get(position);
         vh.vote_college.setText(item.getCollege());
+        vh.vote_period.setText("투표기간   "+item.getStartDate()+" ~ "+item.getEndDate());
 
     }
 
@@ -71,9 +72,12 @@ public class ListViewVoteAdapter extends RecyclerView.Adapter {
     class VH extends RecyclerView.ViewHolder {
 
         TextView vote_college;
+        TextView vote_period;
 
         public VH(@NonNull View itemView) {
             super(itemView);
+
+            vote_period=itemView.findViewById(R.id.vote_period);
 
             vote_college=itemView.findViewById(R.id.tv_vote_college);
             vote_college.setClickable(true);
