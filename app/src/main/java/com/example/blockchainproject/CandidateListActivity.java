@@ -149,6 +149,7 @@ public class CandidateListActivity extends AppCompatActivity {
                 Intent intent = new Intent(CandidateListActivity.this, VoteActivity.class );
                 intent.putExtra("college", college);
                 intent.putExtra("UserNumber",UserNumber);
+                intent.putExtra("Userid",Userid);
 
                 startActivity(intent);
             }

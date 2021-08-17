@@ -42,7 +42,7 @@ public class VoteListActivity extends AppCompatActivity {
 
         //로그인 한 학번 받아오기
         Intent UserNumberIntent = getIntent();
-        int Userid = UserNumberIntent.getExtras().getInt("Userid");
+        String Userid = UserNumberIntent.getExtras().getString("Userid");
         String UserNumber = UserNumberIntent.getExtras().getString("UserNumber");
         System.out.println(UserNumber+"VoteListActivity에서 USerNumeber");
         System.out.println(Userid+"VoteListActivity에서 Userid");
