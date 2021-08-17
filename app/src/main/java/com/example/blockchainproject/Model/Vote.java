@@ -6,21 +6,6 @@ public class Vote {
     int candidateNumber;
     String UserNumber;
 
-//    @Expose
-//    @SerializedName("name") private String name;
-//
-//    @Expose
-//    @SerializedName("period") private String period;
-//
-//    @Expose
-//    @SerializedName("contents") private String contents;
-//
-//    @Expose
-//    @SerializedName("isStarted") private String isStarted;
-//
-//    @Expose
-//    @SerializedName("imageURL") private String imageURL;
-
     public String getPlaceid() {
         return placeid;
     }

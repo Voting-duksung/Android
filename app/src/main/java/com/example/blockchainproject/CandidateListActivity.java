@@ -38,27 +38,30 @@ public class CandidateListActivity extends AppCompatActivity {
     private ArrayList<ListViewCandidate> listViewCandidateList = new ArrayList<ListViewCandidate>();
     private ListViewCandidateAdapter adapter;
 
-    public String UserNumber;
-    public int Userid;
-
     //Retrofit
     private ApiInterface service;
+
+    public String UserNumber;
+    public String Userid;
+    public Button btn_go_voting;
+    public String college;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_candidate_list);
 
+        account();
+
         TextView textView = findViewById(R.id.tv_candidate);
-        Button btn_go_voting;
 
         Intent UserNumberIntent = getIntent();
         UserNumber = UserNumberIntent.getExtras().getString("UserNumber");
-        Userid = UserNumberIntent.getExtras().getInt("Userid");
+        Userid = UserNumberIntent.getExtras().getString("Userid");
         System.out.println(Userid+"CandidateListActivity 여기 Userid 넘어와야함");
 
         Intent intent = getIntent();
-        String college = intent.getExtras().getString("college");
+        college = intent.getExtras().getString("college");
         System.out.println(college+"CandidateListActivity의 college");
         //대학은 잘 넘어오는거 확인
 
@@ -105,16 +108,19 @@ public class CandidateListActivity extends AppCompatActivity {
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         requestQueue.add(candidatelistRequest);
 
+    }
+
+    //투표하러가기 버튼 (계정나눠주기)
+    public void account() {
         //retrofit
         service = ApiClient.getApiClient().create(ApiInterface.class);
 
         //투표하러가기 버튼 눌렀을 때
-        btn_go_voting = findViewById( R.id.btn_go_voting );
+        btn_go_voting = (Button)findViewById( R.id.btn_go_voting );
         btn_go_voting.setOnClickListener( new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
-
 
                 Call<UserAccount> call_account = service.getAccount(Userid);
                 call_account.enqueue(new Callback<UserAccount>() {
@@ -125,6 +131,7 @@ public class CandidateListActivity extends AppCompatActivity {
                             String result = response.body().toString();
 //                            Log.v(TAG, "result = " + result);
 //                            Toast.makeText(getApplicationContext(), result, Toast.LENGTH_SHORT).show();
+                            System.out.println("계정성공~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
                         } else {    //통신은 성공했지만 응답에 문제있는 경우
                             System.out.println("error="+String.valueOf(response.code()));
 //                            Log.v(TAG, "error = " + String.valueOf(response.code()));
@@ -146,6 +153,5 @@ public class CandidateListActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
     }
 }

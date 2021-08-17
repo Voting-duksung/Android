@@ -58,7 +58,7 @@ public class LoginActivity extends AppCompatActivity {
                             boolean success = jsonObject.getBoolean( "success" );
 
                             if(success) {//로그인 성공시
-                                int Userid = jsonObject.getInt("Userid");
+                                String Userid = jsonObject.getString("Userid");
                                 String UserNumber = jsonObject.getString( "UserNumber" );
                                 String UserPwd = jsonObject.getString( "UserPwd" );
                                 String UserName = jsonObject.getString( "UserName" );
