@@ -153,7 +153,6 @@ public class VoteActivity extends AppCompatActivity {
 
         // 레트로핏 연결
         service = ApiClient.getApiClient().create(ApiInterface.class);
-
         btn_vote.setOnClickListener (new View.OnClickListener(){
 
             //후보 선택하고 투표 완료하는 과정

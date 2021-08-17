@@ -49,52 +49,6 @@
                     android:text="득표수 : 10     "
                     android:textSize="20dp" />
             </LinearLayout>
-
-
         </TableRow>
-
     </TableLayout>
-
-    <!--    <LinearLayout-->
-    <!--        android:layout_width="match_parent"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:orientation="vertical">-->
-    <!--`-->
-
-    <!--        <RelativeLayout-->
-    <!--            android:layout_width="wrap_content"-->
-    <!--            android:layout_height="match_parent">-->
-
-    <!--            <RelativeLayout-->
-    <!--                android:layout_width="wrap_content"-->
-    <!--                android:layout_height="wrap_content"-->
-    <!--                android:layout_toRightOf="@+id/img_candidate"-->
-    <!--                android:layout_gravity="center"-->
-    <!--                android:background="@color/colorPrimaryDark"-->
-    <!--                android:orientation="vertical">-->
-
-    <!--                <TextView-->
-    <!--                    android:id="@+id/tv_text1"-->
-    <!--                    android:layout_width="match_parent"-->
-    <!--                    android:layout_height="50dp"-->
-    <!--                    android:layout_marginTop="50dp"-->
-    <!--                    android:gravity="center"-->
-    <!--                    android:text="이름"-->
-    <!--                    android:textSize="20dp"-->
-    <!--                    android:textStyle="bold"></TextView>-->
-
-    <!--                <TextView-->
-    <!--                    android:id="@+id/tv_text2"-->
-    <!--                    android:layout_width="match_parent"-->
-    <!--                    android:layout_height="wrap_content"-->
-    <!--                    android:layout_alignParentTop="true"-->
-    <!--                    android:layout_marginTop="120dp"-->
-    <!--                    android:layout_marginBottom="53dp"-->
-    <!--                    android:gravity="center"-->
-    <!--                    android:text="득표수"-->
-    <!--                    android:textSize="20sp"-->
-    <!--                    android:textStyle="bold"></TextView>-->
-    <!--            </RelativeLayout>-->
-    <!--        </RelativeLayout>-->
-    <!--    </LinearLayout>-->
 </RelativeLayout>

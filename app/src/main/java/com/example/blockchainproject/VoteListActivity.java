@@ -58,6 +58,7 @@ public class VoteListActivity extends AppCompatActivity {
         LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(layoutManager);
 
+
         Response.Listener<String> responseListener = new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
@@ -73,11 +74,11 @@ public class VoteListActivity extends AppCompatActivity {
                         String startDate = jObject.getString("startDate");
                         String endDate = jObject.getString("endDate");
 
-
                         //아이템의 개수만큼 recyclerView에 객체 넣어주기
                         listViewVoteList.add(new ListViewVote(college, startDate, endDate));
                         adapter.notifyItemInserted(0);
                     }
+
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -92,7 +93,6 @@ public class VoteListActivity extends AppCompatActivity {
         Button btn_doneVote = (Button) findViewById(R.id.btn_doneVote);
         btn_doneVote.setOnClickListener (new View.OnClickListener(){
 
-
             //후보 선택하고 투표 완료하는 과정
             @Override
             public void onClick(View v){
@@ -102,7 +102,6 @@ public class VoteListActivity extends AppCompatActivity {
                 intent.putExtra("Userid", Userid);
 
                 startActivity(intent);
-
             }
         });
 
