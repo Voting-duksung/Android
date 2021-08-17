@@ -33,7 +33,6 @@
             android:clickable="true"
             android:focusedByDefault="true"
             android:text="진행중"
-            android:onClick="onButtononVote"
             android:textColor="#ADB5BD"
             android:textSize="20dp" />
 
@@ -44,7 +43,6 @@
             android:layout_gravity="center"
             android:layout_weight="1"
             android:background="#00ff0000"
-            android:onClick="onButtonDoneVote"
             android:text="개표완료"
             android:textColor="@color/duksung_red"
             android:textSize="20dp" />

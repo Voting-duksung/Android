@@ -2,13 +2,13 @@ package com.example.blockchainproject.Model;
 
 public class UserAccount {
 
-    int Userid;
+    String Userid;
 
-    public int getUserid() {
+    public String getUserid() {
         return Userid;
     }
 
-    public void setUserid(int Userid){
+    public void setUserid(String Userid){
         this.Userid = Userid;
     }
 }

@@ -43,7 +43,6 @@
             android:layout_gravity="center"
             android:layout_weight="1"
             android:background="#00ff0000"
-            android:onClick="onButtonDoneVote"
             android:text="개표완료"
             android:textColor="#ADB5BD"
             android:textSize="18dp" />

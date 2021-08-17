@@ -149,11 +149,11 @@ public class VoteActivity extends AppCompatActivity {
                 }
             };
 
-        Button btn_vote = (Button) findViewById(R.id.btn_vote);
 
         // 레트로핏 연결
         service = ApiClient.getApiClient().create(ApiInterface.class);
 
+        Button btn_vote = (Button) findViewById(R.id.btn_vote);
         btn_vote.setOnClickListener (new View.OnClickListener(){
 
             //후보 선택하고 투표 완료하는 과정
@@ -167,18 +167,15 @@ public class VoteActivity extends AppCompatActivity {
                         //성공했을 경우
                         if (response.isSuccessful()) {//응답을 잘 받은 경우
                             String result = response.body().toString();
-//                            Log.v(TAG, "result = " + result);
-//                            Toast.makeText(getApplicationContext(), result, Toast.LENGTH_SHORT).show();
+                            System.out.println("투표 성공~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
                         } else {    //통신은 성공했지만 응답에 문제있는 경우
                             System.out.println("error="+String.valueOf(response.code()));
-//                            Log.v(TAG, "error = " + String.valueOf(response.code()));
                             Toast.makeText(getApplicationContext(), "error = " + String.valueOf(response.code()), Toast.LENGTH_SHORT).show();
                         }
                     }
 
                     @Override
                     public void onFailure(Call<Vote> call, Throwable t) {//통신 자체 실패
-//                       Log.v(TAG, "Fail");
                         Toast.makeText(getApplicationContext(), "Response Fail", Toast.LENGTH_SHORT).show();
                     }
                 });

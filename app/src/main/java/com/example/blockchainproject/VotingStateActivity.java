@@ -40,8 +40,10 @@ public class VotingStateActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_voting_state);
+
 
         //로그인 한 학번 받아오기
         Intent UserNumberIntent = getIntent();
@@ -56,7 +58,7 @@ public class VotingStateActivity extends AppCompatActivity {
         candidateTableLayout = (TableLayout) findViewById(R.id.candidateTableLayout);
 
         //총 선거 가능 투표장 수 변수 추가해주기
-        collegeTextView.setText("<"+college+">");
+        //collegeTextView.setText("<"+college+">");
 
         TextView textView = findViewById(R.id.tv_name);
 
@@ -101,30 +103,6 @@ public class VotingStateActivity extends AppCompatActivity {
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         requestQueue.add(candidatelistRequest);
 
-
-//        for (int i = 0; i < 2; i++) {
-//            TableRow tr = new TableRow(this);
-//            TextView candidate = new TextView(this);
-//            TextView rate = new TextView(this);
-//
-//            LinearLayout.LayoutParams param = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-//            param.topMargin = 10;
-//            tr.setLayoutParams(param);
-//
-//            //여기 데이터 불러오는 걸로 수정해야함//
-//            candidate.setText("기호 1.");
-//            rate.setText("득표율 : 41.08%");
-//
-//            candidate.setGravity(Gravity.CENTER);
-//            candidate.setTextSize(20);
-//            rate.setGravity(Gravity.CENTER);
-//            rate.setTextSize(20);
-//
-//            tr.addView(candidate);
-//            tr.addView(rate);
-//
-//            candidateTableLayout.addView(tr);
-//        }
     }
 
     public void onButtonMenu(View view) {

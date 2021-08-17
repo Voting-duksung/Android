@@ -3,8 +3,11 @@ package com.example.blockchainproject.Model;
 
 import retrofit2.Call;
 
+import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 
+import retrofit2.http.PUT;
+import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 public interface ApiInterface {
@@ -12,17 +15,11 @@ public interface ApiInterface {
     @GET("/app/getStartedPlace")
     Call<PlaceInfo> getPlaceid(@Query("placeid") String placeid, @Query("isStarted") String isStarted);
 
-//    @FormUrlEncoded
-//    @POST("/app/setVote")
-//    Call<Vote> postFunc(@Field("Placeid") String Placeid, @Field("candidateid") String candidateid,@Field("UserNumber") String UserNumber );
-
-
-    //    @FormUrlEncoded
     @GET("/app/setVote")
     Call<Vote> getVote(@Query("placeid") String placeid, @Query("candidateid") int candidateid, @Query("UserNumber") String UserNumber );
 
-    @GET("/app/account")
-    Call<UserAccount> getAccount(@Query("Userid") int Userid);
+    @GET("/app/account/")
+    Call<UserAccount> getAccount(@Query("Userid") String Userid);
 
 
 }
