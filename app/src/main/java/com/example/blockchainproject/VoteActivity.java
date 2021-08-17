@@ -53,6 +53,7 @@ public class VoteActivity extends AppCompatActivity {
     public String UserNumber;
     int candidateNumber;
     String college;
+    String Userid;
 
     TextView candidateName;
 
@@ -74,6 +75,7 @@ public class VoteActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         college = intent.getExtras().getString("college");
+        Userid = intent.getExtras().getString("Userid");
         //college 잘 받아와짐
 
         //로그인 한 학번 받아오기
@@ -192,6 +194,7 @@ public class VoteActivity extends AppCompatActivity {
 
                 Intent intent = new Intent(VoteActivity.this, VoteListActivity.class);
                 intent.putExtra("UserNumber", UserNumber);
+                intent.putExtra("Userid", Userid);
                 intent.addFlags(intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
 

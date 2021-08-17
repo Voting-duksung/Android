@@ -25,7 +25,7 @@ public class ListViewVoteAdapter extends RecyclerView.Adapter {
     public String UserNumber;
     private Context tv_vote_name;
     private String tv_vote_college;
-    private int Userid;
+    private String Userid;
     TextView votePeriod;
 
 
@@ -33,7 +33,7 @@ public class ListViewVoteAdapter extends RecyclerView.Adapter {
     private ArrayList<ListViewVote> listViewVoteList = new ArrayList<ListViewVote>();
 
     //ListViewAdapter의 생성자
-    public ListViewVoteAdapter (Context tv_vote_name, ArrayList<ListViewVote> listViewVoteList, String UserNumber, int Userid) {
+    public ListViewVoteAdapter (Context tv_vote_name, ArrayList<ListViewVote> listViewVoteList, String UserNumber, String Userid) {
         this.tv_vote_name = tv_vote_name;
         this.listViewVoteList = listViewVoteList;
         this.UserNumber = UserNumber;
