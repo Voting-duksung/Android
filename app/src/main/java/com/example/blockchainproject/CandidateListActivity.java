@@ -1,8 +1,12 @@
 package com.example.blockchainproject;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -43,8 +47,15 @@ public class CandidateListActivity extends AppCompatActivity {
 
     public String UserNumber;
     public String Userid;
-    public Button btn_go_voting;
     public String college;
+    public String startDate;
+    public String endDate;
+
+    Dialog dialog_voting_info;
+    public Button btn_ok;
+
+    Dialog dialog_account_info;
+    public Button btn_go_voting;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -53,7 +64,18 @@ public class CandidateListActivity extends AppCompatActivity {
 
         account();
 
-        TextView textView = findViewById(R.id.tv_candidate);
+        dialog_voting_info = new Dialog(CandidateListActivity.this);
+        dialog_voting_info.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog_voting_info.setContentView(R.layout.dialog_voting_info);
+
+        // 버튼: 커스텀 다이얼로그 띄우기
+        findViewById(R.id.btn_voting_info).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showDialogVotingInfo(); // 아래 showDialogVotingInfo() 함수 호출
+            }
+        });
+
 
         Intent UserNumberIntent = getIntent();
         UserNumber = UserNumberIntent.getExtras().getString("UserNumber");
@@ -64,6 +86,20 @@ public class CandidateListActivity extends AppCompatActivity {
         college = intent.getExtras().getString("college");
         System.out.println(college+"CandidateListActivity의 college");
         //대학은 잘 넘어오는거 확인
+
+        startDate = intent.getExtras().getString("startDate");
+        endDate = intent.getExtras().getString("endDate");
+
+
+
+        TextView VoteCollege = findViewById(R.id.tv_vote_college1);
+        VoteCollege.setText(college);
+
+        TextView VotePeriod = findViewById(R.id.tv_vote_period1);
+        VotePeriod.setText("투표기간    "+startDate+" ~ "+endDate);
+
+        Button btn_voting_info = findViewById(R.id.btn_voting_info);
+
 
         recyclerView = findViewById(R.id.rv_candidate_list);
         adapter = new ListViewCandidateAdapter(this, listViewCandidateList);
@@ -100,6 +136,10 @@ public class CandidateListActivity extends AppCompatActivity {
             }
         };
 
+        dialog_account_info = new Dialog(CandidateListActivity.this);
+        dialog_account_info.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog_account_info.setContentView(R.layout.dialog_account_info);
+
         RecyclerView list_container = findViewById(R.id.rv_candidate_list);
         ListViewCandidateAdapter adapter = new ListViewCandidateAdapter(this,listViewCandidateList);
         RecyclerView.LayoutManager layoutManager1 = new LinearLayoutManager(this);
@@ -107,6 +147,22 @@ public class CandidateListActivity extends AppCompatActivity {
         CandidateListRequest candidatelistRequest = new CandidateListRequest(college,responseListener);
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         requestQueue.add(candidatelistRequest);
+
+    }
+    public void showDialogVotingInfo(){
+        dialog_voting_info.show();
+
+        btn_ok = dialog_voting_info.findViewById(R.id.btn_ok);
+        btn_ok.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog_voting_info.dismiss();
+            }
+        });
+
+    }
+    public void showDialogAccountInfo(){
+        dialog_account_info.show();
 
     }
 
@@ -121,6 +177,7 @@ public class CandidateListActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
+
 
 //                Call<UserAccount> call_account = service.getAccount(Userid);
 //                call_account.enqueue(new Callback<UserAccount>() {

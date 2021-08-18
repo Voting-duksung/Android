@@ -160,7 +160,7 @@
             android:textColor="#FFFFFF" />
 
         <Button
-            android:id="@+id/tv_check"
+            android:id="@+id/btn_check"
             android:layout_width="340dp"
             android:layout_height="41dp"
             android:layout_marginTop="45.91dp"
