@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_pull_name"
+            android:layout_width="236dp"
+            android:layout_height="21dp"
+            android:layout_marginLeft="69.29dp"
+            android:layout_marginTop="37.97dp"
+            android:text="제 25대 덕성여자대학교 총학생회 선거"
+            android:gravity="center_vertical" />
+
+        <TextView
+            android:id="@+id/tv_notify"
+            android:layout_width="119dp"
+            android:layout_height="27dp"
+            android:layout_marginLeft="127.79dp"
+            android:layout_marginTop="21.83dp"
+            android:text="선 거 공 고"
+            android:textColor="#000000"
+            android:layout_gravity="center_vertical"/>
+
+        <TextView
+            android:layout_width="280.56dp"
+            android:layout_height="1053dp"
+            android:textSize="16dp"
+            android:text="1. 총학생회 후보\n\n
+
+기호 1번) ‘파랑’ 학생회: 총학생회장(공간디자인4 김만춘), 부학생회장(사회학과3 김우연)\n\n
+
+기호 번) ‘공간’ 학생회: 총학생회장(공업디자인4 김갈백), 부학생회장(경영학과3 김신우)\n\n
+
+
+2. 총학생회 온라인 투표일시 및 특표수확인일시\n\n
+
+선거일시: 2021년 3월 24일 ~ 2021년 4월 30일\n
+개표일시: 2021년 5월 1일 (추후공고)\n
+당선자 결정은: 재학생 과반수 이상의 투표, 찬성 투표자 3/2\n\n
+
+
+3. 총학생회 선거운동\n
+선거운동기간: 2021년 3월 4일~ 3월 23일 (온라인 선거운동)\n
+코로나19사태와 후보자들간의 형평성 문제로 오프라인 선거운동 전면금지\n\n
+
+후보자들은 선관위에게 받은 공지사항대로 선거운동에 임해주시기 바랍니다.\n\n
+
+합동소견발표회: 3월 21일 19시 (실시간스트리밍과 이후 녹화본 게시 예정)\n\n
+
+
+4. 온라인투표 링크는 학생들 휴대전화에 SNS로 4월 8일에 보내질 예정입니다.\n
+5. 개표시 참관인이 각 후보조 별로 1명씩 참가하게 되어있습니다. (zoom 이용예
+정)"
+            android:layout_marginTop="45.04dp"
+            android:layout_marginLeft="47dp"></TextView>
+
+        <TextView
+            android:id="@+id/tv_date"
+            android:layout_width="118dp"
+            android:layout_height="24dp"
+            android:layout_marginTop="80.46dp"
+            android:layout_marginLeft="128.29dp"
+            android:textSize="16dp"
+            android:text="2021년 3월 15일"></TextView>
+
+        <TextView
+            android:layout_width="223dp"
+            android:layout_height="24dp"
+            android:layout_marginTop="14.72dp"
+            android:layout_marginLeft="75.79dp"
+            android:textSize="16dp"
+            android:text="덕성여자대학교 선거관리위원장"></TextView>
+
+    </LinearLayout>
+
+
+</LinearLayout>

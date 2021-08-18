@@ -129,7 +129,7 @@ public class CandidateListActivity extends AppCompatActivity {
                         //성공했을 경우
                         if (response.isSuccessful()) {//응답을 잘 받은 경우
                             String result = response.body().toString();
-//                            Log.v(TAG, "result = " + result);
+//                            Log.v(TvAG, "result = " + result);
 //                            Toast.makeText(getApplicationContext(), result, Toast.LENGTH_SHORT).show();
                             System.out.println("계정성공~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
                         } else {    //통신은 성공했지만 응답에 문제있는 경우
