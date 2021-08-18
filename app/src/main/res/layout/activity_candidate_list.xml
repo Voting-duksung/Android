@@ -1,18 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
+    android:layout_width="fill_parent"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
-    android:layout_height="wrap_content"
+    android:layout_height="fill_parent"
     tools:context=".CandidateListActivity">
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="35dp"
         android:layout_marginBottom="35dp"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:layout_weight="1">
 
         <TextView
             android:id="@+id/tv_vote_college1"
@@ -41,7 +42,14 @@
         </TextView>
 
     </LinearLayout>
-
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="35dp"
+        android:layout_marginBottom="35dp"
+        android:orientation="vertical"
+        android:layout_weight="2">
     <View
         android:layout_width="match_parent"
         android:layout_height="10dp"
@@ -52,14 +60,22 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
     </androidx.recyclerview.widget.RecyclerView>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="35dp"
+        android:layout_marginBottom="35dp"
+        android:orientation="vertical"
+        android:layout_weight="1">
 
     <Button
         android:id="@+id/btn_go_voting"
         android:text="투표 하러가기"
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_below="@id/rv_vote_list">
     </Button>
-
+    </LinearLayout>
 </LinearLayout>
