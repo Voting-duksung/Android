@@ -45,11 +45,11 @@ public class ListViewCandidateAdapter extends RecyclerView.Adapter {
         ListViewCandidateAdapter.VH vh = (ListViewCandidateAdapter.VH)holder;
 
         ListViewCandidate item = listViewCandidateList.get(position);
+
+        vh.candidate_number.setText("기호 "+item.getCandidateNumber());
         vh.candidate_name.setText(item.getName());
-        System.out.println("ListViewCandidateAdapter"+item.getCandidateNumber());
 
 //        Glide.with(context).load(item.getImgPath()).into(vh.candidate_image);
-
     }
 
     //지정한 위치(position)에 있는 데이터와 관계된 아이템(row)의 ID를 리턴
@@ -66,31 +66,14 @@ public class ListViewCandidateAdapter extends RecyclerView.Adapter {
     class VH extends RecyclerView.ViewHolder {
 
         TextView candidate_name;
-        ImageView candidate_image;
-        Button candidate_promise;
+        TextView candidate_number;
+        Button btn_promise;
 
         public VH(@NonNull View itemView) {
             super(itemView);
 
+            candidate_number=itemView.findViewById(R.id.tv_candidate_number);
             candidate_name=itemView.findViewById(R.id.tv_candidate);
-            candidate_image=itemView.findViewById(R.id.img_candidate);
-            candidate_promise=itemView.findViewById(R.id.btn_candidate_promise);
-//            candidate_name.setClickable(true);
-//            candidate_name.setOnClickListener(new View.OnClickListener() {
-//
-//                @Override
-//                public void onClick(View v) {
-//                    int position = getAdapterPosition();
-//                    if(position!=RecyclerView.NO_POSITION){
-//                        Intent intent = new Intent(tv_candidate_name, CandidateListActivity.class).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//
-//                        intent.putExtra("candidate", listViewCandidateList.get(position).getCollege());
-//
-//                        tv_candidate_name.startActivity(intent);
-//                    }
-//                }
-//            });
-
         }
     }
 }
