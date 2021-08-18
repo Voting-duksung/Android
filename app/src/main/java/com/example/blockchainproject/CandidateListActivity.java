@@ -113,7 +113,7 @@ public class CandidateListActivity extends AppCompatActivity {
     //투표하러가기 버튼 (계정나눠주기)
     public void account() {
         //retrofit
-        service = ApiClient.getApiClient().create(ApiInterface.class);
+//        service = ApiClient.getApiClient().create(ApiInterface.class);
 
         //투표하러가기 버튼 눌렀을 때
         btn_go_voting = (Button)findViewById( R.id.btn_go_voting );
@@ -122,29 +122,29 @@ public class CandidateListActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                Call<UserAccount> call_account = service.getAccount(Userid);
-                call_account.enqueue(new Callback<UserAccount>() {
-                    @Override
-                    public void onResponse(Call<UserAccount> call, retrofit2.Response<UserAccount> response) {
-                        //성공했을 경우
-                        if (response.isSuccessful()) {//응답을 잘 받은 경우
-                            String result = response.body().toString();
-//                            Log.v(TvAG, "result = " + result);
-//                            Toast.makeText(getApplicationContext(), result, Toast.LENGTH_SHORT).show();
-                            System.out.println("계정성공~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-                        } else {    //통신은 성공했지만 응답에 문제있는 경우
-                            System.out.println("error="+String.valueOf(response.code()));
-//                            Log.v(TAG, "error = " + String.valueOf(response.code()));
-                            Toast.makeText(getApplicationContext(), "error = " + String.valueOf(response.code()), Toast.LENGTH_SHORT).show();
-                        }
-                    }
-
-                    @Override
-                    public void onFailure(Call<UserAccount> call, Throwable t) {//통신 자체 실패
-//                       Log.v(TAG, "Fail");
-                        Toast.makeText(getApplicationContext(), "Response Fail", Toast.LENGTH_SHORT).show();
-                    }
-                });
+//                Call<UserAccount> call_account = service.getAccount(Userid);
+//                call_account.enqueue(new Callback<UserAccount>() {
+//                    @Override
+//                    public void onResponse(Call<UserAccount> call, retrofit2.Response<UserAccount> response) {
+//                        //성공했을 경우
+//                        if (response.isSuccessful()) {//응답을 잘 받은 경우
+//                            String result = response.body().toString();
+////                            Log.v(TvAG, "result = " + result);
+////                            Toast.makeText(getApplicationContext(), result, Toast.LENGTH_SHORT).show();
+//                            System.out.println("계정성공~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+//                        } else {    //통신은 성공했지만 응답에 문제있는 경우
+//                            System.out.println("error="+String.valueOf(response.code()));
+////                            Log.v(TAG, "error = " + String.valueOf(response.code()));
+//                            Toast.makeText(getApplicationContext(), "error = " + String.valueOf(response.code()), Toast.LENGTH_SHORT).show();
+//                        }
+//                    }
+//
+//                    @Override
+//                    public void onFailure(Call<UserAccount> call, Throwable t) {//통신 자체 실패
+////                       Log.v(TAG, "Fail");
+//                        Toast.makeText(getApplicationContext(), "Response Fail", Toast.LENGTH_SHORT).show();
+//                    }
+//                });
 
                 Intent intent = new Intent(CandidateListActivity.this, VoteActivity.class );
                 intent.putExtra("college", college);
