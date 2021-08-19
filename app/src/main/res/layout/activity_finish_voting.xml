@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="115dp"
+            android:src="@drawable/splash_duksung">
+        </ImageView>
+
+        <TextView
+            android:layout_width="200dp"
+            android:layout_height="30dp"
+            android:textSize="20dp"
+            android:textColor="#474747"
+            android:layout_marginTop="66.18dp"
+            android:layout_gravity="center_horizontal"
+            android:textStyle="bold"
+            android:text="투표가 완료되었습니다">
+        </TextView>
+
+        <FrameLayout
+            android:layout_width="236.49dp"
+            android:layout_height="137.02dp"
+            android:layout_marginTop="30.89dp"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/rectangle_3">
+
+            <ImageView
+                android:layout_width="35.5dp"
+                android:layout_height="35.5dp"
+                android:layout_marginLeft="180dp"
+                android:layout_marginTop="70dp"
+                android:src="@drawable/voting_mark"></ImageView>
+
+            <LinearLayout
+                android:layout_width="236.49dp"
+                android:layout_height="137.02dp"
+                android:orientation="vertical">
+            
+            <TextView
+                android:id="@+id/tv_place_name"
+                android:layout_width="143dp"
+                android:layout_height="21dp"
+                android:textSize="14dp"
+                android:textColor="#474747"
+                android:textStyle="bold"
+                android:layout_marginTop="25.99dp"
+                android:layout_gravity="center_horizontal"
+                android:text="제 32대 총학생회장 선거"></TextView>
+
+            <TextView
+                android:layout_width="147dp"
+                android:layout_height="18dp"
+                android:textSize="12dp"
+                android:gravity="center_horizontal"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="6.56dp"
+                android:text="덕성여대 선거관리위원회"
+                android:textColor="#868E96"></TextView>
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal">
+
+                <TextView
+                    android:id="@+id/tv_unknown"
+                    android:layout_width="53dp"
+                    android:layout_height="18dp"
+                    android:textSize="12dp"
+                    android:textColor="#868E96"
+                    android:gravity="center"
+                    android:layout_marginTop="26.8dp"
+                    android:layout_centerHorizontal="true"
+                    android:text="unknown"></TextView>
+
+                <ImageView
+                    android:layout_width="9dp"
+                    android:layout_height="12dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_toRightOf="@+id/tv_unknown"
+                    android:layout_marginTop="30dp"
+                    android:src="@drawable/lock"></ImageView>
+
+                </RelativeLayout>
+
+            </LinearLayout>
+        </FrameLayout>
+
+        <Button
+            android:layout_width="336dp"
+            android:layout_height="41dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="151.01dp"
+            android:textSize="14dp"
+            android:background="@drawable/duksung_red"
+            android:text="홈 화면으로 돌아가기">
+        </Button>
+
+    </LinearLayout>
+
+</RelativeLayout>
