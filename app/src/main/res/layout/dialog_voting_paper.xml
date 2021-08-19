@@ -1,6 +1,143 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-</RelativeLayout>
+    <View
+        android:layout_width="302.55dp"
+        android:layout_height="14.51dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="648dp"
+        android:background="@drawable/rectangle_1"></View>
+
+    <RelativeLayout
+        android:layout_width="253.13dp"
+        android:layout_height="395.95dp"
+        android:layout_gravity="center"
+        android:background="@drawable/gradient">
+
+
+        <LinearLayout
+            android:id="@+id/view_gray"
+            android:layout_width="219dp"
+            android:layout_height="120.99dp"
+            android:layout_marginTop="30.15dp"
+            android:layout_centerHorizontal="true"
+            android:orientation="vertical"
+            android:background="#F1F3F5">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center">
+                <TextView
+                    android:id="@+id/tv_giho"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="기호 "
+                    android:textSize="18dp"
+                    android:textColor="#000000"
+                    android:layout_marginTop="14.62dp"
+                    android:layout_gravity="center"></TextView>
+
+                <TextView
+                    android:id="@+id/tv_candidate_number"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="1"
+                    android:textSize="18dp"
+                    android:layout_toRightOf="@+id/tv_giho"
+                    android:layout_marginTop="14.62dp"
+                    android:textColor="#000000"
+                    android:layout_gravity="center"></TextView>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="번"
+                    android:textSize="18dp"
+                    android:layout_toRightOf="@+id/tv_candidate_number"
+                    android:layout_marginTop="14.62dp"
+                    android:textColor="#000000"
+                    android:layout_gravity="center"></TextView>
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/tv_campname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textSize="18dp"
+                android:textColor="#000000"
+                android:text="파랑">
+            </TextView>
+
+            <View
+                android:layout_width="185dp"
+                android:layout_height="0.5dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="11.46dp"
+                android:background="#868E96"></View>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_gravity="center"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/tv_unknown"
+                    android:layout_width="60dp"
+                    android:layout_height="18dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="11.71dp"
+                    android:text="unknown"></TextView>
+
+                <ImageView
+                    android:id="@+id/img_lock"
+                    android:layout_width="9dp"
+                    android:layout_height="12dp"
+                    android:layout_marginLeft="5.64dp"
+                    android:layout_toRightOf="@+id/tv_unknown"
+                    android:layout_marginTop="15.8dp"
+                    android:src="@drawable/splash_duksung"></ImageView>
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+
+        <TextView
+            android:id="@+id/tv_1"
+            android:layout_width="185dp"
+            android:layout_height="36dp"
+            android:textSize="12dp"
+            android:layout_below="@+id/view_gray"
+            android:textColor="#868E96"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="36.28dp"
+            android:text="해당 후보자에게 투표하시겠습니까?\n 클릭 시 투표가 완료됩니다.">
+        </TextView>
+
+        <Button
+            android:layout_width="219dp"
+            android:layout_height="41dp"
+            android:layout_marginTop="33.7dp"
+            android:layout_below="@+id/tv_1"
+            android:layout_centerHorizontal="true"
+            android:background="@color/duksung_red"
+            android:text="투표 제출하기">
+        </Button>
+
+        <ImageView
+            android:layout_width="35.5dp"
+            android:layout_height="35.5dp"
+            android:layout_marginLeft="170dp"
+            android:layout_marginTop="90dp"
+            android:src="@drawable/splash_duksung">
+        </ImageView>
+
+    </RelativeLayout>
+
+
+</FrameLayout>
