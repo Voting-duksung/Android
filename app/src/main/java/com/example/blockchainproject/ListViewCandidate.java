@@ -5,22 +5,14 @@ package com.example.blockchainproject;
 public class ListViewCandidate {
 
     private String name;
-    private String imgPath;
-    private String promisePath;
+//    private String start_regist_period;
+//    private String end_regist_period;
     private int voteCount;
     private int candidateNumber;
 
     public void setName(String name) { name = name; }
 
     public String getName() { return this.name; }
-
-    public void setImgPath(String imgPath){ imgPath = imgPath; }
-
-    public String getImgPath() { return this.imgPath; }
-
-    public void setPromisePath(String promisePath) { promisePath = promisePath; }
-
-    public String getPromisePath() { return this.promisePath; }
 
     public void setVoteCount(int voteCount) {voteCount = voteCount; }
 
@@ -29,6 +21,14 @@ public class ListViewCandidate {
     public void setCandidateNumber(int candidateNumber) {candidateNumber = candidateNumber; }
 
     public int getCandidateNumber() { return this.candidateNumber; }
+
+//    public void setStart_regist_period(String start_regist_period) { start_regist_period = start_regist_period;}
+//
+//    public String getStart_regist_period() { return this.start_regist_period;}
+//
+//    public void setEnd_regist_period(String end_regist_period) { end_regist_period=end_regist_period;}
+//
+//    public String getEnd_regist_period() {retrun this.end_regist_period}
 
 //    public ListViewCandidate(String name, String imgPath, String promisePath) {
 //        this.name = name;
