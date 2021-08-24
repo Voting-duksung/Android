@@ -2,10 +2,12 @@
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
 <!--commit-->
     <!-- View가 눌렸을 때 -->
-    <item android:state_pressed="true"
+    <item android:state_focused="true"
+        android:state_pressed="true"
         android:drawable="@color/select_on"/>
     <!-- View가 눌리지 않았을 때-->
     <item
+        android:state_focused="false"
         android:state_pressed="false"
         android:drawable="@color/select_off" />
 
