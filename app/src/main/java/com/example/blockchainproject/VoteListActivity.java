@@ -102,6 +102,7 @@ public class VoteListActivity extends AppCompatActivity {
                 intent.putExtra("Userid", Userid);
 
                 startActivity(intent);
+                finish(); //액티비티 종(메모리에서 제거)
             }
         });
 
