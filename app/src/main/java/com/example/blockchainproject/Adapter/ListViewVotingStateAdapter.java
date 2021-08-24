@@ -62,14 +62,12 @@ public class ListViewVotingStateAdapter extends RecyclerView.Adapter {
     class VH extends RecyclerView.ViewHolder {
 
         TextView candidate_name;
-        ImageView candidate_image;
         TextView candidate_voteCount;
 
         public VH(@NonNull View itemView) {
             super(itemView);
 
             candidate_name=itemView.findViewById(R.id.tv_candidate_name);
-            candidate_image=itemView.findViewById(R.id.img_candidate);
             candidate_voteCount=itemView.findViewById(R.id.tv_voting_percent);
 
         }
