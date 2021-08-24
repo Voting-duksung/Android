@@ -17,7 +17,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.blockchainproject.ListViewCandidate;
 import com.example.blockchainproject.R;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.ArrayList;
+import java.util.List;
 
 public class ListViewVotingNowAdapter extends RecyclerView.Adapter {
 
@@ -75,7 +78,5 @@ public class ListViewVotingNowAdapter extends RecyclerView.Adapter {
             candidate_number=itemView.findViewById(R.id.tv_candidate_number);
         }
     }
-
-
 }
 

@@ -8,4 +8,6 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="duksung_red">#971B44</color>
+    <color name="select_on">#CCDFF9</color>
+    <color name="select_off">#F1F3F5</color>
 </resources>
