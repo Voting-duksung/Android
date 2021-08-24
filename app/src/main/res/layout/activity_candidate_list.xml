@@ -14,14 +14,32 @@
         android:layout_marginBottom="15dp"
         android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/tv_vote_college1"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="선거장명"
-            android:textColor="#474747"
-            android:textSize="25sp"
-            android:textStyle="bold"></TextView>
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_vote_college1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="선거장명"
+                android:textColor="#474747"
+                android:textSize="25sp"
+                android:textStyle="bold"></TextView>
+
+            <TextView
+                android:id="@+id/tv_user_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="80dp"
+                android:textStyle="bold"
+                android:textColor="#ADB5BD"
+                android:text="user이름">
+            </TextView>
+
+        </LinearLayout>
+
 
         <TextView
             android:layout_width="wrap_content"
@@ -161,15 +179,17 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_candidate_list"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"></androidx.recyclerview.widget.RecyclerView>
+            android:layout_height="wrap_content">
+        </androidx.recyclerview.widget.RecyclerView>
     </LinearLayout>
 
     <Button
         android:id="@+id/btn_go_voting"
         android:text="투표 하러가기"
-        android:layout_width="fill_parent"
+        android:layout_width="336dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:backgroundTint="@color/duksung_red"
         android:layout_below="@id/rv_vote_list">
     </Button>
 </LinearLayout>

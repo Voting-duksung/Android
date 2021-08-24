@@ -1,4 +1,187 @@
 <?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_height="fill_parent"
+    tools:context=".CandidateListActivity">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="35dp"
+        android:layout_marginBottom="15dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_vote_college1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="선거장명"
+                android:textColor="#474747"
+                android:textSize="25sp"
+                android:textStyle="bold"></TextView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="80dp"
+                android:textStyle="bold"
+                android:text="unknown">
+            </TextView>
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:textSize="12dp"
+            android:text="덕성여대 총학생회선거관리위원회">
+        </TextView>
+
+        <TextView
+            android:id="@+id/tv_vote_period1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textSize="12dp"
+            android:text="투표기간">
+        </TextView>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="2"
+        android:orientation="vertical">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:background="#F1F3F5"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="15dp"
+            android:layout_gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15dp"
+                android:text="선거정보 확인">
+            </TextView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="17dp"
+                android:textSize="15dp"
+                android:text=">">
+            </TextView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="17dp"
+                android:textSize="15dp"
+                android:textColor="@color/duksung_red"
+                android:text="투표하기">
+            </TextView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="17dp"
+                android:textSize="15dp"
+                android:text=">">
+            </TextView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="17dp"
+                android:textSize="15dp"
+                android:text="검표">
+            </TextView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="17dp"
+                android:textSize="15dp"
+                android:text=">">
+            </TextView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="17dp"
+                android:textSize="15dp"
+                android:text="투표완료">
+            </TextView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="30dp">
+
+            <ImageView
+                android:background="@drawable/check"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp">
+            </ImageView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:text="투표하실 후보자를 선택해주세요">
+            </TextView>
+
+        </LinearLayout>
+
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_vote_candidate_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp">
+        </androidx.recyclerview.widget.RecyclerView>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_vote"
+        android:text="후보 선택 완료"
+        android:layout_width="336dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="20dp"
+        android:backgroundTint="@color/duksung_red"
+        android:layout_below="@id/rv_vote_list">
+    </Button>
+</LinearLayout>
+
+
+
+<!--
+<?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -31,11 +214,6 @@
                 android:text="후보 선택"/>
         </LinearLayout>
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_vote_candidate_list"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-        </androidx.recyclerview.widget.RecyclerView>
 
         <RadioGroup
             android:id="@+id/rg_candidate"
@@ -71,3 +249,4 @@
     </LinearLayout>
 
 </RelativeLayout>
+-->

@@ -47,7 +47,7 @@ public class ListViewVotingNowAdapter extends RecyclerView.Adapter {
 
         ListViewCandidate item = listViewCandidateList.get(position);
         vh.candidate_name.setText(item.getName());
-        //vh.candidate_number.setText("기호 "+item.getCandidateNumber()+". "+item.getName());
+        vh.candidate_number.setText("기호 "+item.getCandidateNumber());
 
 //        Glide.with(context).load(item.getImgPath()).into(vh.candidate_image);
     }
@@ -66,15 +66,13 @@ public class ListViewVotingNowAdapter extends RecyclerView.Adapter {
     class VH extends RecyclerView.ViewHolder {
 
         TextView candidate_name;
-        ImageView candidate_image;
         TextView candidate_number;
 
         public VH(@NonNull View itemView) {
             super(itemView);
 
             candidate_name=itemView.findViewById(R.id.tv_text1);
-            candidate_image=itemView.findViewById(R.id.img_candidate);
-            //candidate_number=itemView.findViewById(R.id.tv_candidate_number);
+            candidate_number=itemView.findViewById(R.id.tv_candidate_number);
         }
     }
 

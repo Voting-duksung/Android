@@ -81,16 +81,4 @@
         android:backgroundTint="#E7F0FC">
     </Button>
 
-
 </LinearLayout>
-
-<!--
-<TextView
-android:id="@+id/tv_candidate"
-android:layout_width="match_parent"
-android:layout_height="50dp"
-android:layout_centerInParent="true"
-android:gravity="center"
-android:text="후보자입니다.">
-</TextView>
--->

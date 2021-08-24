@@ -56,6 +56,7 @@ public class CandidateListActivity extends AppCompatActivity {
 
     Dialog dialog_account_info;
     public Button btn_go_voting;
+    public Button btn_check;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -164,6 +165,19 @@ public class CandidateListActivity extends AppCompatActivity {
     public void showDialogAccountInfo(){
         dialog_account_info.show();
 
+        btn_check = dialog_account_info.findViewById( R.id.btn_check );
+        btn_check.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(CandidateListActivity.this, VoteActivity.class );
+                intent.putExtra("college", college);
+                intent.putExtra("UserNumber",UserNumber);
+                intent.putExtra("Userid",Userid);
+
+                startActivity(intent);
+            }
+        });
+
     }
 
     //투표하러가기 버튼 (계정나눠주기)
@@ -178,6 +192,8 @@ public class CandidateListActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
+                //계정 나눠주기 dialog 짜잔
+                showDialogAccountInfo();
 
 //                Call<UserAccount> call_account = service.getAccount(Userid);
 //                call_account.enqueue(new Callback<UserAccount>() {
@@ -202,13 +218,6 @@ public class CandidateListActivity extends AppCompatActivity {
 //                        Toast.makeText(getApplicationContext(), "Response Fail", Toast.LENGTH_SHORT).show();
 //                    }
 //                });
-
-                Intent intent = new Intent(CandidateListActivity.this, VoteActivity.class );
-                intent.putExtra("college", college);
-                intent.putExtra("UserNumber",UserNumber);
-                intent.putExtra("Userid",Userid);
-
-                startActivity(intent);
             }
         });
     }

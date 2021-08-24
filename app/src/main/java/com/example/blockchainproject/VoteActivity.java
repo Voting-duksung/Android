@@ -46,8 +46,7 @@ public class VoteActivity extends AppCompatActivity {
     private ListViewVotingNowAdapter adapter;
     private Button btn_vote;
 
-    RadioGroup rg_candidate;
-    int state;
+    public View tv_vote_college1;
 
     public int voteCount;
     public String UserNumber;
@@ -70,13 +69,17 @@ public class VoteActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_vote);
 
-        TextView textView = findViewById(R.id.tv_title);
+        //TextView textView = findViewById(R.id.tv_title);
 
 
         Intent intent = getIntent();
         college = intent.getExtras().getString("college");
         Userid = intent.getExtras().getString("Userid");
         //college 잘 받아와짐
+
+        TextView tv_vote_college1 = findViewById(R.id.tv_vote_college1);
+        tv_vote_college1.setText(college);
+
 
         //로그인 한 학번 받아오기
         Intent UserNumberIntent = getIntent();
@@ -140,16 +143,16 @@ public class VoteActivity extends AppCompatActivity {
 
     //투표하기 버튼
     public void voting() {
-            RadioGroup.OnCheckedChangeListener radioGroupClickListener = new RadioGroup.OnCheckedChangeListener() {
-                @Override
-                public void onCheckedChanged(RadioGroup rg_candidate, int i) {
-                    if (i == R.id.rb_candidate1) {
-                        state = 1;
-                    } else {
-                        state = 2;
-                    }
-                }
-            };
+//            RadioGroup.OnCheckedChangeListener radioGroupClickListener = new RadioGroup.OnCheckedChangeListener() {
+//                @Override
+//                public void onCheckedChanged(RadioGroup rg_candidate, int i) {
+//                    if (i == R.id.rb_candidate1) {
+//                        state = 1;
+//                    } else {
+//                        state = 2;
+//                    }
+//                }
+//            };
 
 
         // 레트로핏 연결
@@ -182,12 +185,12 @@ public class VoteActivity extends AppCompatActivity {
                     }
                 });
 
-                if(state==1){
-                    voteCount++;
-                }
-                else{
-                    voteCount++;
-                }
+//                if(state==1){
+//                    voteCount++;
+//                }
+//                else{
+//                    voteCount++;
+//                }
 
                 System.out.println(voteCount+"플러스 1 잘 들어감?");
                 Toast.makeText(getApplicationContext(), "투표 완료", Toast.LENGTH_LONG).show();
