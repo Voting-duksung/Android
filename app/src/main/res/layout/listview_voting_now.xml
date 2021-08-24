@@ -3,23 +3,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginTop="7dp"
-    android:layout_marginLeft="17dp"
-    android:layout_marginBottom="7dp"
-    android:layout_marginRight="17dp"
+    android:layout_margin="20dp"
     android:orientation="horizontal">
 
     <LinearLayout
+        android:id="@+id/layoutTouch"
         android:layout_width="290dp"
         android:layout_height="wrap_content"
-        android:layout_marginRight="7dp"
         android:orientation="vertical">
 
         <LinearLayout
+            android:duplicateParentState="true"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:orientation="horizontal"
-            android:background="@drawable/edge_candidate_check1">
+            android:background="@drawable/selector">
 
             <TextView
                 android:id="@+id/tv_candidate_campname"
@@ -47,7 +45,7 @@
             android:layout_height="80dp"
             android:orientation="vertical"
             android:gravity="center_vertical"
-            android:background="@drawable/edge_candidate_check2">
+            android:background="@drawable/selector">
 
 
             <TextView
@@ -80,6 +78,4 @@
         android:text="공약        보기"
         android:backgroundTint="#E7F0FC">
     </Button>
-
 </LinearLayout>
-
