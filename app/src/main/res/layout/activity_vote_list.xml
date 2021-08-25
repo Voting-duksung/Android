@@ -8,7 +8,7 @@
     tools:context=".VoteListActivity">
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
@@ -28,10 +28,19 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
             android:layout_marginLeft="180dp"
+            android:textSize="14dp"
             android:textStyle="bold"
             android:textColor="#ADB5BD"
             android:text="user이름">
         </TextView>
+
+        <ImageView
+            android:layout_width="30.84dp"
+            android:layout_height="30.84dp"
+            android:layout_marginTop="35dp"
+            android:layout_marginLeft="9.02dp"
+            android:src="@drawable/lock">
+        </ImageView>
 
     </LinearLayout>
 
@@ -80,6 +89,7 @@
         android:layout_margin="18dp">
 
         <TextView
+            android:id="@+id/tv_starting_voting"
             android:layout_width="wrap_content"
             android:layout_height="30dp"
             android:gravity="center"
@@ -94,8 +104,8 @@
             android:layout_width="wrap_content"
             android:layout_height="30dp"
             android:gravity="center"
-            android:layout_toLeftOf="@id/rectangle_1"
-            android:layout_marginRight="20dp"
+            android:layout_toLeftOf="@id/btn_voting_state"
+            android:layout_marginRight="10dp"
             android:background="#00ff0000"
             android:text="참여완료 투표"
             android:textColor="#474747"
@@ -103,9 +113,9 @@
 
         <!-- '포함' 버튼 -->
         <Button
-            android:id="@+id/rectangle_1"
+            android:id="@+id/btn_voting_state"
             android:layout_width="60dp"
-            android:layout_height="30dp"
+            android:layout_height="35dp"
             android:layout_alignParentRight="true"
             android:backgroundTint="#E9ECEF"
             android:text="포함"

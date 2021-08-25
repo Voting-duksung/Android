@@ -2,6 +2,7 @@ package com.example.blockchainproject.Adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -26,6 +27,8 @@ public class ListViewVoteAdapter extends RecyclerView.Adapter {
     private Context tv_vote_name;
     private String tv_vote_college;
     private String Userid;
+    private int UserVoteState;
+    private boolean included;
     TextView votePeriod;
 
 
@@ -33,11 +36,13 @@ public class ListViewVoteAdapter extends RecyclerView.Adapter {
     private ArrayList<ListViewVote> listViewVoteList = new ArrayList<ListViewVote>();
 
     //ListViewAdapter의 생성자
-    public ListViewVoteAdapter (Context tv_vote_name, ArrayList<ListViewVote> listViewVoteList, String UserNumber, String Userid) {
+    public ListViewVoteAdapter (Context tv_vote_name, ArrayList<ListViewVote> listViewVoteList, String UserNumber, String Userid, int UserVoteState, boolean included) {
         this.tv_vote_name = tv_vote_name;
         this.listViewVoteList = listViewVoteList;
         this.UserNumber = UserNumber;
         this.Userid=Userid;
+        this.UserVoteState=UserVoteState;
+        this.included=included;
     }
 
     //LayoutInflater를 이용하여 전 단계에서 만들었던 listview_vote.xml을 inflate 시킨다.
@@ -59,7 +64,7 @@ public class ListViewVoteAdapter extends RecyclerView.Adapter {
         ListViewVote item = listViewVoteList.get(position);
         vh.tv_vote_college.setText(item.getContents());
         vh.tv_vote_period.setText("투표기간   "+item.getStart_regist_peroid()+" ~ "+item.getEnd_regist_period());
-        vh.tv_vote_rate.setText("실시간 투표   "+item.getRatio()+"%");
+        vh.tv_vote_rate.setText("실시간 투표율   "+item.getRatio()+"%");
 
     }
 
@@ -89,6 +94,14 @@ public class ListViewVoteAdapter extends RecyclerView.Adapter {
             tv_vote_period=itemView.findViewById(R.id.tv_vote_period);
             tv_vote_rate=itemView.findViewById(R.id.tv_vote_rate);
             btn_lets_vote=itemView.findViewById(R.id.btn_lets_vote);
+
+            if(!included){      //참여완료투표 포함 눌렀을 경우
+                btn_lets_vote.setBackgroundColor(Color.parseColor("#CED4DA"));
+                btn_lets_vote.setText("투표\n완료");
+                btn_lets_vote.setTextColor(Color.parseColor("#FFFFFF"));
+                btn_lets_vote.setEnabled(false);
+            }
+
 
             btn_lets_vote.setOnClickListener(new View.OnClickListener() {
 

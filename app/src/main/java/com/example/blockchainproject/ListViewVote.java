@@ -47,4 +47,5 @@ public class ListViewVote {
     public float getRatio() { return this.ratio;}
 
 
+
 }
