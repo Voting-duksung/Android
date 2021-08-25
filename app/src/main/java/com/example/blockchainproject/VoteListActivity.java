@@ -70,12 +70,16 @@ public class VoteListActivity extends AppCompatActivity {
                     //아이템의 개수만큼 파싱하기
                     for (int i = 0; i < response.length(); i++) {
                         JSONObject jObject = jsonArray.getJSONObject(i);
-                        String college = jObject.getString("college");
-                        String startDate = jObject.getString("startDate");
-                        String endDate = jObject.getString("endDate");
+                        String contents = jObject.getString("contents");
+                        String start_regist_period = jObject.getString("start_regist_period");
+                        String end_regist_period = jObject.getString("end_regist_period");
+                        int count = jObject.getInt("count");
+                        int studentNum = jObject.getInt("studentNum");
+                        float ratio = count/studentNum*100;
+                        System.out.println(start_regist_period+end_regist_period);
 
                         //아이템의 개수만큼 recyclerView에 객체 넣어주기
-                        listViewVoteList.add(new ListViewVote(college, startDate, endDate));
+                        listViewVoteList.add(new ListViewVote(contents, start_regist_period, end_regist_period, count, ratio));
                         adapter.notifyItemInserted(0);
                     }
 

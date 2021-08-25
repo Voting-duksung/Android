@@ -57,8 +57,9 @@ public class ListViewVoteAdapter extends RecyclerView.Adapter {
         VH vh = (VH)holder;
 
         ListViewVote item = listViewVoteList.get(position);
-        vh.tv_vote_college.setText(item.getCollege());
-        vh.tv_vote_period.setText("투표기간   "+item.getStartDate()+" ~ "+item.getEndDate());
+        vh.tv_vote_college.setText(item.getContents());
+        vh.tv_vote_period.setText("투표기간   "+item.getStart_regist_peroid()+" ~ "+item.getEnd_regist_period());
+        vh.tv_vote_rate.setText("실시간 투표   "+item.getRatio()+"%");
 
     }
 
@@ -78,6 +79,7 @@ public class ListViewVoteAdapter extends RecyclerView.Adapter {
 
         TextView tv_vote_college;
         TextView tv_vote_period;
+        TextView tv_vote_rate;
         Button btn_lets_vote;
 
         public VH(@NonNull View itemView) {
@@ -85,6 +87,7 @@ public class ListViewVoteAdapter extends RecyclerView.Adapter {
 
             tv_vote_college=itemView.findViewById(R.id.tv_vote_college);
             tv_vote_period=itemView.findViewById(R.id.tv_vote_period);
+            tv_vote_rate=itemView.findViewById(R.id.tv_vote_rate);
             btn_lets_vote=itemView.findViewById(R.id.btn_lets_vote);
 
             btn_lets_vote.setOnClickListener(new View.OnClickListener() {
@@ -96,9 +99,9 @@ public class ListViewVoteAdapter extends RecyclerView.Adapter {
                     if(position!=RecyclerView.NO_POSITION){
                         Intent intent = new Intent(tv_vote_name, CandidateListActivity.class).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 
-                        intent.putExtra("college", listViewVoteList.get(position).getCollege());
-                        intent.putExtra("startDate", listViewVoteList.get(position).getStartDate());
-                        intent.putExtra("EndDate", listViewVoteList.get(position).getEndDate());
+                        intent.putExtra("college", listViewVoteList.get(position).getContents());
+                        intent.putExtra("start_regist_peroid", listViewVoteList.get(position).getStart_regist_peroid());
+                        intent.putExtra("end_regist_peroid", listViewVoteList.get(position).getEnd_regist_period());
                         intent.putExtra("UserNumber", UserNumber);
                         intent.putExtra("Userid",Userid);
                         //앞에서 UserNumber 받은 적이 없으니 안됨

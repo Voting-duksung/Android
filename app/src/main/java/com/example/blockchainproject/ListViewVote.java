@@ -3,21 +3,25 @@ package com.example.blockchainproject;
 
 //  소속대학이름을 클래스에 담기 위한 선언
 public class ListViewVote {
-    private String college;
+    private String contents;
     private String UserNumber;
-    private String startDate;
-    private String endDate;
+    private String start_regist_peroid;
+    private String end_regist_period;
+    private int count;
+    private float ratio;
 
-    public void setCollege(String college) {
-        college = college;
+    public void setContents(String contents) {
+        contents = contents;
     }
 
-    public String getCollege() { return this.college;}
+    public String getContents() { return this.contents;}
 
-    public ListViewVote(String college, String startDate, String endDate) {
-        this.college = college;
-        this.startDate = startDate;
-        this.endDate = endDate;
+    public ListViewVote(String contents, String start_regist_peroid, String end_regist_period, int count, float ratio) {
+        this.contents = contents;
+        this.start_regist_peroid = start_regist_peroid;
+        this.end_regist_period = end_regist_period;
+        this.count = count;
+        this.ratio = ratio;
     }
 
     public void setUserNumber(String UserNumber){ UserNumber = UserNumber; }
@@ -26,13 +30,21 @@ public class ListViewVote {
 
 //    public ListViewVote(String UserNumber) {this.UserNumber = UserNum; }
 
-    public void setStartDate(String startDate) { startDate = startDate; }
+    public void setStart_regist_peroid(String start_regist_peroid) { start_regist_peroid = start_regist_peroid; }
 
-    public String getStartDate() { return this.startDate; }
+    public String getStart_regist_peroid() { return this.start_regist_peroid; }
 
-    public void setEndDateDate(String endDate) { endDate = endDate; }
+    public void setEnd_regist_period(String end_regist_period) { end_regist_period = end_regist_period; }
 
-    public String getEndDate() { return this.endDate; }
+    public String getEnd_regist_period() { return this.end_regist_period; }
+
+    public void setCount(int count) { count = count;}
+
+    public int getCount() {return this.count;}
+
+    public void setRatio(float ratio) {ratio=ratio;}
+
+    public float getRatio() { return this.ratio;}
 
 
 }
