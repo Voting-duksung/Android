@@ -9,7 +9,7 @@
         android:layout_width="350dp"
         android:layout_height="189.23dp"
         android:layout_centerHorizontal="true"
-        android:background="@drawable/rectangle_4">
+        android:background="@drawable/edge_votelist">
 
         <LinearLayout
             android:layout_width="85.19dp"
@@ -85,49 +85,27 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-            <TextView
-                android:id="@+id/tv_period"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="#868E96"
-                android:textSize="12dp"
-                android:layout_marginLeft="7.5dp"
-                android:layout_marginTop="27.52dp"
-                android:text="투표기간">
-            </TextView>
-
-            <TextView
-                android:id="@+id/tv_vote_start_period"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="#868E96"
-                android:textSize="12dp"
-                android:layout_toRightOf="@+id/tv_period"
-                android:layout_marginTop="27.52dp"
-                android:layout_marginLeft="10dp"
-                android:text="2021-03-21">
-            </TextView>
-
                 <TextView
-                    android:id="@+id/tv_mul"
+                    android:id="@+id/tv_period"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="12dp"
                     android:textColor="#868E96"
-                    android:layout_toRightOf="@id/tv_vote_start_period"
+                    android:textSize="12dp"
+                    android:layout_marginLeft="7.5dp"
                     android:layout_marginTop="27.52dp"
-                    android:text="~">
+                    android:text="투표기간">
                 </TextView>
 
                 <TextView
-                    android:id="@+id/tv_vote_end_period"
+                    android:id="@+id/tv_vote_start_period"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="#868E96"
                     android:textSize="12dp"
+                    android:layout_toRightOf="@+id/tv_period"
                     android:layout_marginTop="27.52dp"
-                    android:layout_toRightOf="@+id/tv_mul"
-                    android:text="2021-03-29">
+                    android:layout_marginLeft="10dp"
+                    android:text="period">
                 </TextView>
 
             </RelativeLayout>
@@ -156,7 +134,7 @@
                 android:textSize="12dp"
                 android:layout_marginTop="3.23dp"
                 android:textColor="#868E96"
-                android:text="33.5">
+                android:text="vote_rate">
             </TextView>
 
                 <TextView
@@ -178,39 +156,40 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-        <View
-            android:layout_width="315.03dp"
-            android:layout_height="0.5dp"
-            android:layout_marginTop="150dp"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginLeft="8dp"
-            android:background="#CED4DA">
-        </View>
+            <View
+                android:layout_width="315.03dp"
+                android:layout_height="0.5dp"
+                android:layout_marginTop="150dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="8dp"
+                android:background="#CED4DA">
+            </View>
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center">
-        
-        <TextView
-            android:id="@+id/tv_voting_percent_detail"
-            android:layout_width="59dp"
-            android:layout_height="18dp"
-            android:text="결과더보기"
-            android:textColor="#868E96"
-            android:layout_marginTop="6.25dp"
-            android:layout_gravity="center_horizontal"
-            android:textSize="12dp"></TextView>
-            
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=">"
-                android:textSize="12dp"
-                android:layout_marginTop="6.25dp"
-                android:layout_toRightOf="@+id/tv_voting_percent_detail"
-                android:textColor="#868E96">
-            </TextView>
+
+                <TextView
+                    android:id="@+id/tv_voting_percent_detail"
+                    android:layout_width="59dp"
+                    android:layout_height="18dp"
+                    android:text="결과더보기"
+                    android:textColor="#868E96"
+                    android:layout_marginTop="6.25dp"
+                    android:layout_gravity="center_horizontal"
+                    android:textSize="12dp">
+                </TextView>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=">"
+                    android:textSize="12dp"
+                    android:layout_marginTop="6.25dp"
+                    android:layout_toRightOf="@+id/tv_voting_percent_detail"
+                    android:textColor="#868E96">
+                </TextView>
             </RelativeLayout>
         </LinearLayout>
 

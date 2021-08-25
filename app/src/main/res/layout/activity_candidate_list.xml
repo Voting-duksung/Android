@@ -83,6 +83,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="15dp"
                 android:textColor="@color/duksung_red"
+                android:textStyle="bold"
                 android:text="선거정보 확인">
             </TextView>
 
