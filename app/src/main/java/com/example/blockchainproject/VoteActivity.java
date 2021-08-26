@@ -60,7 +60,7 @@ public class VoteActivity extends AppCompatActivity {
     private ApiInterface service;
 
     //placeid를 받아와야함.
-    String placeid = "0";
+    String placeid;
 
 
     @Override
@@ -75,6 +75,7 @@ public class VoteActivity extends AppCompatActivity {
         Intent intent = getIntent();
         college = intent.getExtras().getString("college");
         Userid = intent.getExtras().getString("Userid");
+        placeid = intent.getExtras().getString("placeid");
         //college 잘 받아와짐
 
         TextView tv_vote_college1 = findViewById(R.id.tv_vote_college1);
@@ -107,9 +108,12 @@ public class VoteActivity extends AppCompatActivity {
                     for (int i = 0; i < response.length(); i++) {
                         JSONObject jObject = jsonArray.getJSONObject(i);
                         String candidate_name = jObject.getString("name");
-//                        String imgPath = jObject.getString("imgPath");
-                        voteCount = jObject.getInt("voteCount");
-                        candidateNumber = jObject.getInt("candidateNumber");
+                        String campname = jObject.getString("campname");
+                        String slogan = jObject.getString("slogan");
+                        String promise = jObject.getString("promise");
+                        String colleage = jObject.getString("colleage");
+                        placeid = jObject.getString("wantvote");
+                        String candidateresult = jObject.getString("candidateresult");
                         System.out.println("VoteActivity의 candidateNumebr" + candidateNumber);
                         //여기껀 정보 모두 잘 받아와짐.
 
@@ -117,7 +121,8 @@ public class VoteActivity extends AppCompatActivity {
 //                        imgPath = "http://voting.dothome.co.kr"+imgPath;
 //                        listViewCandidateList.add(new ListViewCandidate(candidate_name,imgPath,promisePath));
 
-                        listViewCandidateList.add(new ListViewCandidate(candidate_name, voteCount, candidateNumber));
+                        listViewCandidateList.add(new ListViewCandidate(candidate_name, campname, slogan, promise, colleage, placeid, candidateresult));
+
 
                         adapter.notifyItemInserted(0);
                     }

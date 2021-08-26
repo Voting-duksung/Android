@@ -43,6 +43,8 @@ public class VoteListActivity extends AppCompatActivity {
     Button btn_voting_state;
     boolean included = false;
 
+
+
     int UserVoteState;
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -99,14 +101,14 @@ public class VoteListActivity extends AppCompatActivity {
                         int studentNum = jObject.getInt("studentNum");
                         int placeCnt = jObject.getInt("placeCnt");
                         float ratio = count/studentNum*100;
-                        System.out.println(start_regist_period+end_regist_period);
+                        String placeid = jObject.getString("placeid");;
 
                         tv_starting_voting.setText("진행중인 투표 "+placeCnt+"개");
                         tv_user_name.setText(UserName);
 
 
                         //아이템의 개수만큼 recyclerView에 객체 넣어주기
-                        listViewVoteList.add(new ListViewVote(contents, start_regist_period, end_regist_period, count, ratio));
+                        listViewVoteList.add(new ListViewVote(contents, start_regist_period, end_regist_period, count, ratio, placeid));
                         adapter.notifyItemInserted(0);
                     }
 
@@ -129,6 +131,7 @@ public class VoteListActivity extends AppCompatActivity {
             public void onClick(View v){
 
                 Intent intent = new Intent(VoteListActivity.this, VotingStateActivity.class );
+
                 intent.putExtra("UserNumber", UserNumber);
                 intent.putExtra("Userid", Userid);
 

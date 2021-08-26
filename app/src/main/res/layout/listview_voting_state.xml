@@ -22,7 +22,7 @@
                 android:id="@+id/tv_candidate_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="김갈태"
+                android:text="이름"
                 android:gravity="center"
                 android:layout_marginTop="25dp"
                 android:layout_gravity="center"

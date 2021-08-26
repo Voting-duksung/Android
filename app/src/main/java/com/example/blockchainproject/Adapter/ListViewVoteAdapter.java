@@ -117,7 +117,8 @@ public class ListViewVoteAdapter extends RecyclerView.Adapter {
                         intent.putExtra("end_regist_peroid", listViewVoteList.get(position).getEnd_regist_period());
                         intent.putExtra("UserNumber", UserNumber);
                         intent.putExtra("Userid",Userid);
-                        //앞에서 UserNumber 받은 적이 없으니 안됨
+                        intent.putExtra("placeid", listViewVoteList.get(position).getContents());
+
 
                         tv_vote_name.startActivity(intent);
                     }

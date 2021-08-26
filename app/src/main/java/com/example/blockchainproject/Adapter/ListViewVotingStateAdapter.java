@@ -45,7 +45,7 @@ public class ListViewVotingStateAdapter extends RecyclerView.Adapter {
 
         ListViewCandidate item = listViewCandidateList.get(position);
         vh.candidate_name.setText(item.getName());
-        vh.candidate_voteCount.setText(""+item.getVoteCount()+1);
+        //vh.candidate_voteCount.setText(""+item.getVoteCount()+1);
     }
 
     //지정한 위치(position)에 있는 데이터와 관계된 아이템(row)의 ID를 리턴

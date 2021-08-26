@@ -46,7 +46,7 @@ public class ListViewCandidateAdapter extends RecyclerView.Adapter {
 
         ListViewCandidate item = listViewCandidateList.get(position);
 
-        vh.candidate_number.setText("기호 "+item.getCandidateNumber());
+        //vh.candidate_number.setText("기호 "+item.getCandidateNumber());
         vh.candidate_name.setText(item.getName());
 
 //        Glide.with(context).load(item.getImgPath()).into(vh.candidate_image);

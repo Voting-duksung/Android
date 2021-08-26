@@ -13,11 +13,11 @@ public class CandidateListRequest extends StringRequest {
     final static  private String URL="http://3.36.172.204/Candidate_List.php";
     private Map<String, String> map;
 
-    public CandidateListRequest(String college, Response.Listener<String> listener) {
+    public CandidateListRequest(String placeid, Response.Listener<String> listener) {
         super(Request.Method.POST, URL, listener, null);
 
         map = new HashMap<String, String>();
-        map.put("college", college);
+        map.put("placeid", placeid);
     }
 
     @Override

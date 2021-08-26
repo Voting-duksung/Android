@@ -35,6 +35,7 @@ public class VotingStateActivity extends AppCompatActivity {
     TextView collegeTextView;
     public String UserNumber;
     public String Userid;
+    public String placeid;
 
     RecyclerView recyclerView;
     private ArrayList<ListViewCandidate> listViewCandidateList = new ArrayList<ListViewCandidate>();
@@ -88,13 +89,15 @@ public class VotingStateActivity extends AppCompatActivity {
                     for (int i = 0; i < response.length(); i++) {
                         JSONObject jObject = jsonArray.getJSONObject(i);
                         String candidate_name = jObject.getString("name");
-//                        String start_regist_period = jObject.getString("start_regist_period");
-//                        String end_regist_period = jObject.getString("end_regist_period");
-                        int voteCount = jObject.getInt("voteCount");
-                        int candidateNumber = jObject.getInt("candidateNumber");
+                        String campname = jObject.getString("campname");
+                        String slogan = jObject.getString("slogan");
+                        String promise = jObject.getString("promise");
+                        String colleage = jObject.getString("colleage");
+                        placeid = jObject.getString("wantvote");
+                        String candidateresult = jObject.getString("candidateresult");
 
 //                        listViewCandidateList.add(new ListViewCandidate(candidate_name, start_regist_period, end_regist_period));
-                        listViewCandidateList.add(new ListViewCandidate(candidate_name, voteCount, candidateNumber));
+                        listViewCandidateList.add(new ListViewCandidate(candidate_name, campname, slogan, promise, colleage, placeid, candidateresult));
                         adapter.notifyItemInserted(0);
                     }
                 } catch (JSONException e) {
@@ -107,9 +110,9 @@ public class VotingStateActivity extends AppCompatActivity {
         ListViewVotingStateAdapter adapter = new ListViewVotingStateAdapter(this,listViewCandidateList);
         RecyclerView.LayoutManager layoutManager1 = new LinearLayoutManager(this);
 
-        CandidateListRequest candidatelistRequest = new CandidateListRequest(college,responseListener);
+        VotingStateRequest VotingStateRequest = new VotingStateRequest(placeid,responseListener);
         RequestQueue requestQueue = Volley.newRequestQueue(this);
-        requestQueue.add(candidatelistRequest);
+        requestQueue.add(VotingStateRequest);
 
     }
 

@@ -57,6 +57,9 @@ public class CandidateListActivity extends AppCompatActivity {
     Dialog dialog_account_info;
     public Button btn_go_voting;
     public Button btn_check;
+    public String placeid;
+    public String content;
+    public String candidateresult;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -84,17 +87,19 @@ public class CandidateListActivity extends AppCompatActivity {
         System.out.println(Userid+"CandidateListActivity 여기 Userid 넘어와야함");
 
         Intent intent = getIntent();
+        placeid = intent.getExtras().getString("placeid");
         college = intent.getExtras().getString("college");
-        System.out.println(college+"CandidateListActivity의 college");
-        //대학은 잘 넘어오는거 확인
-
         startDate = intent.getExtras().getString("startDate");
         endDate = intent.getExtras().getString("endDate");
+        //잘 넘어오는거 확인
+
+        System.out.println(placeid+"CandidateListActivity의 college");
+
 
 
 
         TextView VoteCollege = findViewById(R.id.tv_vote_college1);
-        VoteCollege.setText(college);
+        VoteCollege.setText(content);
 
         TextView VotePeriod = findViewById(R.id.tv_vote_period1);
         VotePeriod.setText("투표기간    "+startDate+" ~ "+endDate);
@@ -120,13 +125,23 @@ public class CandidateListActivity extends AppCompatActivity {
                     for (int i = 0; i < response.length(); i++) {
                         JSONObject jObject = jsonArray.getJSONObject(i);
                         String candidate_name = jObject.getString("name");
-                        //String imgPath = jObject.getString("imgPath");
-                        int voteCount = jObject.getInt("voteCount");
-                        int candidateNumber = jObject.getInt("candidateNumber");
+                        String campname = jObject.getString("campname");
+                        String slogan = jObject.getString("slogan");
+                        String promise = jObject.getString("promise");
+                        String colleage = jObject.getString("colleage");
+                        placeid = jObject.getString("wantvote");
+                        String candidateresult = jObject.getString("candidateresult");
+
+                        System.out.println(placeid+"wantvote 캔디데이트~");
+
+//                        int voteCount = jObject.getInt("voteCount");
+//                        int candidateNumber = jObject.getInt("candidateNumber");
+
+
 
 //                        imgPath = "http://voting.dothome.co.kr"+imgPath;
 //                        listViewCandidateList.add(new ListViewCandidate(candidate_name,imgPath,promisePath));
-                        listViewCandidateList.add(new ListViewCandidate(candidate_name, voteCount, candidateNumber));
+                        listViewCandidateList.add(new ListViewCandidate(candidate_name, campname, slogan, promise, colleage, placeid, candidateresult));
 
 
                         adapter.notifyItemInserted(0);
@@ -145,7 +160,7 @@ public class CandidateListActivity extends AppCompatActivity {
         ListViewCandidateAdapter adapter = new ListViewCandidateAdapter(this,listViewCandidateList);
         RecyclerView.LayoutManager layoutManager1 = new LinearLayoutManager(this);
 
-        CandidateListRequest candidatelistRequest = new CandidateListRequest(college,responseListener);
+        CandidateListRequest candidatelistRequest = new CandidateListRequest(placeid,responseListener);
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         requestQueue.add(candidatelistRequest);
 
@@ -171,6 +186,7 @@ public class CandidateListActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(CandidateListActivity.this, VoteActivity.class );
                 intent.putExtra("college", college);
+                intent.putExtra("placeid",placeid);
                 intent.putExtra("UserNumber",UserNumber);
                 intent.putExtra("Userid",Userid);
 

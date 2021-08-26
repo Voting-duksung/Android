@@ -13,11 +13,11 @@ public class VotingStateRequest extends StringRequest {
     final static  private String URL="http://3.36.172.204/Voting_State.php";
     private Map<String, String> map;
 
-    public VotingStateRequest(String college, Response.Listener<String> listener) {
+    public VotingStateRequest(String placeid, Response.Listener<String> listener) {
         super(Request.Method.POST, URL, listener, null);
 
         map = new HashMap<String, String>();
-        map.put("college", college);
+        map.put("placeid", placeid);
     }
 
     @Override
