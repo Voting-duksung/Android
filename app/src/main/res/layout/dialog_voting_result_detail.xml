@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        
+        <TextView
+            android:id="@+id/tv_voting_name"
+            android:layout_width="183dp"
+            android:layout_height="27dp"
+            android:text="제 32대 총학생회장 선거"
+            android:textSize="18dp"
+            android:textColor="#474747"
+            android:layout_marginTop="23.61dp"
+            android:layout_marginLeft="21.65dp">
+        </TextView>
+        
+        <TextView
+            android:layout_width="147dp"
+            android:layout_height="18dp"
+            android:text="덕성여대 총학선거관리위원회"
+            android:textSize="12dp"
+            android:textColor="#868E96"
+            android:layout_marginTop="3.23dp"
+            android:layout_marginLeft="21.65dp">
+        </TextView>
+        
+        <TextView
+            android:layout_width="160dp"
+            android:layout_height="18dp"
+            android:text="투표기간"
+            android:textSize="12dp"
+            android:textColor="#868E96"
+            android:layout_marginTop="3.23dp"
+            android:layout_marginLeft="21.65dp">
+        </TextView>
+        
+        
+        <TextView
+            android:layout_width="102dp"
+            android:layout_height="18dp"
+            android:textColor="#868E96"
+            android:textSize="12dp"
+            android:layout_marginLeft="21.65dp"
+            android:layout_marginTop="3.23dp"
+            android:text="최종 투표율">
+        </TextView>
+        
+        <View
+            android:layout_width="340.03dp"
+            android:layout_height="0.5dp"
+            android:layout_marginTop="12.44dp"
+            android:layout_gravity="center"
+            android:background="#CED4DA"></View>
+        
+        <LinearLayout
+            android:layout_width="350dp"
+            android:layout_height="275dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="23.03dp"
+            android:orientation="vertical"
+            android:background="#F8F9FA">
+            
+            <TextView
+                android:id="@+id/tv_voting_result"
+                android:layout_width="52dp"
+                android:layout_height="21dp"
+                android:textColor="#474747"
+                android:layout_marginLeft="8.52dp"
+                android:layout_marginTop="21.52dp"
+                android:text="당선결과">
+            </TextView>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_result_candidate_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20.08dp"
+                android:layout_weight="8">
+            </androidx.recyclerview.widget.RecyclerView>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="350dp"
+            android:layout_height="180.53dp"
+            android:orientation="vertical"
+            android:layout_marginTop="10dp"
+            android:background="#F8F9FA"
+            android:layout_gravity="center">
+
+            <TextView
+                android:layout_width="69dp"
+                android:layout_height="21dp"
+                android:layout_marginTop="21.49dp"
+                android:layout_marginLeft="8.52dp"
+                android:textColor="#474747"
+                android:textSize="14dp"
+                android:text="전체 투표율">
+            </TextView>
+            
+            <ProgressBar
+                android:layout_width="250dp"
+                android:layout_height="15dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="29.95dp"
+                android:background="@drawable/progress_voting_result"
+                style="?android:attr/progressBarStyleHorizontal">
+            </ProgressBar>
+            
+            <TextView
+                android:layout_width="216dp"
+                android:layout_height="42dp"
+                android:text="전체 유권자 6,811명 중 3,750명 투표
+                최종 투표율 55%"
+                android:layout_marginLeft="8.52dp"
+                android:textSize="14dp"
+                android:layout_marginTop="29.45dp"
+                android:textColor="#474747">
+            </TextView>
+        </LinearLayout>
+
+        
+    </LinearLayout>
+
+</RelativeLayout>

@@ -76,6 +76,7 @@ public class VoteActivity extends AppCompatActivity {
         college = intent.getExtras().getString("college");
         Userid = intent.getExtras().getString("Userid");
         placeid = intent.getExtras().getString("placeid");
+        System.out.println(placeid+"dkdkdkdkdkdkdkdkdkk");
         //college 잘 받아와짐
 
         TextView tv_vote_college1 = findViewById(R.id.tv_vote_college1);
@@ -85,7 +86,6 @@ public class VoteActivity extends AppCompatActivity {
         //로그인 한 학번 받아오기
         Intent UserNumberIntent = getIntent();
         UserNumber = UserNumberIntent.getExtras().getString("UserNumber");
-        System.out.println(UserNumber + "여긴 VoteActivity 학번 출력");
         //못받아오고 있음
 
         recyclerView = findViewById(R.id.rv_vote_candidate_list);
@@ -136,7 +136,7 @@ public class VoteActivity extends AppCompatActivity {
         ListViewVotingNowAdapter adapter = new ListViewVotingNowAdapter(this, listViewCandidateList);
         RecyclerView.LayoutManager layoutManager1 = new LinearLayoutManager(this);
 
-        CandidateListRequest candidatelistRequest = new CandidateListRequest(college, responseListener);
+        CandidateListRequest candidatelistRequest = new CandidateListRequest(placeid, responseListener);
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         requestQueue.add(candidatelistRequest);
 

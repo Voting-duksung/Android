@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+    
+    <TextView
+        android:layout_width="39dp"
+        android:layout_height="21dp"
+        android:text="김갈백"
+        android:layout_marginLeft="8.52dp"
+        android:textColor="#474747">
+    </TextView>
+    
+    <View
+        android:layout_width="0.5dp"
+        android:layout_height="match_parent"
+        android:background="#CED4DA"
+        android:layout_marginLeft="11.9dp">
+    </View>
+
+    <ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:progressTint="@color/duksung_red"
+        android:max="100">
+    </ProgressBar>
+    
+    <TextView
+        android:layout_width="28dp"
+        android:layout_height="21dp"
+        android:layout_marginLeft="11.9dp"
+        android:text="75%">
+    </TextView>
+
+</LinearLayout>
