@@ -13,19 +13,23 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.blockchainproject.ListViewCandidate;
+import com.example.blockchainproject.ListViewVoteResult;
 import com.example.blockchainproject.R;
+
+import org.w3c.dom.Text;
+import org.web3j.abi.datatypes.Int;
 
 import java.util.ArrayList;
 
 public class ListViewVotingStateAdapter extends RecyclerView.Adapter {
 
     private Context context;
-    private ArrayList<ListViewCandidate> listViewCandidateList = new ArrayList<ListViewCandidate>();
+    private ArrayList<ListViewVoteResult> listViewVoteResultsList = new ArrayList<ListViewVoteResult>();
 
     //ListViewAdapter의 생성자
-    public ListViewVotingStateAdapter (Context context, ArrayList<ListViewCandidate> listViewCandidateList) {
+    public ListViewVotingStateAdapter (Context context, ArrayList<ListViewVoteResult> listViewVoteResultsList) {
         this.context = context;
-        this.listViewCandidateList = listViewCandidateList;
+        this.listViewVoteResultsList = listViewVoteResultsList;
     }
     //plz
 
@@ -43,8 +47,20 @@ public class ListViewVotingStateAdapter extends RecyclerView.Adapter {
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         ListViewVotingStateAdapter.VH vh = (ListViewVotingStateAdapter.VH)holder;
 
-        ListViewCandidate item = listViewCandidateList.get(position);
-        vh.candidate_name.setText(item.getName());
+        ListViewVoteResult item = listViewVoteResultsList.get(position);
+
+        //후보자 투표
+        int candidate_result_ratio=  item.getCandidateresult()/item.getStudentNum()*100;
+        //최종 투표율
+       int vote_result_ratio = item.getCount()/item.getStudentNum()*100;
+
+        vh.candidateName.setText(item.getCandidateName());
+        vh.start_regist_period.setText(item.getStart_regist_peroid()+"~"+item.getEnd_regist_period());
+        vh.placeName.setText(item.getPlaceName());
+
+        System.out.println(candidate_result_ratio);
+        vh.tv_candidate_ratio.setText(String.valueOf(candidate_result_ratio));
+        vh.tv_voting_percent.setText(String.valueOf(vote_result_ratio));
         //vh.candidate_voteCount.setText(""+item.getVoteCount()+1);
     }
 
@@ -56,19 +72,27 @@ public class ListViewVotingStateAdapter extends RecyclerView.Adapter {
 
     @Override
     public int getItemCount() {
-        return (listViewCandidateList == null) ? 0 : listViewCandidateList.size();
+        return (listViewVoteResultsList == null) ? 0 : listViewVoteResultsList.size();
     }
 
     class VH extends RecyclerView.ViewHolder {
 
-        TextView candidate_name;
+        TextView candidateName;
+        TextView placeName;
+        TextView start_regist_period;
         TextView candidate_voteCount;
+        TextView tv_voting_percent;
+        TextView tv_candidate_ratio;
 
         public VH(@NonNull View itemView) {
             super(itemView);
 
-            candidate_name=itemView.findViewById(R.id.tv_candidate_name);
+            candidateName=itemView.findViewById(R.id.tv_candidate_name);
+            placeName = itemView.findViewById(R.id.tv_vote_name);
+            start_regist_period = itemView.findViewById(R.id.tv_vote_start_period);
             candidate_voteCount=itemView.findViewById(R.id.tv_voting_percent);
+            tv_voting_percent=itemView.findViewById(R.id.tv_voting_percent);
+            tv_candidate_ratio=itemView.findViewById(R.id.tv_candidate_ratio);
 
         }
     }

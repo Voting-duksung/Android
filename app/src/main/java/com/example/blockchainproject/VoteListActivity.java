@@ -43,9 +43,9 @@ public class VoteListActivity extends AppCompatActivity {
     Button btn_voting_state;
     boolean included = false;
 
-
-
     int UserVoteState;
+    String placeid;
+    int studentNum;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -98,10 +98,10 @@ public class VoteListActivity extends AppCompatActivity {
                         String start_regist_period = jObject.getString("start_regist_period");
                         String end_regist_period = jObject.getString("end_regist_period");
                         int count = jObject.getInt("count");
-                        int studentNum = jObject.getInt("studentNum");
+                        studentNum = jObject.getInt("studentNum");
                         int placeCnt = jObject.getInt("placeCnt");
                         float ratio = count/studentNum*100;
-                        String placeid = jObject.getString("placeid");;
+                        placeid = jObject.getString("placeid");;
 
                         tv_starting_voting.setText("진행중인 투표 "+placeCnt+"개");
                         tv_user_name.setText(UserName);
@@ -131,9 +131,12 @@ public class VoteListActivity extends AppCompatActivity {
             public void onClick(View v){
 
                 Intent intent = new Intent(VoteListActivity.this, VotingStateActivity.class );
-
+                intent.putExtra("UserName", UserName);
                 intent.putExtra("UserNumber", UserNumber);
                 intent.putExtra("Userid", Userid);
+                intent.putExtra("placeid",placeid);
+                intent.putExtra("studentNum",studentNum);
+
 
                 startActivity(intent);
                 finish(); //액티비티 종(메모리에서 제거)

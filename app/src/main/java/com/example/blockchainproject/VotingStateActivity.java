@@ -22,6 +22,7 @@ import com.android.volley.Response;
 import com.android.volley.toolbox.Volley;
 import com.example.blockchainproject.Adapter.ListViewVotingStateAdapter;
 
+import org.bouncycastle.crypto.tls.TlsExtensionsUtils;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -32,14 +33,25 @@ import java.util.ArrayList;
 public class VotingStateActivity extends AppCompatActivity {
 
     FrameLayout candidateFrameLayout;
-    TextView collegeTextView;
     public String UserNumber;
     public String Userid;
     public String placeid;
+    public String UserName;
+
+    public String placeName;
+    public String start_regist_period;
+    public String end_regist_period;
+    public String candidateName;
+
+    //투표율과 후보자율
+    public int studentNum;
+    public int candidateresult;
+    public int count;
 
     RecyclerView recyclerView;
-    private ArrayList<ListViewCandidate> listViewCandidateList = new ArrayList<ListViewCandidate>();
+    private ArrayList<ListViewVoteResult> listViewVoteResultsList = new ArrayList<ListViewVoteResult>();
     private ListViewVotingStateAdapter adapter;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,13 +61,13 @@ public class VotingStateActivity extends AppCompatActivity {
 
         onButtonMenu();
 
-        //로그인 한 학번 받아오기
         Intent UserNumberIntent = getIntent();
+        UserName = UserNumberIntent.getExtras().getString("UserName");
         UserNumber = UserNumberIntent.getExtras().getString("UserNumber");
         Userid = UserNumberIntent.getExtras().getString("Userid");
+        placeid = UserNumberIntent.getExtras().getString("placeid");
+        studentNum = UserNumberIntent.getExtras().getInt("studentNum");
         //학번 짱 잘나옴
-
-        String college = "총학생회 학생회 선거";
 
         //collegeTextView = (TextView) findViewById(R.id.doneCountTextView);
 
@@ -70,7 +82,7 @@ public class VotingStateActivity extends AppCompatActivity {
         RecyclerDecorator spaceDecoration = new RecyclerDecorator(30);
 
         recyclerView = findViewById(R.id.rv_vote_result);
-        adapter = new ListViewVotingStateAdapter(this, listViewCandidateList);
+        adapter = new ListViewVotingStateAdapter(this, listViewVoteResultsList);
         recyclerView.setAdapter(adapter);
         recyclerView.addItemDecoration(spaceDecoration);
 
@@ -88,48 +100,50 @@ public class VotingStateActivity extends AppCompatActivity {
 
                     for (int i = 0; i < response.length(); i++) {
                         JSONObject jObject = jsonArray.getJSONObject(i);
-                        String candidate_name = jObject.getString("name");
-                        String campname = jObject.getString("campname");
-                        String slogan = jObject.getString("slogan");
-                        String promise = jObject.getString("promise");
-                        String colleage = jObject.getString("colleage");
-                        placeid = jObject.getString("wantvote");
-                        String candidateresult = jObject.getString("candidateresult");
+                        placeName = jObject.getString("placeName");
+                        start_regist_period = jObject.getString("start_regist_period");
+                        end_regist_period = jObject.getString("end_regist_period");
+                        candidateName = jObject.getString("candidateName");
+                        candidateresult = jObject.getInt("candidateresult");
+                        count = jObject.getInt("count");
 
 //                        listViewCandidateList.add(new ListViewCandidate(candidate_name, start_regist_period, end_regist_period));
-                        listViewCandidateList.add(new ListViewCandidate(candidate_name, campname, slogan, promise, colleage, placeid, candidateresult));
+                        listViewVoteResultsList.add(new ListViewVoteResult(placeName, start_regist_period, end_regist_period, candidateName, candidateresult, count, studentNum));
                         adapter.notifyItemInserted(0);
+
                     }
+
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
+
             }
+
         };
 
         RecyclerView list_container = findViewById(R.id.rv_vote_result);
-        ListViewVotingStateAdapter adapter = new ListViewVotingStateAdapter(this,listViewCandidateList);
+        ListViewVotingStateAdapter adapter = new ListViewVotingStateAdapter(this,listViewVoteResultsList);
         RecyclerView.LayoutManager layoutManager1 = new LinearLayoutManager(this);
 
-        VotingStateRequest VotingStateRequest = new VotingStateRequest(placeid,responseListener);
+        VotingStateRequest VotingStateRequest = new VotingStateRequest(placeid, responseListener);
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         requestQueue.add(VotingStateRequest);
 
     }
 
+    //진행중 눌렀을 경
     public void onButtonMenu() {
 
         Button btn_onVote = (Button) findViewById(R.id.btn_onVote);
         btn_onVote.setOnClickListener (new View.OnClickListener(){
 
-            //후보 선택하고 투표 완료하는 과정
             @Override
             public void onClick(View v){
 
                 Intent intent = new Intent(VotingStateActivity.this, VoteListActivity.class );
+                intent.putExtra("UserName",UserName);
                 intent.putExtra("UserNumber", UserNumber);
                 intent.putExtra("Userid", Userid);
-
-                System.out.println("VotingStateActivity"+UserNumber+" "+Userid);
 
                 startActivity(intent);
                 finish(); //액티비티 종료(메모리에서 제거)

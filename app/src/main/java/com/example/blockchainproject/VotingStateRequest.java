@@ -17,6 +17,7 @@ public class VotingStateRequest extends StringRequest {
         super(Request.Method.POST, URL, listener, null);
 
         map = new HashMap<String, String>();
+        System.out.println(placeid+"wjoddisifjse");
         map.put("placeid", placeid);
     }
 
