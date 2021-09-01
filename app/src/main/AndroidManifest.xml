@@ -27,6 +27,7 @@
         <activity android:name="CandidateListActivity" />
         <activity android:name="VoteActivity" />
         <activity android:name="VotingStateActivity" />
+        <activity android:name=".VotingResultDetailActivity" android:theme="@style/Theme.MyDialog"/>
 
         <uses-library
             android:name="org.apache.http.legacy"

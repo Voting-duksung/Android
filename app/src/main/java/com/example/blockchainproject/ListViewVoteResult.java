@@ -10,6 +10,7 @@ public class ListViewVoteResult {
     private int candidateresult;
     private int count;
     private int studentNum;
+    private String placeid;
 
     public void setPlaceName(String placeName) {
         placeName = placeName;
@@ -41,7 +42,11 @@ public class ListViewVoteResult {
 
     public void setStudentNum(String studentNum) {studentNum=studentNum;}
 
-    public ListViewVoteResult(String placeName, String start_regist_peroid, String end_regist_period, String candidateName,int candidateresult, int count, int studentNum) {
+    public String getPlaceid() {return this.placeid;}
+
+    public void setPlaceid(String placeid) {placeid=placeid;}
+
+    public ListViewVoteResult(String placeName, String start_regist_peroid, String end_regist_period, String candidateName,int candidateresult, int count, int studentNum, String placeid) {
         this.placeName = placeName;
         this.start_regist_peroid = start_regist_peroid;
         this.end_regist_period = end_regist_period;
@@ -49,6 +54,7 @@ public class ListViewVoteResult {
         this.candidateresult=candidateresult;
         this.count=count;
         this.studentNum=studentNum;
+        this.placeid = placeid;
     }
 
 }

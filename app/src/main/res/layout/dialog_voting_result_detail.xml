@@ -30,7 +30,8 @@
         </TextView>
         
         <TextView
-            android:layout_width="160dp"
+            android:id="@+id/tv_period"
+            android:layout_width="match_parent"
             android:layout_height="18dp"
             android:text="투표기간"
             android:textSize="12dp"
@@ -41,7 +42,8 @@
         
         
         <TextView
-            android:layout_width="102dp"
+            android:id="@+id/tv_vote_rate"
+            android:layout_width="match_parent"
             android:layout_height="18dp"
             android:textColor="#868E96"
             android:textSize="12dp"
@@ -67,9 +69,10 @@
             
             <TextView
                 android:id="@+id/tv_voting_result"
-                android:layout_width="52dp"
+                android:layout_width="wrap_content"
                 android:layout_height="21dp"
                 android:textColor="#474747"
+                android:textStyle="bold"
                 android:layout_marginLeft="8.52dp"
                 android:layout_marginTop="21.52dp"
                 android:text="당선결과">
@@ -80,8 +83,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20.08dp"
-                android:layout_weight="8">
-            </androidx.recyclerview.widget.RecyclerView>
+                android:layout_weight="8"></androidx.recyclerview.widget.RecyclerView>
 
         </LinearLayout>
 
@@ -99,6 +101,7 @@
                 android:layout_marginTop="21.49dp"
                 android:layout_marginLeft="8.52dp"
                 android:textColor="#474747"
+                android:textStyle="bold"
                 android:textSize="14dp"
                 android:text="전체 투표율">
             </TextView>
@@ -113,6 +116,7 @@
             </ProgressBar>
             
             <TextView
+                android:id="@+id/tv_voting_result_full"
                 android:layout_width="216dp"
                 android:layout_height="42dp"
                 android:text="전체 유권자 6,811명 중 3,750명 투표

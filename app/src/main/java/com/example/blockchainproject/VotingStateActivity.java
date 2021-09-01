@@ -1,25 +1,23 @@
 package com.example.blockchainproject;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Context;
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.RelativeLayout;
 import android.widget.TableLayout;
 import android.widget.TextView;
-import android.view.Gravity;
-import android.widget.LinearLayout;
-import android.widget.TableRow;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.toolbox.Volley;
+import com.example.blockchainproject.Adapter.DialogVotingResultAdapter;
 import com.example.blockchainproject.Adapter.ListViewVotingStateAdapter;
 
 import org.bouncycastle.crypto.tls.TlsExtensionsUtils;
@@ -28,11 +26,14 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 
 public class VotingStateActivity extends AppCompatActivity {
 
     FrameLayout candidateFrameLayout;
+    private RelativeLayout rv_vote_result;
+
     public String UserNumber;
     public String Userid;
     public String placeid;
@@ -48,7 +49,8 @@ public class VotingStateActivity extends AppCompatActivity {
     public int candidateresult;
     public int count;
 
-    RecyclerView recyclerView;
+    RecyclerView recyclerView;  //투표목록 recyclerview
+
     private ArrayList<ListViewVoteResult> listViewVoteResultsList = new ArrayList<ListViewVoteResult>();
     private ListViewVotingStateAdapter adapter;
 
@@ -60,6 +62,7 @@ public class VotingStateActivity extends AppCompatActivity {
         setContentView(R.layout.activity_voting_state);
 
         onButtonMenu();
+        //onButtonResult();
 
         Intent UserNumberIntent = getIntent();
         UserName = UserNumberIntent.getExtras().getString("UserName");
@@ -81,6 +84,7 @@ public class VotingStateActivity extends AppCompatActivity {
         //RecyclerView item 간격 주기
         RecyclerDecorator spaceDecoration = new RecyclerDecorator(30);
 
+        //투표 목록 recyclerView
         recyclerView = findViewById(R.id.rv_vote_result);
         adapter = new ListViewVotingStateAdapter(this, listViewVoteResultsList);
         recyclerView.setAdapter(adapter);
@@ -88,12 +92,14 @@ public class VotingStateActivity extends AppCompatActivity {
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(layoutManager);
+//        votingDetail.setLayoutManager(layoutManager);
 
 
         Response.Listener<String> responseListener = new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 adapter.notifyDataSetChanged();
+               // dialog_adapter.notifyDataSetChanged();
 
                 try {
                     JSONArray jsonArray = new JSONArray(response);
@@ -108,8 +114,10 @@ public class VotingStateActivity extends AppCompatActivity {
                         count = jObject.getInt("count");
 
 //                        listViewCandidateList.add(new ListViewCandidate(candidate_name, start_regist_period, end_regist_period));
-                        listViewVoteResultsList.add(new ListViewVoteResult(placeName, start_regist_period, end_regist_period, candidateName, candidateresult, count, studentNum));
+                        listViewVoteResultsList.add(new ListViewVoteResult(placeName, start_regist_period, end_regist_period, candidateName, candidateresult, count, studentNum, placeid));
+                        //listViewVoteResultDetails.add(new ListViewVoteResultDetail(candidateName,candidateresult,studentNum));
                         adapter.notifyItemInserted(0);
+
 
                     }
 
@@ -131,7 +139,7 @@ public class VotingStateActivity extends AppCompatActivity {
 
     }
 
-    //진행중 눌렀을 경
+    //진행중 눌렀을 경우
     public void onButtonMenu() {
 
         Button btn_onVote = (Button) findViewById(R.id.btn_onVote);
@@ -150,4 +158,5 @@ public class VotingStateActivity extends AppCompatActivity {
             }
         });
     }
+
 }

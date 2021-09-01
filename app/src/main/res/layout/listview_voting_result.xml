@@ -5,7 +5,8 @@
     android:orientation="horizontal">
     
     <TextView
-        android:layout_width="39dp"
+        android:id="@+id/tv_candidate_name"
+        android:layout_width="wrap_content"
         android:layout_height="21dp"
         android:text="김갈백"
         android:layout_marginLeft="8.52dp"
@@ -22,12 +23,13 @@
     <ProgressBar
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:progressBackgroundTint="@color/duksung_red"
         style="?android:attr/progressBarStyleHorizontal"
-        android:progressTint="@color/duksung_red"
         android:max="100">
     </ProgressBar>
     
     <TextView
+        android:id="@+id/tv_candidate_percent_detail"
         android:layout_width="28dp"
         android:layout_height="21dp"
         android:layout_marginLeft="11.9dp"
