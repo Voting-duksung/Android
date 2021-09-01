@@ -2,7 +2,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <FrameLayout
         android:id="@+id/candidateFrameLayout"
@@ -23,37 +24,43 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="이름"
+                android:textSize="10dp"
                 android:gravity="center"
-                android:layout_marginTop="25dp"
+                android:layout_marginTop="7dp"
                 android:layout_gravity="center"
                 android:textColor="#212529">
             </TextView>
 
-            <TextView
-                android:id="@+id/tv_candidate_ratio"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="75"></TextView>
+<!--            <TextView-->
+<!--                android:id="@+id/tv_candidate_ratio"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_gravity="center"-->
+<!--                android:text="75"></TextView>-->
 
         </LinearLayout>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="75dp"
-            android:layout_marginLeft="270dp"
-            android:text="%">
-        </TextView>
+<!--        <TextView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="75dp"-->
+<!--            android:layout_marginLeft="270dp"-->
+<!--            android:text="%">-->
+<!--        </TextView>-->
 
-        <ProgressBar
-            android:layout_width="86.19dp"
-            android:layout_height="84.75dp"
-            android:layout_marginTop="30dp"
+        <com.dinuscxj.progressbar.CircleProgressBar
+            android:id="@+id/cpb_circlebar"
+            android:layout_width="85dp"
+            android:layout_height="85dp"
+            app:style="solid_line"
             android:layout_marginLeft="220dp"
-            android:outlineAmbientShadowColor="@color/duksung_red"
-            android:outlineSpotShadowColor="@color/duksung_red">
-        </ProgressBar>
+            android:layout_marginTop="20dp"
+            app:progress_text_color="#212529"
+            app:progress_stroke_width="10dp "
+            app:progress_stroke_cap="round"
+            app:progress_start_color="#971B44"
+            app:progress_end_color="#971B44">
+        </com.dinuscxj.progressbar.CircleProgressBar>
 
 
         <LinearLayout
