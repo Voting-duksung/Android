@@ -49,6 +49,8 @@ public class VotingStateActivity extends AppCompatActivity {
     public int candidateresult;
     public int count;
 
+    TextView tv_username;
+
     RecyclerView recyclerView;  //투표목록 recyclerview
 
     private ArrayList<ListViewVoteResult> listViewVoteResultsList = new ArrayList<ListViewVoteResult>();
@@ -76,6 +78,7 @@ public class VotingStateActivity extends AppCompatActivity {
 
         candidateFrameLayout =  findViewById(R.id.candidateFrameLayout);
 
+
         //총 선거 가능 투표장 수 변수 추가해주기
         //collegeTextView.setText("<"+college+">");
 
@@ -83,6 +86,9 @@ public class VotingStateActivity extends AppCompatActivity {
 
         //RecyclerView item 간격 주기
         RecyclerDecorator spaceDecoration = new RecyclerDecorator(30);
+
+        tv_username = findViewById(R.id.tv_username);
+        tv_username.setText(UserName);
 
         //투표 목록 recyclerView
         recyclerView = findViewById(R.id.rv_vote_result);

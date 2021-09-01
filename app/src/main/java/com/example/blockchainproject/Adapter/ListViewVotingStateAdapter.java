@@ -18,6 +18,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.dinuscxj.progressbar.CircleProgressBar;
 import com.example.blockchainproject.ListViewCandidate;
 import com.example.blockchainproject.ListViewVoteResult;
 import com.example.blockchainproject.ListViewVoteResultDetail;
@@ -44,6 +45,7 @@ public class ListViewVotingStateAdapter extends RecyclerView.Adapter {
     public int studentNum;
     public int count;
     TextView tv_voting_percent_detail;
+    CircleProgressBar circleProgressBar;
 
     //ListViewAdapter의 생성자
     public ListViewVotingStateAdapter (Context context, ArrayList<ListViewVoteResult> listViewVoteResultsList) {
@@ -77,7 +79,7 @@ public class ListViewVotingStateAdapter extends RecyclerView.Adapter {
         vh.start_regist_period.setText(item.getStart_regist_peroid()+"~"+item.getEnd_regist_period());
         vh.placeName.setText(item.getPlaceName());
 
-        vh.tv_candidate_ratio.setText(String.valueOf(candidate_result_ratio));
+//        vh.tv_candidate_ratio.setText(String.valueOf(candidate_result_ratio));
         vh.tv_voting_percent.setText(String.valueOf(vote_result_ratio));
 
         place_name = item.getPlaceName();
@@ -86,6 +88,8 @@ public class ListViewVotingStateAdapter extends RecyclerView.Adapter {
         placeid = item.getPlaceid();
         studentNum = item.getStudentNum();
         count = item.getCount();
+
+        circleProgressBar.setProgress(candidate_result_ratio);
 
 
 //        onButtonDetail();
@@ -131,7 +135,6 @@ public class ListViewVotingStateAdapter extends RecyclerView.Adapter {
         TextView tv_voting_percent;
         TextView tv_candidate_ratio;
 
-
         public VH(@NonNull View itemView) {
             super(itemView);
 
@@ -140,8 +143,9 @@ public class ListViewVotingStateAdapter extends RecyclerView.Adapter {
             start_regist_period = itemView.findViewById(R.id.tv_vote_start_period);
             candidate_voteCount=itemView.findViewById(R.id.tv_voting_percent);
             tv_voting_percent=itemView.findViewById(R.id.tv_voting_percent);
-            tv_candidate_ratio=itemView.findViewById(R.id.tv_candidate_ratio);
+//            tv_candidate_ratio=itemView.findViewById(R.id.tv_candidate_ratio);
             tv_voting_percent_detail = itemView.findViewById(R.id.tv_voting_percent_detail);
+            circleProgressBar=itemView.findViewById(R.id.cpb_circlebar);
 
         }
 
