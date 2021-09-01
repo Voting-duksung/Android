@@ -20,7 +20,6 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
         android:orientation="horizontal">
 
         <Button
@@ -57,7 +56,6 @@
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
         android:layout_margin="20dp">
 
         <Button
@@ -89,8 +87,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_vote_result"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="8">
+        android:layout_height="wrap_content">
     </androidx.recyclerview.widget.RecyclerView>
 
 </LinearLayout>
