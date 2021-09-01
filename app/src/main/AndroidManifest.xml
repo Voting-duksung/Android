@@ -3,6 +3,7 @@
     package="com.example.blockchainproject">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:allowBackup="true"
@@ -28,6 +29,7 @@
         <activity android:name="VoteActivity" />
         <activity android:name="VotingStateActivity" />
         <activity android:name=".VotingResultDetailActivity" android:theme="@style/Theme.MyDialog"/>
+        <activity android:name=".mailAuthActivity"/>
 
         <uses-library
             android:name="org.apache.http.legacy"
