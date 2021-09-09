@@ -1,6 +1,7 @@
 
 package com.example.blockchainproject.Model;
 
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 
 import retrofit2.http.FormUrlEncoded;
@@ -19,7 +20,10 @@ public interface ApiInterface {
     Call<Vote> getVote(@Query("placeid") String placeid, @Query("candidateid") int candidateid, @Query("UserNumber") String UserNumber );
 
     @GET("/app/account/")
-    Call<UserAccount> getAccount(@Query("Userid") String Userid);
+    Call<ResponseBody> getAccount(@Query("Userid") String Userid);
+
+    @GET("/app/getAccount")
+    Call<ResponseBody> getAccountList();
 
 
 }
