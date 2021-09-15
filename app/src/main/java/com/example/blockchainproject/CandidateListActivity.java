@@ -1,10 +1,13 @@
 package com.example.blockchainproject;
 
+import android.accounts.Account;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
@@ -20,18 +23,26 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.toolbox.Volley;
 import com.example.blockchainproject.Adapter.ListViewCandidateAdapter;
+import com.example.blockchainproject.Model.AccountList;
 import com.example.blockchainproject.Model.ApiClient;
 import com.example.blockchainproject.Model.ApiInterface;
-import com.example.blockchainproject.Model.UserAccount;
 import com.example.blockchainproject.Model.Vote;
+import com.google.gson.Gson;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.ArrayList;
 
 import jnr.a64asm.SYSREG_CODE;
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 
@@ -41,6 +52,8 @@ public class CandidateListActivity extends AppCompatActivity {
     RecyclerView recyclerView;
     private ArrayList<ListViewCandidate> listViewCandidateList = new ArrayList<ListViewCandidate>();
     private ListViewCandidateAdapter adapter;
+
+    private Gson mGson;
 
     //Retrofit
     private ApiInterface service;
@@ -61,10 +74,15 @@ public class CandidateListActivity extends AppCompatActivity {
     public String content;
     public String candidateresult;
 
+
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_candidate_list);
+
+        //retrofit
+        service = ApiClient.getApiClient().create(ApiInterface.class);
 
         account();
 
@@ -180,11 +198,43 @@ public class CandidateListActivity extends AppCompatActivity {
 
     public void showDialogAccountInfo(){
         dialog_account_info.show();
+        System.out.println("onClick함22");
 
+        //계정 10개 가져오기
+        Call<ResponseBody> call_accounts = service.getAccountList();
+        call_accounts.enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, retrofit2.Response<ResponseBody> response) {
+                //성공했을 경우
+                if (response.isSuccessful()) {//응답을 잘 받은 경우
+                    String result = null;
+                    try {
+                        result = response.body().string();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    System.out.println(result+"??");
+                    System.out.println("10개 가져오기 성공~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+
+                } else {    //통신은 성공했지만 응답에 문제있는 경우
+                    Toast.makeText(getApplicationContext(), "error = " + String.valueOf(response.code()), Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {//통신 자체 실패
+                System.out.println("통신 자체 실패...");
+                Toast.makeText(getApplicationContext(), "Response Fail", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        //"확인했습니다" 눌렀을 때
         btn_check = dialog_account_info.findViewById( R.id.btn_check );
         btn_check.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                System.out.println("onClick함");
+
                 Intent intent = new Intent(CandidateListActivity.this, VoteActivity.class );
                 intent.putExtra("college", college);
                 intent.putExtra("placeid",placeid);
@@ -199,8 +249,6 @@ public class CandidateListActivity extends AppCompatActivity {
 
     //투표하러가기 버튼 (계정나눠주기)
     public void account() {
-        //retrofit
-//        service = ApiClient.getApiClient().create(ApiInterface.class);
 
         //투표하러가기 버튼 눌렀을 때
         btn_go_voting = (Button)findViewById( R.id.btn_go_voting );
@@ -212,30 +260,29 @@ public class CandidateListActivity extends AppCompatActivity {
                 //계정 나눠주기 dialog 짜잔
                 showDialogAccountInfo();
 
-//                Call<UserAccount> call_account = service.getAccount(Userid);
-//                call_account.enqueue(new Callback<UserAccount>() {
-//                    @Override
-//                    public void onResponse(Call<UserAccount> call, retrofit2.Response<UserAccount> response) {
-//                        //성공했을 경우
-//                        if (response.isSuccessful()) {//응답을 잘 받은 경우
-//                            String result = response.body().toString();
-////                            Log.v(TvAG, "result = " + result);
-////                            Toast.makeText(getApplicationContext(), result, Toast.LENGTH_SHORT).show();
-//                            System.out.println("계정성공~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-//                        } else {    //통신은 성공했지만 응답에 문제있는 경우
-//                            System.out.println("error="+String.valueOf(response.code()));
-////                            Log.v(TAG, "error = " + String.valueOf(response.code()));
-//                            Toast.makeText(getApplicationContext(), "error = " + String.valueOf(response.code()), Toast.LENGTH_SHORT).show();
-//                        }
-//                    }
-//
-//                    @Override
-//                    public void onFailure(Call<UserAccount> call, Throwable t) {//통신 자체 실패
-////                       Log.v(TAG, "Fail");
+                Call<ResponseBody> call_get = service.getAccount(Userid);
+                call_get.enqueue(new Callback<ResponseBody>() {
+                    @Override
+                    public void onResponse(Call<ResponseBody> call, retrofit2.Response<ResponseBody> response) {
+                        //성공했을 경우
+                        if (response.isSuccessful()) {//응답을 잘 받은 경우
+                            String result = response.body().toString();
+                            System.out.println("계정성공~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+                        } else {    //통신은 성공했지만 응답에 문제있는 경우
+                            System.out.println("error="+String.valueOf(response.code()));
+                            Toast.makeText(getApplicationContext(), "error = " + String.valueOf(response.code()), Toast.LENGTH_SHORT).show();
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<ResponseBody> call, Throwable t) {//통신 자체 실패
+//                       Log.v(TAG, "Fail");
+                        System.out.println("계정 나눠주기 통신 실패");
 //                        Toast.makeText(getApplicationContext(), "Response Fail", Toast.LENGTH_SHORT).show();
-//                    }
-//                });
+                    }
+                });
             }
         });
     }
 }
+
