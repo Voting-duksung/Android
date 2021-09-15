@@ -1,5 +1,6 @@
 package com.example.blockchainproject;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
@@ -8,6 +9,7 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -83,6 +85,8 @@ public class VoteActivity extends AppCompatActivity {
         tv_vote_college1.setText(college);
 
 
+
+
         //로그인 한 학번 받아오기
         Intent UserNumberIntent = getIntent();
         UserNumber = UserNumberIntent.getExtras().getString("UserNumber");
@@ -96,6 +100,9 @@ public class VoteActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(layoutManager);
 
         voting();
+
+        
+
 
         Response.Listener<String> responseListener = new Response.Listener<String>() {
             @Override

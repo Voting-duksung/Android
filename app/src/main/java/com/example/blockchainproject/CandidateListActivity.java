@@ -89,17 +89,19 @@ public class CandidateListActivity extends AppCompatActivity {
         Intent intent = getIntent();
         placeid = intent.getExtras().getString("placeid");
         college = intent.getExtras().getString("college");
-        startDate = intent.getExtras().getString("startDate");
-        endDate = intent.getExtras().getString("endDate");
+        startDate = intent.getExtras().getString("start_regist_peroid");
+        endDate = intent.getExtras().getString("end_regist_peroid");
         //잘 넘어오는거 확인
 
         System.out.println(placeid+"CandidateListActivity의 college");
 
 
 
+        TextView tv_user_name = findViewById(R.id.tv_user_name);
+        tv_user_name.setText(Userid);
 
         TextView VoteCollege = findViewById(R.id.tv_vote_college1);
-        VoteCollege.setText(content);
+        VoteCollege.setText(college);
 
         TextView VotePeriod = findViewById(R.id.tv_vote_period1);
         VotePeriod.setText("투표기간    "+startDate+" ~ "+endDate);
@@ -137,8 +139,6 @@ public class CandidateListActivity extends AppCompatActivity {
 //                        int voteCount = jObject.getInt("voteCount");
 //                        int candidateNumber = jObject.getInt("candidateNumber");
 
-
-
 //                        imgPath = "http://voting.dothome.co.kr"+imgPath;
 //                        listViewCandidateList.add(new ListViewCandidate(candidate_name,imgPath,promisePath));
                         listViewCandidateList.add(new ListViewCandidate(candidate_name, campname, slogan, promise, colleage, placeid, candidateresult));
@@ -165,6 +165,7 @@ public class CandidateListActivity extends AppCompatActivity {
         requestQueue.add(candidatelistRequest);
 
     }
+
     public void showDialogVotingInfo(){
         dialog_voting_info.show();
 
@@ -175,8 +176,8 @@ public class CandidateListActivity extends AppCompatActivity {
                 dialog_voting_info.dismiss();
             }
         });
-
     }
+
     public void showDialogAccountInfo(){
         dialog_account_info.show();
 
