@@ -17,22 +17,24 @@
         android:layout_width="0.5dp"
         android:layout_height="match_parent"
         android:background="#CED4DA"
-        android:layout_marginLeft="11.9dp">
+        android:layout_marginLeft="20dp">
     </View>
 
     <ProgressBar
-        android:layout_width="wrap_content"
+        android:id="@+id/candidate_progress"
+        style="@android:style/Widget.ProgressBar.Horizontal"
+        android:layout_width="220dp"
         android:layout_height="wrap_content"
-        android:progressBackgroundTint="@color/duksung_red"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:max="100">
+        android:max="10"
+        android:progressDrawable="@drawable/progress_voting_result">
+
     </ProgressBar>
     
     <TextView
         android:id="@+id/tv_candidate_percent_detail"
         android:layout_width="28dp"
         android:layout_height="21dp"
-        android:layout_marginLeft="11.9dp"
+        android:layout_marginLeft="20dp"
         android:text="75%">
     </TextView>
 

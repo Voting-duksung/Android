@@ -14,6 +14,8 @@ import android.view.animation.AccelerateInterpolator;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.ProgressBar;
+
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -44,8 +46,10 @@ public class ListViewVotingStateAdapter extends RecyclerView.Adapter {
     public String end_period;
     public int studentNum;
     public int count;
+    public int candidateResult;
     TextView tv_voting_percent_detail;
     CircleProgressBar circleProgressBar;
+    ProgressBar progressBar;
 
     //ListViewAdapter의 생성자
     public ListViewVotingStateAdapter (Context context, ArrayList<ListViewVoteResult> listViewVoteResultsList) {
@@ -73,7 +77,7 @@ public class ListViewVotingStateAdapter extends RecyclerView.Adapter {
         //후보자 투표
         int candidate_result_ratio=  item.getCandidateresult()/item.getStudentNum()*100;
         //최종 투표율
-       int vote_result_ratio = item.getCount()/item.getStudentNum()*100;
+        float vote_result_ratio = item.getCount()/item.getStudentNum() * 100;
 
         vh.candidateName.setText(item.getCandidateName());
         vh.start_regist_period.setText(item.getStart_regist_peroid()+"~"+item.getEnd_regist_period());
@@ -82,13 +86,19 @@ public class ListViewVotingStateAdapter extends RecyclerView.Adapter {
 //        vh.tv_candidate_ratio.setText(String.valueOf(candidate_result_ratio));
         vh.tv_voting_percent.setText(String.valueOf(vote_result_ratio));
 
+
         place_name = item.getPlaceName();
         start_period = item.getStart_regist_peroid();
         end_period = item.getEnd_regist_period();
         placeid = item.getPlaceid();
         studentNum = item.getStudentNum();
         count = item.getCount();
+        candidateResult = item.getCandidateresult();
 
+
+        System.out.println("COUNt 어절절  " + count);
+        System.out.println("studentnum 어절절  " + studentNum);
+        System.out.println("vote_result 어절절  " + vote_result_ratio);
         circleProgressBar.setProgress(candidate_result_ratio);
 
 
@@ -108,8 +118,9 @@ public class ListViewVotingStateAdapter extends RecyclerView.Adapter {
                 intent.putExtra("count",count);
 //
                 ((Activity)context).startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
-
+                System.out.println("vote result ratio : " + vote_result_ratio);
                 System.out.println("꺄아");
+
             }
         });
 
@@ -133,7 +144,9 @@ public class ListViewVotingStateAdapter extends RecyclerView.Adapter {
         TextView start_regist_period;
         TextView candidate_voteCount;
         TextView tv_voting_percent;
+        TextView tv_candidate_percent_detail;
         TextView tv_candidate_ratio;
+
 
         public VH(@NonNull View itemView) {
             super(itemView);
@@ -146,6 +159,7 @@ public class ListViewVotingStateAdapter extends RecyclerView.Adapter {
 //            tv_candidate_ratio=itemView.findViewById(R.id.tv_candidate_ratio);
             tv_voting_percent_detail = itemView.findViewById(R.id.tv_voting_percent_detail);
             circleProgressBar=itemView.findViewById(R.id.cpb_circlebar);
+            progressBar = itemView.findViewById(R.id.candidate_progress);
 
         }
 

@@ -179,7 +179,7 @@
             android:layout_width="300dp"
             android:layout_height="41dp"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="35dp"
+            android:layout_marginTop="10dp"
             android:backgroundTint="@color/duksung_red"
             android:text="확인했습니다."
             android:textColor="@color/white"></Button>

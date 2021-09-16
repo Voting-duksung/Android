@@ -118,7 +118,6 @@ public class VotingStateActivity extends AppCompatActivity {
                         candidateName = jObject.getString("candidateName");
                         candidateresult = jObject.getInt("candidateresult");
                         count = jObject.getInt("count");
-
 //                        listViewCandidateList.add(new ListViewCandidate(candidate_name, start_regist_period, end_regist_period));
                         listViewVoteResultsList.add(new ListViewVoteResult(placeName, start_regist_period, end_regist_period, candidateName, candidateresult, count, studentNum, placeid));
                         //listViewVoteResultDetails.add(new ListViewVoteResultDetail(candidateName,candidateresult,studentNum));
