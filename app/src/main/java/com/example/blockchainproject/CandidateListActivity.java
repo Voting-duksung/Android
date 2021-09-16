@@ -84,12 +84,12 @@ public class CandidateListActivity extends AppCompatActivity {
         dialog_voting_info.setContentView(R.layout.dialog_voting_info);
 
         // 버튼: 커스텀 다이얼로그 띄우기
-        findViewById(R.id.btn_voting_info).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                showDialogVotingInfo(); // 아래 showDialogVotingInfo() 함수 호출
-            }
-        });
+//        findViewById(R.id.btn_voting_info).setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                showDialogVotingInfo(); // 아래 showDialogVotingInfo() 함수 호출
+//            }
+//        });
 
 
         Intent UserNumberIntent = getIntent();
@@ -165,40 +165,23 @@ public class CandidateListActivity extends AppCompatActivity {
     }
 
     //"선거정보 조회하기" 눌렀을 때
-    public void showDialogVotingInfo(){
-        dialog_voting_info.show();
-
-        btn_ok = dialog_voting_info.findViewById(R.id.btn_ok);
-        btn_ok.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialog_voting_info.dismiss();
-            }
-        });
-
-    }
-
-    //"투표하러 가기" 눌렀을 때
-    public void showDialogAccountInfo(){
-//        dialog_account_info.show();
-
-        //"확인했습니다" 눌렀을 때
-        btn_check = dialog_account_info.findViewById( R.id.btn_check );
-        btn_check.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Intent intent = new Intent(CandidateListActivity.this, VoteActivity.class );
-                intent.putExtra("college", college);
-                intent.putExtra("placeid",placeid);
-                intent.putExtra("UserNumber",UserNumber);
-                intent.putExtra("Userid",Userid);
-
-                startActivity(intent);
-            }
-        });
-
-    }
+//    public void showDialogVotingInfo(){
+//        dialog_voting_info.show();
+//
+//        btn_ok = dialog_voting_info.findViewById(R.id.btn_ok);
+//        btn_ok.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                dialog_voting_info.dismiss();
+//            }
+//        });
+//
+//    }
+//
+//    //"투표하러 가기" 눌렀을 때
+//    public void showDialogAccountInfo(){
+////        dialog_account_info.show();
+//    }
 
     //투표하러가기 버튼 (계정나눠주기)
     public void account() {
@@ -211,7 +194,7 @@ public class CandidateListActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 //계정 나눠주기 dialog 짜잔
-                showDialogAccountInfo();
+//                showDialogAccountInfo();
 
                 Call<ResponseBody> call_get = service.getAccount(Userid);
                 call_get.enqueue(new Callback<ResponseBody>() {
@@ -220,10 +203,14 @@ public class CandidateListActivity extends AppCompatActivity {
                         //성공했을 경우
                         if (response.isSuccessful()) {//응답을 잘 받은 경우
                             String result = response.body().toString();
-                            System.out.println("계정 부여하기 성");
+                            System.out.println("계정 부여하기 성공");
                             //10개 계정 보내주기
                             Intent intent = new Intent(CandidateListActivity.this, DialogAccountInfo.class );
                             intent.putExtra("accounts", accounts);
+                            intent.putExtra("college",  college);
+                            intent.putExtra("placeid", placeid);
+                            intent.putExtra("UserNumber", UserNumber);
+                            intent.putExtra("Userid", Userid);
                             startActivity(intent);
 
                         } else {    //통신은 성공했지만 응답에 문제있는 경우

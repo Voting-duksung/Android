@@ -3,7 +3,9 @@ package com.example.blockchainproject;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
+import android.view.View;
 import android.view.Window;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -21,16 +23,30 @@ public class DialogAccountInfo extends AppCompatActivity {
     TextView tv_account9;
     TextView tv_account10;
 
+    public String UserNumber;
+    public String Userid;
+    public String college;
+    public String placeid;
+
+    public Button btn_check;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.dialog_account_info);
 
+        check_btn();
 
-        //10개 계 받아오기
+        //10개 계정 받아오기
         Intent AccountIntent = getIntent();
         String[] accounts = AccountIntent.getStringArrayExtra("accounts");
+
+        //선거장 정보 받아오기
+        placeid = AccountIntent.getExtras().getString("placeid");
+        college = AccountIntent.getExtras().getString("college");
+        Userid = AccountIntent.getExtras().getString("Userid");
+        UserNumber= AccountIntent.getExtras().getString("UserNumber");
 
         tv_account1 = findViewById(R.id.tv_account1);
         tv_account1.setText(accounts[0]);
@@ -64,6 +80,25 @@ public class DialogAccountInfo extends AppCompatActivity {
         getWindow().getAttributes().width = width;
 
         getWindow().getAttributes().height = height;
+    }
+
+    public void check_btn() {
+        //"확인했습니다" 눌렀을 때
+        btn_check = findViewById(R.id.btn_check);
+        btn_check.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                System.out.println("plaaaa"+placeid);
+
+                Intent intent = new Intent(DialogAccountInfo.this, VoteActivity.class);
+                intent.putExtra("college", college);
+                intent.putExtra("placeid", placeid);
+                intent.putExtra("UserNumber", UserNumber);
+                intent.putExtra("Userid", Userid);
+
+                startActivity(intent);
+            }
+        });
     }
     
 }
