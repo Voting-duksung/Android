@@ -29,6 +29,7 @@
         <activity android:name="VoteActivity" />
         <activity android:name="VotingStateActivity" />
         <activity android:name=".VotingResultDetailActivity" android:theme="@style/Theme.MyDialog"/>
+        <activity android:name=".DialogAccountInfo" android:theme="@style/Theme.AccountDialog"/>
         <activity android:name=".mailAuthActivity"/>
 
         <uses-library

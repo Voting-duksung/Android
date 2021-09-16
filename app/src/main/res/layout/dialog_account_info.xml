@@ -1,182 +1,188 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
-    
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/transparent"
+    android:layout_gravity="center">
+
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:background="#E5E5E5">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="20dp"
+        android:orientation="vertical">
 
         <ImageView
             android:layout_width="59.83dp"
             android:layout_height="59.83dp"
-            android:src="@drawable/splash_duksung"
-            android:layout_marginTop="10dp"
-            android:layout_gravity="center">
-        </ImageView>
-        
+            android:layout_gravity="center"
+            android:layout_marginTop="30dp"
+            android:src="@drawable/locked_png"></ImageView>
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="72dp"
-            android:layout_marginTop="24dp"
             android:layout_gravity="center"
-            android:textSize="24dp"
-            android:textStyle="bold"
-            android:text="아래 블록체인 키 중 하나로 \n 재로그인 되었습니다"
+            android:layout_marginTop="24dp"
             android:gravity="center"
-            android:textColor="#FFFFFF">
-        </TextView>
+            android:text="아래 블록체인 키 중 하나로 \n 재로그인 되었습니다"
+            android:textColor="#FFFFFF"
+            android:textSize="24dp"
+            android:textStyle="bold"></TextView>
 
         <RelativeLayout
             android:layout_width="290.07dp"
             android:layout_height="297.31dp"
             android:layout_gravity="center"
-            android:background="#343A40"
-            android:layout_marginTop="35dp">
-            
+            android:layout_marginTop="35dp"
+            android:background="#343A40">
+
             <TextView
                 android:id="@+id/tv_account1"
-                android:layout_width="108dp"
-                android:layout_height="27dp"
-                android:layout_marginTop="19.76dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="27.63dp"
+                android:layout_marginTop="19.76dp"
                 android:text="23sdfeoifw.."
-                android:textColor="#FFFFFF"></TextView>
+                android:textColor="#FFFFFF"
+                android:textSize="10dp"></TextView>
 
             <TextView
                 android:id="@+id/tv_account2"
-                android:layout_width="108dp"
-                android:layout_height="27dp"
-                android:layout_marginTop="19.76dp"
-                android:layout_marginLeft="29.81dp"
-                android:layout_toRightOf="@+id/tv_account1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_account1"
+                android:layout_marginLeft="27.63dp"
+                android:layout_marginTop="13dp"
                 android:text="23sdfeoifw.."
-                android:textColor="#FFFFFF"></TextView>
+                android:textColor="#FFFFFF"
+                android:textSize="10dp"></TextView>
 
             <TextView
                 android:id="@+id/tv_account3"
-                android:layout_width="108dp"
-                android:layout_height="27dp"
-                android:layout_marginTop="27.7dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_account2"
                 android:layout_marginLeft="27.63dp"
-                android:layout_below="@+id/tv_account1"
+                android:layout_marginTop="13dp"
                 android:text="23sdfeoifw.."
-                android:textColor="#FFFFFF"></TextView>
+                android:textColor="#FFFFFF"
+                android:textSize="10dp"></TextView>
 
             <TextView
                 android:id="@+id/tv_account4"
-                android:layout_width="108dp"
-                android:layout_height="27dp"
-                android:layout_marginTop="27.7dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_account3"
                 android:layout_marginLeft="29.81dp"
-                android:layout_toRightOf="@+id/tv_account3"
-                android:layout_below="@+id/tv_account2"
+                android:layout_marginTop="13dp"
                 android:text="23sdfeoifw.."
-                android:textColor="#FFFFFF"></TextView>
+                android:textColor="#FFFFFF"
+                android:textSize="10dp"></TextView>
 
             <TextView
                 android:id="@+id/tv_account5"
-                android:layout_width="108dp"
-                android:layout_height="27dp"
-                android:layout_marginTop="27.19dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_account4"
                 android:layout_marginLeft="27.62dp"
-                android:layout_below="@+id/tv_account3"
+                android:layout_marginTop="13dp"
                 android:text="23sdfeoifw.."
-                android:textColor="#FFFFFF"></TextView>
+                android:textColor="#FFFFFF"
+                android:textSize="10dp"></TextView>
 
             <TextView
                 android:id="@+id/tv_account6"
-                android:layout_width="108dp"
-                android:layout_height="27dp"
-                android:layout_marginTop="27.19dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_account5"
                 android:layout_marginLeft="29.81dp"
-                android:layout_toRightOf="@+id/tv_account3"
-                android:layout_below="@+id/tv_account4"
+                android:layout_marginTop="13dp"
                 android:text="23sdfeoifw.."
-                android:textColor="#FFFFFF"></TextView>
+                android:textColor="#FFFFFF"
+                android:textSize="10dp"></TextView>
 
             <TextView
                 android:id="@+id/tv_account7"
-                android:layout_width="108dp"
-                android:layout_height="27dp"
-                android:layout_marginTop="27.7dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_account6"
                 android:layout_marginLeft="27.62dp"
-                android:layout_below="@+id/tv_account5"
+                android:layout_marginTop="13dp"
                 android:text="23sdfeoifw.."
-                android:textColor="#FFFFFF"></TextView>
+                android:textColor="#FFFFFF"
+                android:textSize="10dp"></TextView>
 
             <TextView
                 android:id="@+id/tv_account8"
-                android:layout_width="108dp"
-                android:layout_height="27dp"
-                android:layout_marginTop="27.7dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_account7"
                 android:layout_marginLeft="29.81dp"
-                android:layout_toRightOf="@+id/tv_account3"
-                android:layout_below="@+id/tv_account6"
+                android:layout_marginTop="13dp"
                 android:text="23sdfeoifw.."
-                android:textColor="#FFFFFF"></TextView>
+                android:textColor="#FFFFFF"
+                android:textSize="10dp"></TextView>
 
             <TextView
                 android:id="@+id/tv_account9"
-                android:layout_width="108dp"
-                android:layout_height="27dp"
-                android:layout_marginTop="28.75dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_account8"
                 android:layout_marginLeft="27.63dp"
-                android:layout_below="@+id/tv_account7"
+                android:layout_marginTop="13dp"
                 android:text="23sdfeoifw.."
-                android:textColor="#FFFFFF"></TextView>
+                android:textColor="#FFFFFF"
+                android:textSize="10dp"></TextView>
 
             <TextView
                 android:id="@+id/tv_account10"
-                android:layout_width="108dp"
-                android:layout_height="27dp"
-                android:layout_marginTop="28.75dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_account9"
                 android:layout_marginLeft="29.81dp"
-                android:layout_toRightOf="@+id/tv_account3"
-                android:layout_below="@+id/tv_account8"
+                android:layout_marginTop="13dp"
                 android:text="23sdfeoifw.."
-                android:textColor="#FFFFFF"></TextView>
+                android:textColor="#FFFFFF"
+                android:textSize="10dp"></TextView>
 
         </RelativeLayout>
 
         <TextView
             android:layout_width="302dp"
             android:layout_height="18dp"
+            android:layout_gravity="center"
             android:layout_marginTop="30dp"
             android:text="블록체인은 개인 인증 계정에 투표 결과를 저장하지 않습니다."
-            android:layout_gravity="center"
-            android:textSize="12dp"
-            android:textColor="#FFFFFF" />
+            android:textColor="#FFFFFF"
+            android:textSize="12dp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:layout_marginTop="10dp"
-            android:layout_gravity="center"
             android:text="블록체인은 서버에서 발급하는 10개의 키에"
-            android:textSize="12dp"
-            android:textColor="#FFFFFF" />
+            android:textColor="#FFFFFF"
+            android:textSize="12dp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
             android:layout_gravity="center"
+            android:layout_marginTop="5dp"
             android:text="전체 투표 결과를 분산 저장하며, 익명을 보장합니다."
-            android:textSize="12dp"
-            android:textColor="#FFFFFF" />
+            android:textColor="#FFFFFF"
+            android:textSize="12dp" />
 
         <Button
             android:id="@+id/btn_check"
             android:layout_width="300dp"
             android:layout_height="41dp"
+            android:layout_gravity="center_horizontal"
             android:layout_marginTop="35dp"
             android:backgroundTint="@color/duksung_red"
-            android:layout_gravity="center_horizontal"
-            android:text="확인했습니다.">
-        </Button>
+            android:text="확인했습니다."
+            android:textColor="@color/white"></Button>
 
     </LinearLayout>
 
