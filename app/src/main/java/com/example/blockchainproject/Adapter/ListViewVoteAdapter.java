@@ -102,7 +102,6 @@ public class ListViewVoteAdapter extends RecyclerView.Adapter {
                 btn_lets_vote.setEnabled(false);
             }
 
-
             btn_lets_vote.setOnClickListener(new View.OnClickListener() {
 
                 //recycler의 item이 클릭되면 실행

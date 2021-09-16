@@ -10,7 +10,7 @@
     android:orientation="horizontal">
 
     <LinearLayout
-        android:layout_width="290dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginRight="7dp"
         android:orientation="vertical">
@@ -34,9 +34,9 @@
 
             <TextView
                 android:id="@+id/tv_candidate_slogan"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
+                android:layout_marginLeft="30dp"
                 android:textSize="15dp"
                 android:text="구호">
             </TextView>
@@ -49,12 +49,11 @@
             android:gravity="center_vertical"
             android:background="@drawable/edge_candidate_check2">
 
-
-        <TextView
+            <TextView
                 android:id="@+id/tv_candidate_number"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="83dp"
+                android:layout_marginLeft="93dp"
                 android:layout_marginBottom="5dp"
                 android:text="기호"
                 android:textSize="15dp">
@@ -62,23 +61,14 @@
 
             <TextView
                 android:id="@+id/tv_candidate"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="83dp"
+                android:layout_marginLeft="93dp"
                 android:textSize="15dp"
                 android:text="후보명">
             </TextView>
 
         </LinearLayout>
     </LinearLayout>
-
-    <Button
-        android:id="@+id/btn_promise"
-        android:layout_width="fill_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/edge_votelist"
-        android:text="공약        보기"
-        android:backgroundTint="#E7F0FC">
-    </Button>
 
 </LinearLayout>

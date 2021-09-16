@@ -10,4 +10,11 @@
     <color name="duksung_red">#971B44</color>
     <color name="select_on">#CCDFF9</color>
     <color name="select_off">#F1F3F5</color>
+    <color name="vote_select_off1">#F1F3F5</color>
+    <color name="vote_select_off2">#F8F9FA</color>
+    <color name="vote_select_on1">#CCDFF9</color>
+    <color name="vote_select_on2">#E7F0FC</color>
+
+
+
 </resources>

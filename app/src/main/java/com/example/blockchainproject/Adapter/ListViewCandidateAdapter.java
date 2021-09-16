@@ -48,6 +48,10 @@ public class ListViewCandidateAdapter extends RecyclerView.Adapter {
 
         //vh.candidate_number.setText("기호 "+item.getCandidateNumber());
         vh.candidate_name.setText(item.getName());
+        vh.tv_candidate_campname.setText(item.getCampname());
+        vh.tv_candidate_slogan.setText(item.getSlogan());
+
+
 
 //        Glide.with(context).load(item.getImgPath()).into(vh.candidate_image);
     }
@@ -66,14 +70,17 @@ public class ListViewCandidateAdapter extends RecyclerView.Adapter {
     class VH extends RecyclerView.ViewHolder {
 
         TextView candidate_name;
-        TextView candidate_number;
+        TextView tv_candidate_campname;
+        TextView tv_candidate_slogan;
+
         Button btn_promise;
 
         public VH(@NonNull View itemView) {
             super(itemView);
 
-            candidate_number=itemView.findViewById(R.id.tv_candidate_number);
+            tv_candidate_campname = itemView.findViewById(R.id.tv_candidate_campname);
             candidate_name=itemView.findViewById(R.id.tv_candidate);
+            tv_candidate_slogan = itemView.findViewById(R.id.tv_candidate_slogan);
         }
     }
 }
