@@ -101,7 +101,6 @@ public class ListViewVotingStateAdapter extends RecyclerView.Adapter {
 //        System.out.println("vote_result 어절절  " + vote_result_ratio);
         circleProgressBar.setProgress(item.getCandidateresult()/item.getStudentNum()*100);
 
-
 //        onButtonDetail();
 
 //        holder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -159,7 +158,6 @@ public class ListViewVotingStateAdapter extends RecyclerView.Adapter {
 //            tv_candidate_ratio=itemView.findViewById(R.id.tv_candidate_ratio);
             tv_voting_percent_detail = itemView.findViewById(R.id.tv_voting_percent_detail);
             circleProgressBar=itemView.findViewById(R.id.cpb_circlebar);
-            progressBar = itemView.findViewById(R.id.candidate_progress);
             tv_voting_percent_detail = itemView.findViewById(R.id.tv_voting_percent_detail);
 
             itemView.setClickable(true);

@@ -105,14 +105,16 @@
                 android:textSize="14dp"
                 android:text="전체 투표율">
             </TextView>
-            
+
             <ProgressBar
-                android:layout_width="250dp"
-                android:layout_height="15dp"
+                android:id="@+id/all_progress"
+                style="@android:style/Widget.ProgressBar.Horizontal"
+                android:layout_marginTop="10dp"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:max="10"
                 android:layout_gravity="center"
-                android:layout_marginTop="29.95dp"
-                android:background="@drawable/progress_voting_result"
-                style="?android:attr/progressBarStyleHorizontal">
+                android:progressDrawable="@drawable/progress_voting_result">
             </ProgressBar>
             
             <TextView

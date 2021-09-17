@@ -8,6 +8,7 @@ import android.os.PersistableBundle;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.Window;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
@@ -40,13 +41,14 @@ public class VotingResultDetailActivity extends AppCompatActivity {
     public String end_period;
     public String placeid;
     public int count;
-    public float vote_result_ratio;
+    public int vote_result_ratio;
 
     RecyclerView votingDetail;
     TextView tv_voting_name;
     TextView tv_period;
     TextView tv_vote_rate;
     TextView tv_voting_result_full;
+    ProgressBar progressBar;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -95,6 +97,7 @@ public class VotingResultDetailActivity extends AppCompatActivity {
         tv_period = findViewById(R.id.tv_period);
         tv_vote_rate = findViewById(R.id.tv_vote_rate);
         tv_voting_result_full = findViewById(R.id.tv_voting_result_full);
+        progressBar = findViewById(R.id.all_progress);
 
         System.out.println(count);
         System.out.println(vote_result_ratio);
@@ -102,6 +105,7 @@ public class VotingResultDetailActivity extends AppCompatActivity {
         tv_period.setText("투표 기간 "+start_period+"~"+end_period);
         tv_vote_rate.setText("최종 투표율 "+String.valueOf(vote_result_ratio)+"%");
         tv_voting_result_full.setText("전체 유권자 "+studentNum+"명 중 "+count+"명 투표\n 최종 투표율 "+String.valueOf(vote_result_ratio)+"%");
+        progressBar.setProgress(vote_result_ratio);
 
     }
 
