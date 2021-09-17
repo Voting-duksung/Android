@@ -75,16 +75,16 @@ public class ListViewVotingStateAdapter extends RecyclerView.Adapter {
         ListViewVoteResult item = listViewVoteResultsList.get(position);
 
         //후보자 투표
-        int candidate_result_ratio=  item.getCandidateresult()/item.getStudentNum()*100;
+//        int candidate_result_ratio=  item.getCandidateresult()/item.getStudentNum()*100;
         //최종 투표율
-        float vote_result_ratio = item.getCount()/item.getStudentNum() * 100;
+        //float vote_result_ratio = item.getCount()/item.getStudentNum() * 100;
 
         vh.candidateName.setText(item.getCandidateName());
         vh.start_regist_period.setText(item.getStart_regist_peroid()+"~"+item.getEnd_regist_period());
         vh.placeName.setText(item.getPlaceName());
 
 //        vh.tv_candidate_ratio.setText(String.valueOf(candidate_result_ratio));
-        vh.tv_voting_percent.setText(String.valueOf(vote_result_ratio));
+        vh.tv_voting_percent.setText(String.valueOf(item.getCount()/item.getStudentNum() * 100));
 
 
         place_name = item.getPlaceName();
@@ -95,34 +95,32 @@ public class ListViewVotingStateAdapter extends RecyclerView.Adapter {
         count = item.getCount();
         candidateResult = item.getCandidateresult();
 
-
-        System.out.println("COUNt 어절절  " + count);
-        System.out.println("studentnum 어절절  " + studentNum);
-        System.out.println("vote_result 어절절  " + vote_result_ratio);
-        circleProgressBar.setProgress(candidate_result_ratio);
+//
+//        System.out.println("COUNt 어절절  " + count);
+//        System.out.println("studentnum 어절절  " + studentNum);
+//        System.out.println("vote_result 어절절  " + vote_result_ratio);
+        circleProgressBar.setProgress(item.getCandidateresult()/item.getStudentNum()*100);
 
 
 //        onButtonDetail();
 
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Intent intent = new Intent(context, VotingResultDetailActivity.class);
-                intent.putExtra("placeid", placeid);
-                intent.putExtra("place_name", place_name);
-                intent.putExtra("start_period", start_period);
-                intent.putExtra("end_period", end_period);
-                intent.putExtra("studentNum", studentNum);
-                intent.putExtra("vote_result_ratio",vote_result_ratio);
-                intent.putExtra("count",count);
+//        holder.itemView.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
 //
-                ((Activity)context).startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
-                System.out.println("vote result ratio : " + vote_result_ratio);
-                System.out.println("꺄아");
-
-            }
-        });
+//                Intent intent = new Intent(context, VotingResultDetailActivity.class);
+//                intent.putExtra("placeid", placeid);
+//                intent.putExtra("place_name", place_name);
+//                intent.putExtra("start_period", start_period);
+//                intent.putExtra("end_period", end_period);
+//                intent.putExtra("studentNum", studentNum);
+////                intent.putExtra("vote_result_ratio",vote_result_ratio);
+//                intent.putExtra("count",count);
+////
+//                ((Activity)context).startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
+//
+//            }
+//        });
 
     }
 
@@ -137,6 +135,7 @@ public class ListViewVotingStateAdapter extends RecyclerView.Adapter {
         return (listViewVoteResultsList == null) ? 0 : listViewVoteResultsList.size();
     }
 
+
     class VH extends RecyclerView.ViewHolder {
 
         TextView candidateName;
@@ -146,6 +145,7 @@ public class ListViewVotingStateAdapter extends RecyclerView.Adapter {
         TextView tv_voting_percent;
         TextView tv_candidate_percent_detail;
         TextView tv_candidate_ratio;
+        TextView tv_voting_percent_detail;
 
 
         public VH(@NonNull View itemView) {
@@ -160,6 +160,30 @@ public class ListViewVotingStateAdapter extends RecyclerView.Adapter {
             tv_voting_percent_detail = itemView.findViewById(R.id.tv_voting_percent_detail);
             circleProgressBar=itemView.findViewById(R.id.cpb_circlebar);
             progressBar = itemView.findViewById(R.id.candidate_progress);
+            tv_voting_percent_detail = itemView.findViewById(R.id.tv_voting_percent_detail);
+
+            itemView.setClickable(true);
+            tv_voting_percent_detail.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    int pos = getAdapterPosition();
+                    if(pos!=RecyclerView.NO_POSITION) {
+                        Intent intent = new Intent(context, VotingResultDetailActivity.class).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                        intent.putExtra("placeid", placeid);
+                        intent.putExtra("place_name", place_name);
+                        intent.putExtra("start_period", start_period);
+                        intent.putExtra("end_period", end_period);
+                        intent.putExtra("studentNum", studentNum);
+//                intent.putExtra("vote_result_ratio",vote_result_ratio);
+                        intent.putExtra("count",count);
+
+                        context.startActivity(intent);
+//
+//                        ((Activity)context).startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
+                    }
+                }
+            });
 
         }
 

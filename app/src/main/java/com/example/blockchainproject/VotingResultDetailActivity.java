@@ -40,7 +40,7 @@ public class VotingResultDetailActivity extends AppCompatActivity {
     public String end_period;
     public String placeid;
     public int count;
-    public int vote_result_ratio;
+    public float vote_result_ratio;
 
     RecyclerView votingDetail;
     TextView tv_voting_name;
@@ -75,8 +75,10 @@ public class VotingResultDetailActivity extends AppCompatActivity {
         end_period = UserNumberIntent.getExtras().getString("end_period");
         placeid = UserNumberIntent.getExtras().getString("placeid");
         studentNum = UserNumberIntent.getExtras().getInt("studentNum");
-        vote_result_ratio = UserNumberIntent.getExtras().getInt("vote_result_ratio");
+//        vote_result_ratio = UserNumberIntent.getExtras().getFloat("vote_result_ratio");
         count = UserNumberIntent.getExtras().getInt("count");
+        vote_result_ratio =  count/studentNum * 100;
+        System.out.println("vote_result_ratio"+vote_result_ratio);
 
         //투표 결과 더보기 recyclerView
         votingDetail = findViewById(R.id.rv_result_candidate_list);
@@ -94,7 +96,8 @@ public class VotingResultDetailActivity extends AppCompatActivity {
         tv_vote_rate = findViewById(R.id.tv_vote_rate);
         tv_voting_result_full = findViewById(R.id.tv_voting_result_full);
 
-        System.out.println(placeName);
+        System.out.println(count);
+        System.out.println(vote_result_ratio);
         tv_voting_name.setText(placeName);
         tv_period.setText("투표 기간 "+start_period+"~"+end_period);
         tv_vote_rate.setText("최종 투표율 "+String.valueOf(vote_result_ratio)+"%");
@@ -102,26 +105,6 @@ public class VotingResultDetailActivity extends AppCompatActivity {
 
     }
 
-
-    public void recycler(){
-
-        AlertDialog dialogVotingResult;
-        dialogVotingResult = (AlertDialog) new Dialog(this);
-       System.out.println("버터플라");
-        //사이즈 조절
-//            WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
-//            lp.copyFrom(dialogVotingResult.getWindow().getAttributes());
-//            lp.width = 800;
-//            lp.height = WindowManager.LayoutParams.WRAP_CONTENT;
-//
-////            dialogVotingResult.show();
-//            Window window = dialogVotingResult.getWindow();
-//            window.setAttributes(lp);
-//
-        dialogVotingResult.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        dialogVotingResult.setContentView(R.layout.dialog_voting_result_detail);
-        dialogVotingResult.show();
-    }
 
     public void respond(){
 
