@@ -14,7 +14,7 @@
 
         <TextView
             android:id="@+id/textView"
-            android:layout_width="100dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="65dp"
             android:layout_marginLeft="35dp"
@@ -24,14 +24,14 @@
 
         <TextView
             android:id="@+id/textView2"
-            android:layout_width="170dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="35dp"
             android:layout_below="@+id/textView"
-            android:text="덕성여자대학교 전자투표시스템은 재학생만 이용 가능합니다"
-            android:textSize="12sp"
-            android:textColor="#868E96"/>
+            android:layout_marginLeft="35dp"
+            android:layout_marginTop="11dp"
+            android:text="덕성여자대학교 전자투표시스템은 \n재학생만 이용 가능합니다"
+            android:textColor="#868E96"
+            android:textSize="12sp" />
     </RelativeLayout>
 
     <LinearLayout
