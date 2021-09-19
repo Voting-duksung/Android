@@ -74,7 +74,6 @@
             android:text="개표완료"
             android:textColor="#ADB5BD"
             android:textSize="18dp" />
-
     </LinearLayout>
 
     <View

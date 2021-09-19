@@ -10,6 +10,17 @@
     android:orientation="horizontal">
 
     <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <RadioButton
+            android:id="@+id/rb_check"
+            android:layout_width="match_parent"
+            android:layout_height="145dp"
+            android:gravity="center"></RadioButton>
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginRight="7dp"
@@ -21,9 +32,9 @@
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:orientation="horizontal"
-            android:background="@drawable/edge_candidate_check1"
-            android:backgroundTint="@color/vote_select_off1"
-            android:clickable="true">
+            android:clickable="true"
+            android:background="@drawable/edge_candidate_uncheck1">
+
 
             <TextView
                 android:id="@+id/tv_candidate_campname"
@@ -52,8 +63,8 @@
             android:layout_height="80dp"
             android:orientation="vertical"
             android:gravity="center_vertical"
-            android:background="@drawable/edge_candidate_check2"
-            android:backgroundTint="@color/vote_select_off2">
+            android:background="@drawable/edge_candidate_uncheck2"
+            android:clickable="true">
 
             <TextView
                 android:id="@+id/tv_candidate_number"

@@ -3,16 +3,20 @@ package com.example.blockchainproject.Adapter;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
+import android.os.Build;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
@@ -21,18 +25,23 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.blockchainproject.ListViewCandidate;
 import com.example.blockchainproject.R;
+import com.example.blockchainproject.VotingResultDetailActivity;
 
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import static android.graphics.Color.BLACK;
+import static android.graphics.Color.WHITE;
+
 public class ListViewVotingNowAdapter extends RecyclerView.Adapter{
 
     private Context context;
     private ArrayList<ListViewCandidate> listViewCandidateList = new ArrayList<ListViewCandidate>();
-    private int selectedPosition = -1;
-    boolean included = false;
+    private RadioButton lastChecked = null;
+    private static int lastCheckedPos = 0;
+
 
     //ListViewAdapter의 생성자
     public ListViewVotingNowAdapter (Context context, ArrayList<ListViewCandidate> listViewCandidateList) {
@@ -55,28 +64,10 @@ public class ListViewVotingNowAdapter extends RecyclerView.Adapter{
         Log.d("position", position + "");
         ListViewVotingNowAdapter.VH vh = (ListViewVotingNowAdapter.VH)holder;
 
-
         ListViewCandidate item = listViewCandidateList.get(position);
         vh.candidate_name.setText(item.getName());
 
-//        if (position == selectedPosition){
-//            vh.box1.setSelected(true);
-//        }
-//        else{
-//            vh.box1.setSelected(false);
-//        }
-//
-//        vh.box1.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                selectedPosition = holder.getAdapterPosition();
-//                notifyDataSetChanged();
-//                vh.box1.setBackgroundColor(ContextCompat.getColor(context, R.color.vote_select_on1));
-//
-//            }
-//        });
 
-        //vh.candidate_number.setText("기호 "+item.getCandidateNumber());
 
     }
 
@@ -98,6 +89,7 @@ public class ListViewVotingNowAdapter extends RecyclerView.Adapter{
         TextView candidate_number;
         LinearLayout box1;
         LinearLayout box2;
+        RadioButton rb_check;
 
         public VH(@NonNull View itemView) {
             super(itemView);
@@ -106,46 +98,46 @@ public class ListViewVotingNowAdapter extends RecyclerView.Adapter{
             candidate_number=itemView.findViewById(R.id.tv_candidate_number);
             box1 = itemView.findViewById(R.id.box1);
             box2 = itemView.findViewById(R.id.box2);
+            rb_check = itemView.findViewById(R.id.rb_check);
 
-            box1.setClickable(true);
+            itemView.setClickable(true);
             box1.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    int position = getAdapterPosition();
-                    if(position != RecyclerView.NO_POSITION){
-                        box1.setBackgroundColor(Color.parseColor("#CCDFF9"));
+                    int pos = getAdapterPosition();
+
+                    if(pos!=RecyclerView.NO_POSITION) {
+                        box1.setBackgroundResource(R.drawable.edge_candidate_check1);
+                        box2.setBackgroundResource(R.drawable.edge_candidate_check2);
+                    }
                     }
                 }
-            });
+            );
+
+            rb_check.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                        @Override
+                        public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                            int pos = getAdapterPosition();
+
+                            //radioButton 선택 시 색 변화 (맛탱이감)
+                            if(pos!=RecyclerView.NO_POSITION){
+                                box1.setBackgroundResource(R.drawable.edge_candidate_check1);
+                                box2.setBackgroundResource(R.drawable.edge_candidate_check2);
+
+                                if(lastChecked != null){
+                                    lastChecked.setChecked(false);
+                                }
+                                lastChecked = rb_check;
+                            }
+
+
+                        }
+                    }
+            );
+
 
         }
     }
-
-
-
-
-
-//    public class MyViewHolder extends RecyclerView.ViewHolder {
-//        LinearLayout box1;
-//        LinearLayout box2;
-//
-//        public MyViewHolder(View itemView) {
-//            super(itemView);
-//            box1 = itemView.findViewById(R.id.box1);
-//            box2 = itemView.findViewById(R.id.box2);
-//        }
-//        void bindItem(int pos) {
-//            String txt = list.get(pos);
-//            box1.setText(txt);
-//
-//            if(indexOfColoredItem==pos){
-//                box1.setBackgroundColor(ContextCompat.getColor(context, R.color.vote_select_on1));
-//            } else{
-//                box1.setBackgroundColor(ContextCompat.getColor(context, R.color.vote_select_off1));
-//            }
-//        }
-//    }
-
 
 }
 
