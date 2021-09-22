@@ -4,6 +4,7 @@ package com.example.blockchainproject;
 //  후보자를 클래스에 담기 위한 선언
 public class ListViewCandidate {
 
+    private String candidateid;
     private String name;
     private String campname;
     private String slogan;
@@ -20,6 +21,9 @@ public class ListViewCandidate {
 
 
 //
+    public void setCandidateid(String candidateid) { candidateid = candidateid; }
+    public String getCandidateid() { return this.candidateid; }
+
     public void setName(String name) { name = name; }
     public String getName() { return this.name; }
 
@@ -68,7 +72,8 @@ public class ListViewCandidate {
 //        this.promisePath = promisePath;
 //    }
 
-    public ListViewCandidate(String name, String campname,String slogan, String promise,String colleage,String wantvote,String candidateresult) {
+    public ListViewCandidate(String candidateid, String name, String campname,String slogan, String promise,String colleage,String wantvote,String candidateresult) {
+        this.candidateid = candidateid;
         this.name = name;
         this.campname=campname;
         this.slogan = slogan;

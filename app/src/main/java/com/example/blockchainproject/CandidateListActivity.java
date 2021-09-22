@@ -52,9 +52,10 @@ public class CandidateListActivity extends AppCompatActivity {
 
     public String UserNumber;
     public String Userid;
-    public String college;
+    public String colleage;
     public String startDate;
     public String endDate;
+    public int UserVoteState;
 
     Dialog dialog_voting_info;
     public Button btn_ok;
@@ -79,11 +80,11 @@ public class CandidateListActivity extends AppCompatActivity {
         account();
         account_show();
 
-        dialog_voting_info = new Dialog(CandidateListActivity.this);
-        dialog_voting_info.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        dialog_voting_info.setContentView(R.layout.dialog_voting_info);
-
-        // 버튼: 커스텀 다이얼로그 띄우기
+//        dialog_voting_info = new Dialog(CandidateListActivity.this);
+//        dialog_voting_info.requestWindowFeature(Window.FEATURE_NO_TITLE);
+//        dialog_voting_info.setContentView(R.layout.dialog_voting_infodialog_voting_info);
+//
+//         //버튼: 커스텀 다이얼로그 띄우기
 //        findViewById(R.id.btn_voting_info).setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View view) {
@@ -95,17 +96,20 @@ public class CandidateListActivity extends AppCompatActivity {
         Intent UserNumberIntent = getIntent();
         UserNumber = UserNumberIntent.getExtras().getString("UserNumber");
         Userid = UserNumberIntent.getExtras().getString("Userid");
+        UserVoteState = UserNumberIntent.getExtras().getInt("UserVoteState");
+
 
         Intent intent = getIntent();
         placeid = intent.getExtras().getString("placeid");
-        college = intent.getExtras().getString("college");
-        startDate = intent.getExtras().getString("startDate");
-        endDate = intent.getExtras().getString("endDate");
-        //잘 넘어오는거 확인
+        colleage = intent.getExtras().getString("colleage");
+        startDate = intent.getExtras().getString("start_regist_peroid");
+        endDate = intent.getExtras().getString("end_regist_peroid");
+        //잘 넘어오는거 확인(0922)
+
 
 
         TextView VoteCollege = findViewById(R.id.tv_vote_college1);
-        VoteCollege.setText(content);
+        VoteCollege.setText(colleage);
 
         TextView VotePeriod = findViewById(R.id.tv_vote_period1);
         VotePeriod.setText("투표기간    "+startDate+" ~ "+endDate);
@@ -131,6 +135,7 @@ public class CandidateListActivity extends AppCompatActivity {
 
                     for (int i = 0; i < response.length(); i++) {
                         JSONObject jObject = jsonArray.getJSONObject(i);
+                        String candidateid = jObject.getString("candidateid");
                         String candidate_name = jObject.getString("name");
                         String campname = jObject.getString("campname");
                         String slogan = jObject.getString("slogan");
@@ -139,7 +144,7 @@ public class CandidateListActivity extends AppCompatActivity {
                         placeid = jObject.getString("wantvote");
                         String candidateresult = jObject.getString("candidateresult");
 
-                        listViewCandidateList.add(new ListViewCandidate(candidate_name, campname, slogan, promise, colleage, placeid, candidateresult));
+                        listViewCandidateList.add(new ListViewCandidate(candidateid, candidate_name, campname, slogan, promise, colleage, placeid, candidateresult));
 
 
                         adapter.notifyItemInserted(0);
@@ -164,7 +169,7 @@ public class CandidateListActivity extends AppCompatActivity {
 
     }
 
-    //"선거정보 조회하기" 눌렀을 때
+//    //"선거정보 조회하기" 눌렀을 때
 //    public void showDialogVotingInfo(){
 //        dialog_voting_info.show();
 //
@@ -177,6 +182,7 @@ public class CandidateListActivity extends AppCompatActivity {
 //        });
 //
 //    }
+
 //
 //    //"투표하러 가기" 눌렀을 때
 //    public void showDialogAccountInfo(){
@@ -207,10 +213,11 @@ public class CandidateListActivity extends AppCompatActivity {
                             //10개 계정 보내주기
                             Intent intent = new Intent(CandidateListActivity.this, DialogAccountInfo.class );
                             intent.putExtra("accounts", accounts);
-                            intent.putExtra("college",  college);
+                            intent.putExtra("colleage",  colleage);
                             intent.putExtra("placeid", placeid);
                             intent.putExtra("UserNumber", UserNumber);
                             intent.putExtra("Userid", Userid);
+                            intent.putExtra("UserVoteState", UserVoteState);
                             startActivity(intent);
 
                         } else {    //통신은 성공했지만 응답에 문제있는 경우

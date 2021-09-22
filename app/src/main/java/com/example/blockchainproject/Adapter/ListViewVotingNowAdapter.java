@@ -23,8 +23,11 @@ import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 
+import com.example.blockchainproject.CandidateListActivity;
 import com.example.blockchainproject.ListViewCandidate;
 import com.example.blockchainproject.R;
+import com.example.blockchainproject.VoteActivity;
+import com.example.blockchainproject.VoteListActivity;
 import com.example.blockchainproject.VotingResultDetailActivity;
 
 import org.jetbrains.annotations.NotNull;
@@ -32,15 +35,19 @@ import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
+import static android.app.Activity.RESULT_OK;
 import static android.graphics.Color.BLACK;
 import static android.graphics.Color.WHITE;
+
 
 public class ListViewVotingNowAdapter extends RecyclerView.Adapter{
 
     private Context context;
     private ArrayList<ListViewCandidate> listViewCandidateList = new ArrayList<ListViewCandidate>();
     private RadioButton lastChecked = null;
-    private static int lastCheckedPos = 0;
+
+    public String candidateid;
+    public String campname;
 
 
     //ListViewAdapter의 생성자
@@ -66,8 +73,7 @@ public class ListViewVotingNowAdapter extends RecyclerView.Adapter{
 
         ListViewCandidate item = listViewCandidateList.get(position);
         vh.candidate_name.setText(item.getName());
-
-
+        vh.candidate_number.setText(item.getCandidateid());
 
     }
 
@@ -100,26 +106,27 @@ public class ListViewVotingNowAdapter extends RecyclerView.Adapter{
             box2 = itemView.findViewById(R.id.box2);
             rb_check = itemView.findViewById(R.id.rb_check);
 
-            itemView.setClickable(true);
-            box1.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    int pos = getAdapterPosition();
-
-                    if(pos!=RecyclerView.NO_POSITION) {
-                        box1.setBackgroundResource(R.drawable.edge_candidate_check1);
-                        box2.setBackgroundResource(R.drawable.edge_candidate_check2);
-                    }
-                    }
-                }
-            );
+            //itemView.setClickable(true);
+//            box1.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//                    int pos = getAdapterPosition();
+//
+//                    if(pos!=RecyclerView.NO_POSITION) {
+//                        box1.setBackgroundResource(R.drawable.edge_candidate_check1);
+//                        box2.setBackgroundResource(R.drawable.edge_candidate_check2);
+//                    }
+//                    }
+//                }
+//            );
 
             rb_check.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                         @Override
                         public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                             int pos = getAdapterPosition();
 
-                            //radioButton 선택 시 색 변화 (맛탱이감)
+                            //radioButton 선택 시 색 변화
+                            //다른 항목 선택 시 Background 원상태로 되진 않음
                             if(pos!=RecyclerView.NO_POSITION){
                                 box1.setBackgroundResource(R.drawable.edge_candidate_check1);
                                 box2.setBackgroundResource(R.drawable.edge_candidate_check2);
@@ -128,6 +135,17 @@ public class ListViewVotingNowAdapter extends RecyclerView.Adapter{
                                     lastChecked.setChecked(false);
                                 }
                                 lastChecked = rb_check;
+
+                                String candidateid1 = listViewCandidateList.get(pos).getCandidateid();
+                                System.out.println("여기 어뎁터 "+candidateid1);
+                                //찍으면 잘 나옴
+
+                                Intent pushedIntent = new Intent(context, VoteActivity.class);
+                                pushedIntent.putExtra("name_clicked", listViewCandidateList.get(pos).getName());
+                                pushedIntent.putExtra("candidateid_clicked", listViewCandidateList.get(pos).getCandidateid());
+                                pushedIntent.putExtra("campname_clicked", listViewCandidateList.get(pos).getCampname());
+                                context.startActivity(pushedIntent);
+
                             }
 
 

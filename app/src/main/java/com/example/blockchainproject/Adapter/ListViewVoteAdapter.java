@@ -111,12 +111,13 @@ public class ListViewVoteAdapter extends RecyclerView.Adapter {
                     if(position!=RecyclerView.NO_POSITION){
                         Intent intent = new Intent(tv_vote_name, CandidateListActivity.class).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 
-                        intent.putExtra("college", listViewVoteList.get(position).getContents());
+                        intent.putExtra("colleage", listViewVoteList.get(position).getContents());
                         intent.putExtra("start_regist_peroid", listViewVoteList.get(position).getStart_regist_peroid());
                         intent.putExtra("end_regist_peroid", listViewVoteList.get(position).getEnd_regist_period());
                         intent.putExtra("UserNumber", UserNumber);
                         intent.putExtra("Userid",Userid);
                         intent.putExtra("placeid", listViewVoteList.get(position).getPlaceid());
+                        intent.putExtra("UserVoteState",UserVoteState);
 
 
                         tv_vote_name.startActivity(intent);

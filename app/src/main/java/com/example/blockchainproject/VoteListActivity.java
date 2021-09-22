@@ -66,7 +66,7 @@ public class VoteListActivity extends AppCompatActivity {
         String Userid = UserNumberIntent.getExtras().getString("Userid");
         String UserNumber = UserNumberIntent.getExtras().getString("UserNumber");
         String UserName = UserNumberIntent.getExtras().getString("UserName");
-        UserVoteState = UserNumberIntent.getExtras().getInt("UserVoteState");
+        int UserVoteState = UserNumberIntent.getExtras().getInt("UserVoteState");
 
         //진행중인 투표
         tv_starting_voting= findViewById(R.id.tv_starting_voting);
@@ -106,6 +106,7 @@ public class VoteListActivity extends AppCompatActivity {
                         tv_user_name.setText(UserName);
                         System.out.println("votelist ratio : "+ ratio);
                         System.out.println("votelist placeCnt : "+ placeCnt);
+
                         //아이템의 개수만큼 recyclerView에 객체 넣어주기
                         listViewVoteList.add(new ListViewVote(contents, start_regist_period, end_regist_period, count, ratio, placeid));
                         adapter.notifyItemInserted(0);
@@ -125,7 +126,6 @@ public class VoteListActivity extends AppCompatActivity {
         Button btn_doneVote = (Button) findViewById(R.id.btn_doneVote);
         btn_doneVote.setOnClickListener (new View.OnClickListener(){
 
-            //후보 선택하고 투표 완료하는 과정
             @Override
             public void onClick(View v){
 

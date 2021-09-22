@@ -25,8 +25,9 @@ public class DialogAccountInfo extends AppCompatActivity {
 
     public String UserNumber;
     public String Userid;
-    public String college;
+    public String colleage;
     public String placeid;
+    public int UserVoteState;
 
     public Button btn_check;
 
@@ -44,9 +45,10 @@ public class DialogAccountInfo extends AppCompatActivity {
 
         //선거장 정보 받아오기
         placeid = AccountIntent.getExtras().getString("placeid");
-        college = AccountIntent.getExtras().getString("college");
+        colleage = AccountIntent.getExtras().getString("colleage");
         Userid = AccountIntent.getExtras().getString("Userid");
         UserNumber= AccountIntent.getExtras().getString("UserNumber");
+        UserVoteState = AccountIntent.getExtras().getInt("UserVoteState");
 
         tv_account1 = findViewById(R.id.tv_account1);
         tv_account1.setText(accounts[0]);
@@ -91,10 +93,11 @@ public class DialogAccountInfo extends AppCompatActivity {
                 System.out.println("plaaaa"+placeid);
 
                 Intent intent = new Intent(DialogAccountInfo.this, VoteActivity.class);
-                intent.putExtra("college", college);
+                intent.putExtra("colleage", colleage);
                 intent.putExtra("placeid", placeid);
                 intent.putExtra("UserNumber", UserNumber);
                 intent.putExtra("Userid", Userid);
+                intent.putExtra("UserVoteState", UserVoteState);
 
                 startActivity(intent);
             }
