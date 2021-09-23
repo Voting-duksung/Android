@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="이메일 본인인증"
+            android:textSize="25dp"
+            android:textColor="#495057"
+            android:layout_marginTop="64dp"
+            android:layout_marginLeft="35dp"
+            android:textStyle="bold">
+        </TextView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="덕성여자대학교 전자투표시스템은 \n재학생만 이용 가능합니다."
+            android:layout_marginLeft="35dp"
+            android:layout_marginTop="13dp"
+            android:textColor="#868E96">
+        </TextView>
+
+        <EditText
+            android:layout_width="335dp"
+            android:layout_height="48dp"
+            android:hint="학교 이메일 주소를 입력하세요"
+            android:textSize="16dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="61.44dp"
+            android:paddingLeft="15dp"
+            android:background="@drawable/edittext_rect2">
+        </EditText>
+
+        <EditText
+            android:id="@+id/et_OTP_number"
+            android:layout_width="335dp"
+            android:layout_height="48dp"
+            android:hint="인증번호를 입력하세요"
+            android:textSize="16dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:paddingLeft="15dp"
+            android:background="@drawable/edittext_rect2">
+    </EditText>
+
+        <Button
+            android:id="@+id/btn_send_number"
+            android:layout_width="125dp"
+            android:layout_height="36dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="16.32dp"
+            android:text="인증번호 전송"
+            android:textSize="14dp"
+            android:background="@drawable/rectangle_5">
+        </Button>
+        
+        <Button
+            android:id="@+id/btn_email_check"
+            android:layout_width="336dp"
+            android:layout_height="41dp"
+            android:layout_marginTop="250dp"
+            android:layout_gravity="center"
+            android:background="@drawable/rectangle_6"
+            android:text="인증 완료">
+        </Button>
+
+    </LinearLayout>
+</RelativeLayout>

@@ -80,17 +80,17 @@ public class CandidateListActivity extends AppCompatActivity {
         account();
         account_show();
 
-//        dialog_voting_info = new Dialog(CandidateListActivity.this);
-//        dialog_voting_info.requestWindowFeature(Window.FEATURE_NO_TITLE);
-//        dialog_voting_info.setContentView(R.layout.dialog_voting_infodialog_voting_info);
-//
-//         //버튼: 커스텀 다이얼로그 띄우기
-//        findViewById(R.id.btn_voting_info).setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                showDialogVotingInfo(); // 아래 showDialogVotingInfo() 함수 호출
-//            }
-//        });
+        dialog_voting_info = new Dialog(CandidateListActivity.this);
+        dialog_voting_info.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog_voting_info.setContentView(R.layout.dialog_voting_info);
+
+         //버튼: 커스텀 다이얼로그 띄우기
+        findViewById(R.id.btn_voting_info).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showDialogVotingInfo(); // 아래 showDialogVotingInfo() 함수 호출
+            }
+        });
 
 
         Intent UserNumberIntent = getIntent();
@@ -110,6 +110,9 @@ public class CandidateListActivity extends AppCompatActivity {
 
         TextView VoteCollege = findViewById(R.id.tv_vote_college1);
         VoteCollege.setText(colleage);
+
+        TextView userNum = findViewById(R.id.tv_user_name);
+        userNum.setText(UserNumber);
 
         TextView VotePeriod = findViewById(R.id.tv_vote_period1);
         VotePeriod.setText("투표기간    "+startDate+" ~ "+endDate);
@@ -169,19 +172,19 @@ public class CandidateListActivity extends AppCompatActivity {
 
     }
 
-//    //"선거정보 조회하기" 눌렀을 때
-//    public void showDialogVotingInfo(){
-//        dialog_voting_info.show();
-//
-//        btn_ok = dialog_voting_info.findViewById(R.id.btn_ok);
-//        btn_ok.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                dialog_voting_info.dismiss();
-//            }
-//        });
-//
-//    }
+    //"선거정보 조회하기" 눌렀을 때
+    public void showDialogVotingInfo(){
+        dialog_voting_info.show();
+
+        btn_ok = dialog_voting_info.findViewById(R.id.btn_ok);
+        btn_ok.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog_voting_info.dismiss();
+            }
+        });
+
+    }
 
 //
 //    //"투표하러 가기" 눌렀을 때
