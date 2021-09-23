@@ -50,13 +50,13 @@ public class DialogVotingResultAdapter extends RecyclerView.Adapter {
 
         int candidateresult = item.getCandidateresult();
         //후보자 투표
-        int candidate_result_ratio=  item.getCandidateresult()/item.getStudentNum()*100;
-
+        double candidate_result_ratio=  item.getCandidateresult()/(double)item.getStudentNum()*100;
+        int finalValue = (int) candidate_result_ratio;
 
         vh.candidateName.setText(item.getCandidateName());
-        vh.tv_candidate_percent_detail.setText((candidateresult)+"%");
+        vh.tv_candidate_percent_detail.setText((candidate_result_ratio)+"%");
 
-        progress.setProgress(candidateresult);
+        progress.setProgress(finalValue);
         System.out.println("dialogadapter candidateresult " + candidateresult);
         System.out.println("dialogadapter candidateresultratio " + candidate_result_ratio);
     }

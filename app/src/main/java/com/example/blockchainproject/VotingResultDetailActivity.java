@@ -24,6 +24,7 @@ import com.example.blockchainproject.Adapter.DialogVotingResultAdapter;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.web3j.abi.datatypes.Int;
 
 import java.util.ArrayList;
 
@@ -40,8 +41,8 @@ public class VotingResultDetailActivity extends AppCompatActivity {
     public String start_period;
     public String end_period;
     public String placeid;
-    public int count;
-    public int vote_result_ratio;
+    public double count;
+    public double vote_result_ratio;
 
     RecyclerView votingDetail;
     TextView tv_voting_name;
@@ -79,7 +80,9 @@ public class VotingResultDetailActivity extends AppCompatActivity {
         studentNum = UserNumberIntent.getExtras().getInt("studentNum");
 //        vote_result_ratio = UserNumberIntent.getExtras().getFloat("vote_result_ratio");
         count = UserNumberIntent.getExtras().getInt("count");
-        vote_result_ratio =  count/studentNum * 100;
+        vote_result_ratio = count/studentNum * 100;
+
+        int finalValue = (int) vote_result_ratio;
         System.out.println("vote_result_ratio"+vote_result_ratio);
 
         //투표 결과 더보기 recyclerView
@@ -103,9 +106,9 @@ public class VotingResultDetailActivity extends AppCompatActivity {
         System.out.println(vote_result_ratio);
         tv_voting_name.setText(placeName);
         tv_period.setText("투표 기간 "+start_period+"~"+end_period);
-        tv_vote_rate.setText("최종 투표율 "+String.valueOf(vote_result_ratio)+"%");
-        tv_voting_result_full.setText("전체 유권자 "+studentNum+"명 중 "+count+"명 투표\n 최종 투표율 "+String.valueOf(vote_result_ratio)+"%");
-        progressBar.setProgress(vote_result_ratio);
+        tv_vote_rate.setText("최종 투표율 "+(finalValue)+"%");
+        tv_voting_result_full.setText("전체 유권자 "+studentNum+"명 중 "+ count+"명 투표\n 최종 투표율 "+String.valueOf(vote_result_ratio)+"%");
+        progressBar.setProgress(finalValue);
 
     }
 
