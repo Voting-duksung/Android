@@ -97,6 +97,17 @@ public class CandidateListActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(),mailAuthActivity.class);
+
+                intent.putExtra("UserNumber", UserNumber);
+                intent.putExtra("Userid", Userid);
+                intent.putExtra("placeid",placeid);
+                intent.putExtra("colleage",  colleage);
+                intent.putExtra("UserVoteState", UserVoteState);
+                intent.putExtra("startDate", startDate);
+                intent.putExtra("endDate", endDate);
+
+
+                //Intent intent = new Intent(getApplicationContext(),VoteActivity.class);
                 startActivity(intent);
                 finish();
             }

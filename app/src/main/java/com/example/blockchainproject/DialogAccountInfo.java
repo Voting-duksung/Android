@@ -28,6 +28,8 @@ public class DialogAccountInfo extends AppCompatActivity {
     public String colleage;
     public String placeid;
     public int UserVoteState;
+    public String startDate;
+    public String endDate;
 
     public Button btn_check;
 
@@ -49,6 +51,9 @@ public class DialogAccountInfo extends AppCompatActivity {
         Userid = AccountIntent.getExtras().getString("Userid");
         UserNumber= AccountIntent.getExtras().getString("UserNumber");
         UserVoteState = AccountIntent.getExtras().getInt("UserVoteState");
+        startDate= AccountIntent.getExtras().getString("startDate");
+        endDate= AccountIntent.getExtras().getString("endDate");
+
 
         tv_account1 = findViewById(R.id.tv_account1);
         tv_account1.setText(accounts[0]);

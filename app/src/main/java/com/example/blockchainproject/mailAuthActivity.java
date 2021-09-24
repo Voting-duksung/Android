@@ -77,6 +77,15 @@ public class mailAuthActivity extends AppCompatActivity {
 
         account_show();
 
+        Intent intent = getIntent();
+        UserNumber = intent.getExtras().getString("UserNumber");
+        Userid = intent.getExtras().getString("Userid");
+        placeid = intent.getExtras().getString("placeid");
+        colleage = intent.getExtras().getString("colleage");
+        UserVoteState = intent.getExtras().getInt("UserVoteState");
+        startDate = intent.getExtras().getString("startDate");
+        endDate = intent.getExtras().getString("endDate");
+
 
         StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder()
                 .permitDiskReads()
@@ -144,6 +153,9 @@ public class mailAuthActivity extends AppCompatActivity {
                                 intent.putExtra("UserNumber", UserNumber);
                                 intent.putExtra("Userid", Userid);
                                 intent.putExtra("UserVoteState", UserVoteState);
+                                intent.putExtra("startDate", startDate);
+                                intent.putExtra("endDate", endDate);
+
                                 startActivity(intent);
 
                             } else {    //통신은 성공했지만 응답에 문제있는 경우
@@ -172,7 +184,7 @@ public class mailAuthActivity extends AppCompatActivity {
     class MailTread extends Thread{
 
         public void run(){
-            mailSender mailSender = new mailSender("ses_2021@naver.com", "duksung2021!");
+            mailSender mailSender = new mailSender("ses_2021@naver.com", "duksungduksung");
 
             //인증코드
             GmailCode = mailSender.getEmailCode();

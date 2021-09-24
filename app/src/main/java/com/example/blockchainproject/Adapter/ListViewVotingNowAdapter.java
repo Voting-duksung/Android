@@ -24,7 +24,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 
 import com.example.blockchainproject.CandidateListActivity;
+import com.example.blockchainproject.FinishVotingActivity;
 import com.example.blockchainproject.ListViewCandidate;
+import com.example.blockchainproject.OnItemClickListener;
 import com.example.blockchainproject.R;
 import com.example.blockchainproject.VoteActivity;
 import com.example.blockchainproject.VoteListActivity;
@@ -45,15 +47,20 @@ public class ListViewVotingNowAdapter extends RecyclerView.Adapter{
     private Context context;
     private ArrayList<ListViewCandidate> listViewCandidateList = new ArrayList<ListViewCandidate>();
     private RadioButton lastChecked = null;
+    ListViewCandidate cItem;
 
     public String candidateid;
     public String campname;
 
+    //이벤트 리스너 변수로 선언
+    private OnItemClickListener listener;
+
 
     //ListViewAdapter의 생성자
-    public ListViewVotingNowAdapter (Context context, ArrayList<ListViewCandidate> listViewCandidateList) {
+    public ListViewVotingNowAdapter (Context context, ArrayList<ListViewCandidate> listViewCandidateList, OnItemClickListener mOnClickListener) {
         this.context = context;
         this.listViewCandidateList = listViewCandidateList;
+        this.listener = mOnClickListener;
     }
 
     @NonNull
@@ -73,7 +80,9 @@ public class ListViewVotingNowAdapter extends RecyclerView.Adapter{
 
         ListViewCandidate item = listViewCandidateList.get(position);
         vh.candidate_name.setText(item.getName());
-        vh.candidate_number.setText(item.getCandidateid());
+        vh.candidate_number.setText("기호 "+item.getCandidateid());
+        vh.tv_candidate_campname.setText(item.getCampname());
+        vh.tv_candidate_slogan.setText(item.getSlogan());
 
     }
 
@@ -93,6 +102,8 @@ public class ListViewVotingNowAdapter extends RecyclerView.Adapter{
 
         TextView candidate_name;
         TextView candidate_number;
+        TextView tv_candidate_campname;
+        TextView tv_candidate_slogan;
         LinearLayout box1;
         LinearLayout box2;
         RadioButton rb_check;
@@ -105,20 +116,8 @@ public class ListViewVotingNowAdapter extends RecyclerView.Adapter{
             box1 = itemView.findViewById(R.id.box1);
             box2 = itemView.findViewById(R.id.box2);
             rb_check = itemView.findViewById(R.id.rb_check);
-
-            //itemView.setClickable(true);
-//            box1.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//                    int pos = getAdapterPosition();
-//
-//                    if(pos!=RecyclerView.NO_POSITION) {
-//                        box1.setBackgroundResource(R.drawable.edge_candidate_check1);
-//                        box2.setBackgroundResource(R.drawable.edge_candidate_check2);
-//                    }
-//                    }
-//                }
-//            );
+            tv_candidate_campname = itemView.findViewById(R.id.tv_candidate_campname);
+            tv_candidate_slogan = itemView.findViewById(R.id.tv_candidate_slogan);
 
             rb_check.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                         @Override
@@ -136,16 +135,15 @@ public class ListViewVotingNowAdapter extends RecyclerView.Adapter{
                                 }
                                 lastChecked = rb_check;
 
-                                String candidateid1 = listViewCandidateList.get(pos).getCandidateid();
-                                System.out.println("여기 어뎁터 "+candidateid1);
+                                String name_clicked = listViewCandidateList.get(pos).getName();
+                                String candidateid_clicked = listViewCandidateList.get(pos).getCandidateid();
+                                String campname_clicked = listViewCandidateList.get(pos).getCampname();
+                                String candidateresult_clicked = listViewCandidateList.get(pos).getCandidateresult();
                                 //찍으면 잘 나옴
 
-                                Intent pushedIntent = new Intent(context, VoteActivity.class);
-                                pushedIntent.putExtra("name_clicked", listViewCandidateList.get(pos).getName());
-                                pushedIntent.putExtra("candidateid_clicked", listViewCandidateList.get(pos).getCandidateid());
-                                pushedIntent.putExtra("campname_clicked", listViewCandidateList.get(pos).getCampname());
-                                context.startActivity(pushedIntent);
+                                //System.out.println("고른 후보 이름" + name_clicked);
 
+                                listener.onItemClick(name_clicked, candidateid_clicked, campname_clicked, candidateresult_clicked);
                             }
 
 

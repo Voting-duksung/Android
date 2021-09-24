@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -86,6 +87,7 @@ public class ListViewVoteAdapter extends RecyclerView.Adapter {
         TextView tv_vote_period;
         TextView tv_vote_rate;
         Button btn_lets_vote;
+        LinearLayout ll_votelist;
 
         public VH(@NonNull View itemView) {
             super(itemView);
@@ -94,6 +96,16 @@ public class ListViewVoteAdapter extends RecyclerView.Adapter {
             tv_vote_period=itemView.findViewById(R.id.tv_vote_period);
             tv_vote_rate=itemView.findViewById(R.id.tv_vote_rate);
             btn_lets_vote=itemView.findViewById(R.id.btn_lets_vote);
+            ll_votelist=itemView.findViewById(R.id.ll_votelist);
+
+            //이미 투표했을 때
+            if (UserVoteState == 1){
+                btn_lets_vote.setClickable(false);
+                tv_vote_college.setTextColor(Color.parseColor("#CED4DA"));
+                tv_vote_period.setTextColor(Color.parseColor("#CED4DA"));
+                tv_vote_rate.setTextColor(Color.parseColor("#CED4DA"));
+                btn_lets_vote.setBackgroundColor(Color.parseColor("#CED4DA"));
+            }
 
             if(!included){      //참여완료투표 포함 눌렀을 경우
                 btn_lets_vote.setBackgroundColor(Color.parseColor("#CED4DA"));

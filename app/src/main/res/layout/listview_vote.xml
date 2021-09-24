@@ -6,6 +6,7 @@
     android:orientation="horizontal">
 
     <LinearLayout
+        android:id="@+id/ll_votelist"
         android:layout_width="280dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="7dp"
