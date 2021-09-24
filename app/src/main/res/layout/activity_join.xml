@@ -120,17 +120,10 @@
             android:id="@+id/btn_join"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:layout_marginTop="25dp"
+            android:layout_marginTop="70dp"
             android:text="회원 가입 완료"
             android:backgroundTint="@color/duksung_red" />
 
-            <Button
-            android:id="@+id/btn_self_check"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginTop="15dp"
-            android:text="본인 인증"
-            android:backgroundTint="@color/duksung_red" />
 
         </LinearLayout>
 

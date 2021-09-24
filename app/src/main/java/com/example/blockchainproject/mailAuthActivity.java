@@ -1,6 +1,7 @@
 package com.example.blockchainproject;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.os.Handler;
@@ -12,7 +13,29 @@ import android.widget.TextView;
 import android.widget.Toast;
 import javax.mail.MessagingException;
 import javax.mail.SendFailedException;
+import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.toolbox.Volley;
+import com.example.blockchainproject.Adapter.ListViewCandidateAdapter;
+import com.example.blockchainproject.Model.ApiClient;
+import com.example.blockchainproject.Model.ApiInterface;
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
+
+import okhttp3.ResponseBody;
+import retrofit2.Call;
+import retrofit2.Callback;
 
 
 public class mailAuthActivity extends AppCompatActivity {
@@ -30,10 +53,30 @@ public class mailAuthActivity extends AppCompatActivity {
     static int value;
     int mailSend=0;
 
+    private ApiInterface service;
+
+    public String UserNumber;
+    public String Userid;
+    public String colleage;
+    public String startDate;
+    public String endDate;
+    public int UserVoteState;
+    public String placeid;
+    public String content;
+    public String candidateresult;
+
+    public String[] accounts = new String[10];
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mailauth);
+
+        //retrofit
+        service = ApiClient.getApiClient().create(ApiInterface.class);
+
+        account_show();
+
 
         StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder()
                 .permitDiskReads()
@@ -84,9 +127,38 @@ public class mailAuthActivity extends AppCompatActivity {
                 //이메일로 전송한 인증코드와 내가 입력한 인증코드가 같을 때
                 if(emailCodeText.getText().toString().equals(GmailCode)){
                     Toast.makeText(getApplicationContext(), "인증성공", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(getApplicationContext(),RegisterActivity.class);
 
-                    startActivity(intent);
+                    Call<ResponseBody> call_get = service.getAccount(Userid);
+                    call_get.enqueue(new Callback<ResponseBody>() {
+                        @Override
+                        public void onResponse(Call<ResponseBody> call, retrofit2.Response<ResponseBody> response) {
+                            //성공했을 경우
+                            if (response.isSuccessful()) {//응답을 잘 받은 경우
+                                String result = response.body().toString();
+                                System.out.println("계정 부여하기 성공");
+                                //10개 계정 보내주기
+                                Intent intent = new Intent(mailAuthActivity.this, DialogAccountInfo.class );
+                                intent.putExtra("accounts", accounts);
+                                intent.putExtra("colleage",  colleage);
+                                intent.putExtra("placeid", placeid);
+                                intent.putExtra("UserNumber", UserNumber);
+                                intent.putExtra("Userid", Userid);
+                                intent.putExtra("UserVoteState", UserVoteState);
+                                startActivity(intent);
+
+                            } else {    //통신은 성공했지만 응답에 문제있는 경우
+                                System.out.println("error="+String.valueOf(response.code()));
+                                Toast.makeText(getApplicationContext(), "error = " + String.valueOf(response.code()), Toast.LENGTH_SHORT).show();
+                            }
+                        }
+
+                        @Override
+                        public void onFailure(Call<ResponseBody> call, Throwable t) {//통신 자체 실패
+//                       Log.v(TAG, "Fail");
+                            System.out.println("계정 나눠주기 통신 실패");
+//                        Toast.makeText(getApplicationContext(), "Response Fail", Toast.LENGTH_SHORT).show();
+                        }
+                    });
                 }else{
                     Toast.makeText(getApplicationContext(), "인증번호를 다시 입력해주세요", Toast.LENGTH_SHORT).show();
                 }
@@ -100,7 +172,7 @@ public class mailAuthActivity extends AppCompatActivity {
     class MailTread extends Thread{
 
         public void run(){
-            mailSender mailSender = new mailSender("ses_2021@naver.com", "duksung21!");
+            mailSender mailSender = new mailSender("ses_2021@naver.com", "duksung2021!");
 
             //인증코드
             GmailCode = mailSender.getEmailCode();
@@ -175,6 +247,47 @@ public class mailAuthActivity extends AppCompatActivity {
                 emailCodeText.setHint("0"+min+" : "+sec);
             }
         }
+    }
+    //계정 10개 가져오기
+    public void account_show(){
+
+        Call<ResponseBody> call_accounts = service.getAccountList();
+        call_accounts.enqueue(new Callback<ResponseBody>() {
+            @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+            @Override
+            public void onResponse(Call<ResponseBody> call, retrofit2.Response<ResponseBody> response) {
+                //성공했을 경우
+                if (response.isSuccessful()) {//응답을 잘 받은 경우
+                    JSONArray jsonArray = null;
+                    try {
+                        JSONObject jsonObject = new JSONObject(response.body().string());
+                        jsonArray = jsonObject.getJSONArray("accounts");
+
+                        JsonParser jsonParser = new JsonParser();
+                        JsonArray jsonArray1 = (JsonArray) jsonParser.parse(String.valueOf(jsonArray));
+
+                        for (int k = 0; k < jsonArray.length(); k++) {
+                            JsonObject object = (JsonObject) jsonArray1.get(k);
+                            String data = object.get("data").getAsString();
+                            accounts[k]=data;
+                        }
+
+                    } catch (JSONException | IOException e) {
+                        e.printStackTrace();
+                    }
+                    System.out.println("10개 계정 가져오기 성공");
+
+                } else {    //통신은 성공했지만 응답에 문제있는 경우
+                    Toast.makeText(getApplicationContext(), "error = " + String.valueOf(response.code()), Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {//통신 자체 실패
+                System.out.println("통신 자체 실패...");
+                Toast.makeText(getApplicationContext(), "Response Fail", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
 }

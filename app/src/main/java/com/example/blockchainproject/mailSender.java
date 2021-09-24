@@ -18,7 +18,7 @@ import javax.mail.internet.MimeMessage;
 public class mailSender extends javax.mail.Authenticator {
     private String mailhost = "smtp.naver.com";
     private String user = "ses_2021@naver.com";
-    private String password = "duksung21!";
+    private String password = "duksung2021!";
     private String emailCode;
     private Session session;
 

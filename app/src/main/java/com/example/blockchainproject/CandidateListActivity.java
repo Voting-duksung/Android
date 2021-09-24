@@ -34,6 +34,7 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import jnr.ffi.annotations.In;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -77,8 +78,6 @@ public class CandidateListActivity extends AppCompatActivity {
         //retrofit
         service = ApiClient.getApiClient().create(ApiInterface.class);
 
-        account();
-        account_show();
 
         dialog_voting_info = new Dialog(CandidateListActivity.this);
         dialog_voting_info.requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -89,6 +88,17 @@ public class CandidateListActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 showDialogVotingInfo(); // 아래 showDialogVotingInfo() 함수 호출
+            }
+        });
+
+        //투표하러가기 버튼 눌렀을 때
+        btn_go_voting = (Button)findViewById( R.id.btn_go_voting );
+        btn_go_voting.setOnClickListener( new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(),mailAuthActivity.class);
+                startActivity(intent);
+                finish();
             }
         });
 
@@ -186,100 +196,7 @@ public class CandidateListActivity extends AppCompatActivity {
 
     }
 
-//
-//    //"투표하러 가기" 눌렀을 때
-//    public void showDialogAccountInfo(){
-////        dialog_account_info.show();
-//    }
-
-    //투표하러가기 버튼 (계정나눠주기)
-    public void account() {
-
-        //투표하러가기 버튼 눌렀을 때
-        btn_go_voting = (Button)findViewById( R.id.btn_go_voting );
-        btn_go_voting.setOnClickListener( new View.OnClickListener() {
-
-            @Override
-            public void onClick(View view) {
-
-                //계정 나눠주기 dialog 짜잔
-//                showDialogAccountInfo();
-
-                Call<ResponseBody> call_get = service.getAccount(Userid);
-                call_get.enqueue(new Callback<ResponseBody>() {
-                    @Override
-                    public void onResponse(Call<ResponseBody> call, retrofit2.Response<ResponseBody> response) {
-                        //성공했을 경우
-                        if (response.isSuccessful()) {//응답을 잘 받은 경우
-                            String result = response.body().toString();
-                            System.out.println("계정 부여하기 성공");
-                            //10개 계정 보내주기
-                            Intent intent = new Intent(CandidateListActivity.this, DialogAccountInfo.class );
-                            intent.putExtra("accounts", accounts);
-                            intent.putExtra("colleage",  colleage);
-                            intent.putExtra("placeid", placeid);
-                            intent.putExtra("UserNumber", UserNumber);
-                            intent.putExtra("Userid", Userid);
-                            intent.putExtra("UserVoteState", UserVoteState);
-                            startActivity(intent);
-
-                        } else {    //통신은 성공했지만 응답에 문제있는 경우
-                            System.out.println("error="+String.valueOf(response.code()));
-                            Toast.makeText(getApplicationContext(), "error = " + String.valueOf(response.code()), Toast.LENGTH_SHORT).show();
-                        }
-                    }
-
-                    @Override
-                    public void onFailure(Call<ResponseBody> call, Throwable t) {//통신 자체 실패
-//                       Log.v(TAG, "Fail");
-                        System.out.println("계정 나눠주기 통신 실패");
-//                        Toast.makeText(getApplicationContext(), "Response Fail", Toast.LENGTH_SHORT).show();
-                    }
-                });
-            }
-        });
-    }
-
-    //계정 10개 가져오기
-    public void account_show(){
-
-        Call<ResponseBody> call_accounts = service.getAccountList();
-        call_accounts.enqueue(new Callback<ResponseBody>() {
-            @RequiresApi(api = Build.VERSION_CODES.KITKAT)
-            @Override
-            public void onResponse(Call<ResponseBody> call, retrofit2.Response<ResponseBody> response) {
-                //성공했을 경우
-                if (response.isSuccessful()) {//응답을 잘 받은 경우
-                    JSONArray jsonArray = null;
-                    try {
-                        JSONObject jsonObject = new JSONObject(response.body().string());
-                        jsonArray = jsonObject.getJSONArray("accounts");
-
-                        JsonParser jsonParser = new JsonParser();
-                        JsonArray jsonArray1 = (JsonArray) jsonParser.parse(String.valueOf(jsonArray));
-
-                        for (int k = 0; k < jsonArray.length(); k++) {
-                            JsonObject object = (JsonObject) jsonArray1.get(k);
-                            String data = object.get("data").getAsString();
-                            accounts[k]=data;
-                        }
-
-                    } catch (JSONException | IOException e) {
-                        e.printStackTrace();
-                    }
-                    System.out.println("10개 계정 가져오기 성공");
-
-                } else {    //통신은 성공했지만 응답에 문제있는 경우
-                    Toast.makeText(getApplicationContext(), "error = " + String.valueOf(response.code()), Toast.LENGTH_SHORT).show();
-                }
-            }
-
-            @Override
-            public void onFailure(Call<ResponseBody> call, Throwable t) {//통신 자체 실패
-                System.out.println("통신 자체 실패...");
-                Toast.makeText(getApplicationContext(), "Response Fail", Toast.LENGTH_SHORT).show();
-            }
-        });
-    }
 }
+
+
 

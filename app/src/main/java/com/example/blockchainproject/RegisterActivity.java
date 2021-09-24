@@ -24,7 +24,7 @@ import org.json.JSONObject;
 public class RegisterActivity extends AppCompatActivity {
 
     private EditText join_number, join_password, join_name, join_pwck;
-    private Button btn_join, btn_number_check, btn_self_check;
+    private Button btn_join, btn_number_check;
     private TextView tv_college;
     private AlertDialog dialog;
     private Spinner spinner_college;
@@ -113,15 +113,6 @@ public class RegisterActivity extends AppCompatActivity {
             }
         });
 
-        btn_self_check = (Button)findViewById(R.id.btn_self_check);
-        btn_self_check.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(RegisterActivity.this, mailAuthActivity.class);
-                startActivity(intent);
-
-            }
-        });
 
 
         //회원가입 버튼 클릭 시 수행
