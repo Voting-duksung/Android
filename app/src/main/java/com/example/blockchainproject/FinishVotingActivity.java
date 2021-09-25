@@ -33,7 +33,6 @@ public class FinishVotingActivity extends AppCompatActivity {
     public Button btn_go_home;
 
 
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
 
@@ -51,6 +50,7 @@ public class FinishVotingActivity extends AppCompatActivity {
 
         tv_place_name = findViewById(R.id.tv_place_name);
         tv_place_name.setText(colleage);
+
 
         btn_go_home = (Button) findViewById(R.id.btn_go_home);
         btn_go_home.setOnClickListener(new View.OnClickListener() {
@@ -90,7 +90,6 @@ public class FinishVotingActivity extends AppCompatActivity {
         FinishVotingRequest finishVotingRequest = new FinishVotingRequest(candidateresult, UserVoteState, candidateid, UserNumber, responseListener);
         RequestQueue queue = Volley.newRequestQueue( FinishVotingActivity.this );
         queue.add( finishVotingRequest );
-
 
     }
 }
