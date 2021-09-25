@@ -64,7 +64,7 @@ public class LoginActivity extends AppCompatActivity {
                                 String UserName = jsonObject.getString( "UserName" );
                                 int UserVoteState = jsonObject.getInt( "UserVoteState" );
 
-                                Toast.makeText( getApplicationContext(), String.format("%s님 환영합니다.", UserName), Toast.LENGTH_SHORT ).show();
+                                Toast.makeText( getApplicationContext(), String.format("%s님 환영합니다.", UserNumber), Toast.LENGTH_SHORT ).show();
                                 Intent intent = new Intent(getApplicationContext(), VoteListActivity.class );
 
                                 intent.putExtra("Userid", Userid);

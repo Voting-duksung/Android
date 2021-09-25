@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -88,6 +89,7 @@ public class ListViewVoteAdapter extends RecyclerView.Adapter {
         TextView tv_vote_rate;
         Button btn_lets_vote;
         LinearLayout ll_votelist;
+        TextView tv_vote_committee;
 
         public VH(@NonNull View itemView) {
             super(itemView);
@@ -97,13 +99,19 @@ public class ListViewVoteAdapter extends RecyclerView.Adapter {
             tv_vote_rate=itemView.findViewById(R.id.tv_vote_rate);
             btn_lets_vote=itemView.findViewById(R.id.btn_lets_vote);
             ll_votelist=itemView.findViewById(R.id.ll_votelist);
+            tv_vote_committee=itemView.findViewById(R.id.tv_vote_committee);
+
 
             //이미 투표했을 때
             if (UserVoteState == 1){
-                btn_lets_vote.setClickable(false);
+                btn_lets_vote.setEnabled(false);
+                Toast.makeText(itemView.getContext(), "이미 투표 완료한 선거장입니다.", Toast.LENGTH_LONG).show();
+
                 tv_vote_college.setTextColor(Color.parseColor("#CED4DA"));
                 tv_vote_period.setTextColor(Color.parseColor("#CED4DA"));
                 tv_vote_rate.setTextColor(Color.parseColor("#CED4DA"));
+                tv_vote_committee.setTextColor(Color.parseColor("#CED4DA"));
+
                 btn_lets_vote.setBackgroundColor(Color.parseColor("#CED4DA"));
             }
 

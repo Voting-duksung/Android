@@ -177,9 +177,7 @@ public class VoteActivity extends AppCompatActivity implements OnItemClickListen
 
     //'투표하러가기'눌렀을 때 보이는 투표용지 dialog
     public void showDialogVotingPaper(){
-
         dialog_voting_paper.show();
-        btn_summit = dialog_voting_paper.findViewById(R.id.btn_summit);
     }
 
     public void showDialogFinishVoting(){
@@ -202,7 +200,9 @@ public class VoteActivity extends AppCompatActivity implements OnItemClickListen
         String campname = campname_clicked;
         String candidateresult = candidateresult_clicked;
 
+        System.out.println("고른 후보 기호" + candidateid);
         System.out.println("고른 후보 이름" + campname);
+        System.out.println("고른 후보 투표결과"+candidateresult);
 
         Button btn_vote = (Button) findViewById(R.id.btn_vote);
         btn_vote.setOnClickListener (new View.OnClickListener(){
@@ -243,6 +243,7 @@ public class VoteActivity extends AppCompatActivity implements OnItemClickListen
         });
 
         //dialog 속 '투표제출하기' 버튼 눌렀을때
+        btn_summit = dialog_voting_paper.findViewById(R.id.btn_summit);
         btn_summit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -264,32 +265,32 @@ public class VoteActivity extends AppCompatActivity implements OnItemClickListen
             }
         });
 
-        //아래 리스너는 btn_summit 제대로 작동 시 삭제할 것
-        btn_go_home = dialog_finish_voting.findViewById(R.id.btn_go_home);
-        btn_go_home.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ////최종 다이얼로그
-
-                //Intent intent = new Intent(VoteActivity.this, VoteListActivity.class);
-                Intent intent = new Intent(VoteActivity.this, FinishVotingActivity.class);
-
-
-                intent.putExtra("UserNumber", UserNumber);
-                intent.putExtra("Userid", Userid);
-                intent.putExtra("UserVoteState", UserVoteState);
-                intent.putExtra("placeid", placeid);
-                intent.putExtra("colleage", colleage);
-
-                intent.putExtra("candidateid", candidateid);
-                intent.putExtra("candidateresult", candidateresult);
-
-
-                intent.addFlags(intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(intent);
-
-            }
-        });
+//        //아래 리스너는 btn_summit 제대로 작동 시 삭제할 것
+//        btn_go_home = dialog_finish_voting.findViewById(R.id.btn_go_home);
+//        btn_go_home.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                ////최종 다이얼로그
+//
+//                //Intent intent = new Intent(VoteActivity.this, VoteListActivity.class);
+//                Intent intent = new Intent(VoteActivity.this, FinishVotingActivity.class);
+//
+//
+//                intent.putExtra("UserNumber", UserNumber);
+//                intent.putExtra("Userid", Userid);
+//                intent.putExtra("UserVoteState", UserVoteState);
+//                intent.putExtra("placeid", placeid);
+//                intent.putExtra("colleage", colleage);
+//
+//                intent.putExtra("candidateid", candidateid);
+//                intent.putExtra("candidateresult", candidateresult);
+//
+//
+//                intent.addFlags(intent.FLAG_ACTIVITY_CLEAR_TOP);
+//                startActivity(intent);
+//
+//            }
+//        });
 
 
 

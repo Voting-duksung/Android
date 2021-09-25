@@ -31,6 +31,8 @@
         <activity android:name=".VotingResultDetailActivity" android:theme="@style/Theme.MyDialog"/>
         <activity android:name=".DialogAccountInfo" android:theme="@style/Theme.AccountDialog"/>
         <activity android:name=".mailAuthActivity"/>
+        <activity android:name=".FinishVotingActivity"/>
+
 
         <uses-library
             android:name="org.apache.http.legacy"
