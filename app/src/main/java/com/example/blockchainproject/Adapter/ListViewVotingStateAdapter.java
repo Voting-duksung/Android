@@ -99,7 +99,8 @@ public class ListViewVotingStateAdapter extends RecyclerView.Adapter {
 //        System.out.println("COUNt 어절절  " + count);
 //        System.out.println("studentnum 어절절  " + studentNum);
 //        System.out.println("vote_result 어절절  " + vote_result_ratio);
-        circleProgressBar.setProgress(item.getCandidateresult()/item.getStudentNum()*100);
+        double result = item.getCandidateresult()/item.getStudentNum()*100;
+        circleProgressBar.setProgress((int) result);
 
 //        onButtonDetail();
 

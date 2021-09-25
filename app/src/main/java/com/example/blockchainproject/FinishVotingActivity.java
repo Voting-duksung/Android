@@ -62,8 +62,8 @@ public class FinishVotingActivity extends AppCompatActivity {
                 intent.putExtra("UserNumber", UserNumber);
                 intent.putExtra("Userid", Userid);
                 intent.putExtra("placeid", placeid);
-
-                intent.addFlags(intent.FLAG_ACTIVITY_CLEAR_TOP);
+                intent.putExtra("UserVoteState",UserVoteState);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
 
             }
@@ -77,6 +77,7 @@ public class FinishVotingActivity extends AppCompatActivity {
                     boolean success = jsonObject.getBoolean("success");
                     if(success){
                         Toast.makeText(getApplicationContext(), "투표 기록 완료", Toast.LENGTH_LONG).show();
+                        UserVoteState=1;
                     }
 
                 } catch (JSONException e) {
