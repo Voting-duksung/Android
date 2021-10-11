@@ -39,7 +39,7 @@
             android:layout_height="30.84dp"
             android:layout_marginTop="35dp"
             android:layout_marginLeft="9.02dp"
-            android:src="@drawable/unlocked_png">
+            android:src="@drawable/lock">
         </ImageView>
 
     </LinearLayout>

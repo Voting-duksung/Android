@@ -47,10 +47,11 @@ public class ListViewCandidateAdapter extends RecyclerView.Adapter {
 
         ListViewCandidate item = listViewCandidateList.get(position);
 
-        //vh.candidate_number.setText("기호 "+item.getCandidateNumber());
+        //vh.tv_candidate_number.setText("기호 "+item.getCandidateid());
         vh.candidate_name.setText(item.getName());
         vh.tv_candidate_campname.setText(item.getCampname());
         vh.tv_candidate_slogan.setText(item.getSlogan());
+        vh.tv_candidate_number.setText("기호 "+item.getCandidateid());
 
 
 
@@ -73,6 +74,7 @@ public class ListViewCandidateAdapter extends RecyclerView.Adapter {
         TextView candidate_name;
         TextView tv_candidate_campname;
         TextView tv_candidate_slogan;
+        TextView tv_candidate_number;
 
         Button btn_promise;
 
@@ -82,6 +84,8 @@ public class ListViewCandidateAdapter extends RecyclerView.Adapter {
             tv_candidate_campname = itemView.findViewById(R.id.tv_candidate_campname);
             candidate_name=itemView.findViewById(R.id.tv_candidate);
             tv_candidate_slogan = itemView.findViewById(R.id.tv_candidate_slogan);
+            tv_candidate_number = itemView.findViewById(R.id.tv_candidate_number);
+
         }
     }
 }
