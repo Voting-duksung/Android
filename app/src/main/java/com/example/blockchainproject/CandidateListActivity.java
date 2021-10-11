@@ -67,6 +67,7 @@ public class CandidateListActivity extends AppCompatActivity {
     public String placeid;
     public String content;
     public String candidateresult;
+    public int count;
 
     public String[] accounts = new String[10];
 
@@ -106,6 +107,8 @@ public class CandidateListActivity extends AppCompatActivity {
                 intent.putExtra("startDate", startDate);
                 intent.putExtra("endDate", endDate);
 
+                intent.putExtra("count", count);
+
 
                 //Intent intent = new Intent(getApplicationContext(),VoteActivity.class);
                 startActivity(intent);
@@ -126,7 +129,6 @@ public class CandidateListActivity extends AppCompatActivity {
         startDate = intent.getExtras().getString("start_regist_peroid");
         endDate = intent.getExtras().getString("end_regist_peroid");
         //잘 넘어오는거 확인(0922)
-
 
 
         TextView VoteCollege = findViewById(R.id.tv_vote_college1);
@@ -169,8 +171,6 @@ public class CandidateListActivity extends AppCompatActivity {
                         String candidateresult = jObject.getString("candidateresult");
 
                         listViewCandidateList.add(new ListViewCandidate(candidateid, candidate_name, campname, slogan, promise, colleage, placeid, candidateresult));
-
-
                         adapter.notifyItemInserted(0);
                     }
                 } catch (JSONException e) {
@@ -204,9 +204,7 @@ public class CandidateListActivity extends AppCompatActivity {
                 dialog_voting_info.dismiss();
             }
         });
-
     }
-
 }
 
 
