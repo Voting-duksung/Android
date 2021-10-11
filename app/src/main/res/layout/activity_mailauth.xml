@@ -65,7 +65,8 @@
                 android:layout_marginTop="15dp"
                 android:layout_weight="1"
                 android:backgroundTint="#495057"
-                android:text="인증번호전송" />
+                android:text="인증번호전송"
+                android:textSize="12dp"/>
         </LinearLayout>
 
         <EditText

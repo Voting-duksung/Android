@@ -190,7 +190,7 @@ public class mailAuthActivity extends AppCompatActivity {
             GmailCode = mailSender.getEmailCode();
 
             try {
-                mailSender.sendMail("덕성 회원가입 이메일 인증", "인증번호입니다\n\n" + GmailCode , emailText.getText().toString()+"@duksung.ac.kr");
+                mailSender.sendMail("덕성 회원가입 이메일 인증", "\n\n\n인증번호입니다\n\n" + GmailCode , emailText.getText().toString()+"@duksung.ac.kr");
             } catch (SendFailedException e) {
 
             } catch (MessagingException e) {
