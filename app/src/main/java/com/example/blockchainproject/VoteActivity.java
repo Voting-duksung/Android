@@ -54,6 +54,7 @@ public class VoteActivity extends AppCompatActivity implements OnItemClickListen
     public int UserVoteState;
     public String startDate;
     public String endDate;
+    public int count;
 
     TextView candidateName;
 
@@ -95,6 +96,7 @@ public class VoteActivity extends AppCompatActivity implements OnItemClickListen
         UserNumber = intent.getExtras().getString("UserNumber");
         startDate = intent.getExtras().getString("startDate");
         endDate = intent.getExtras().getString("endDate");
+        count = intent.getExtras().getInt("count");
         //colleage 잘 받아와짐 (0922)
 
         TextView tv_vote_college1 = findViewById(R.id.tv_vote_college1);
@@ -257,6 +259,7 @@ public class VoteActivity extends AppCompatActivity implements OnItemClickListen
                 intent.putExtra("colleage", colleage);
                 intent.putExtra("candidateid", candidateid);
                 intent.putExtra("candidateresult", candidateresult);
+                intent.putExtra("count", count);
 
 
                 intent.addFlags(intent.FLAG_ACTIVITY_CLEAR_TOP);

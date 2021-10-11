@@ -65,6 +65,8 @@ public class mailAuthActivity extends AppCompatActivity {
     public String content;
     public String candidateresult;
 
+    public int count;
+
     public String[] accounts = new String[10];
 
     @Override
@@ -85,6 +87,7 @@ public class mailAuthActivity extends AppCompatActivity {
         UserVoteState = intent.getExtras().getInt("UserVoteState");
         startDate = intent.getExtras().getString("startDate");
         endDate = intent.getExtras().getString("endDate");
+        count = intent.getExtras().getInt("count");
 
 
         StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder()
@@ -155,6 +158,7 @@ public class mailAuthActivity extends AppCompatActivity {
                                 intent.putExtra("UserVoteState", UserVoteState);
                                 intent.putExtra("startDate", startDate);
                                 intent.putExtra("endDate", endDate);
+                                intent.putExtra("count", count);
 
                                 startActivity(intent);
 

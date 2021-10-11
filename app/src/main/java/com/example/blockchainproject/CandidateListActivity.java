@@ -123,11 +123,13 @@ public class CandidateListActivity extends AppCompatActivity {
         UserVoteState = UserNumberIntent.getExtras().getInt("UserVoteState");
 
 
+
         Intent intent = getIntent();
         placeid = intent.getExtras().getString("placeid");
         colleage = intent.getExtras().getString("colleage");
         startDate = intent.getExtras().getString("start_regist_peroid");
         endDate = intent.getExtras().getString("end_regist_peroid");
+
         //잘 넘어오는거 확인(0922)
 
 

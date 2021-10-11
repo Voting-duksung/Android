@@ -28,6 +28,7 @@ public class FinishVotingActivity extends AppCompatActivity {
     public String colleage;
     public String candidateresult;
     public String candidateid;
+    public int count;
 
     public TextView tv_place_name;
     public Button btn_go_home;
@@ -47,6 +48,7 @@ public class FinishVotingActivity extends AppCompatActivity {
         colleage = intent.getExtras().getString("colleage");
         candidateresult = intent.getExtras().getString("candidateresult");
         candidateid = intent.getExtras().getString("candidateid");
+        count = intent.getExtras().getInt("count");
 
         tv_place_name = findViewById(R.id.tv_place_name);
         tv_place_name.setText(colleage);
@@ -63,6 +65,8 @@ public class FinishVotingActivity extends AppCompatActivity {
                 intent.putExtra("Userid", Userid);
                 intent.putExtra("placeid", placeid);
                 intent.putExtra("UserVoteState",UserVoteState);
+                intent.putExtra("count", count);
+
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
 

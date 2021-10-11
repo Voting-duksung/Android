@@ -30,6 +30,7 @@ public class DialogAccountInfo extends AppCompatActivity {
     public int UserVoteState;
     public String startDate;
     public String endDate;
+    public int count;
 
     public Button btn_check;
 
@@ -53,6 +54,7 @@ public class DialogAccountInfo extends AppCompatActivity {
         UserVoteState = AccountIntent.getExtras().getInt("UserVoteState");
         startDate= AccountIntent.getExtras().getString("startDate");
         endDate= AccountIntent.getExtras().getString("endDate");
+        count = AccountIntent.getExtras().getInt("count");
 
 
         tv_account1 = findViewById(R.id.tv_account1);
@@ -103,6 +105,7 @@ public class DialogAccountInfo extends AppCompatActivity {
                 intent.putExtra("UserNumber", UserNumber);
                 intent.putExtra("Userid", Userid);
                 intent.putExtra("UserVoteState", UserVoteState);
+                intent.putExtra("count", count);
 
                 startActivity(intent);
             }
