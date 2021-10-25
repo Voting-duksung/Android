@@ -46,6 +46,7 @@ public class VoteListActivity extends AppCompatActivity {
     int UserVoteState;
     String placeid;
     int studentNum;
+    int count;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,7 +60,6 @@ public class VoteListActivity extends AppCompatActivity {
         }else {
             included=true;
         }
-
 
         //로그인 한 학번 받아오기
         Intent UserNumberIntent = getIntent();
@@ -106,6 +106,7 @@ public class VoteListActivity extends AppCompatActivity {
                         tv_user_name.setText(UserName);
                         System.out.println("votelist ratio : "+ ratio);
                         System.out.println("votelist placeCnt : "+ placeCnt);
+                        System.out.println("count : "+count);
 
                         //아이템의 개수만큼 recyclerView에 객체 넣어주기
                         listViewVoteList.add(new ListViewVote(contents, start_regist_period, end_regist_period, count, ratio, placeid));
@@ -135,7 +136,7 @@ public class VoteListActivity extends AppCompatActivity {
                 intent.putExtra("Userid", Userid);
                 intent.putExtra("placeid",placeid);
                 intent.putExtra("studentNum",studentNum);
-
+                //intent.putExtra("ratio", ratio);
 
                 startActivity(intent);
                 finish(); //액티비티 종(메모리에서 제거)

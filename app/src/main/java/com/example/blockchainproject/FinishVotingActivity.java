@@ -92,7 +92,7 @@ public class FinishVotingActivity extends AppCompatActivity {
         };
 
         //서버로 Volley를 이용해서 요청
-        FinishVotingRequest finishVotingRequest = new FinishVotingRequest(candidateresult, UserVoteState, candidateid, UserNumber, responseListener);
+        FinishVotingRequest finishVotingRequest = new FinishVotingRequest(candidateresult, UserVoteState, candidateid, UserNumber,placeid, count, responseListener);
         RequestQueue queue = Volley.newRequestQueue( FinishVotingActivity.this );
         queue.add( finishVotingRequest );
 

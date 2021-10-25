@@ -15,7 +15,7 @@ public class FinishVotingRequest extends StringRequest {
     private Map<String, String> map;
     //private Map<String, String>parameters;
 
-    public FinishVotingRequest(String candidateresult, int UserVoteState, String candidateid, String UserNumber, Response.Listener<String> listener) {
+    public FinishVotingRequest(String candidateresult, int UserVoteState, String candidateid, String UserNumber,String placeid, int count, Response.Listener<String> listener) {
         super(Request.Method.POST, URL, listener, null);
 
         map = new HashMap<>();
@@ -23,6 +23,8 @@ public class FinishVotingRequest extends StringRequest {
         map.put("UserVoteState", String.valueOf(UserVoteState));
         map.put("candidateid", candidateid);
         map.put("UserNumber", UserNumber);
+        map.put("placeid", placeid);
+        map.put("count", String.valueOf(count));
     }
 
     @Override

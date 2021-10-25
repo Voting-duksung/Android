@@ -47,6 +47,8 @@ public class ListViewVotingStateAdapter extends RecyclerView.Adapter {
     public int studentNum;
     public int count;
     public int candidateResult;
+    public String tv_choijong;
+
     TextView tv_voting_percent_detail;
     CircleProgressBar circleProgressBar;
     ProgressBar progressBar;
@@ -146,6 +148,7 @@ public class ListViewVotingStateAdapter extends RecyclerView.Adapter {
         TextView tv_candidate_percent_detail;
         TextView tv_candidate_ratio;
         TextView tv_voting_percent_detail;
+        TextView tv_choijong;
 
 
         public VH(@NonNull View itemView) {
@@ -160,6 +163,7 @@ public class ListViewVotingStateAdapter extends RecyclerView.Adapter {
             tv_voting_percent_detail = itemView.findViewById(R.id.tv_voting_percent_detail);
             circleProgressBar=itemView.findViewById(R.id.cpb_circlebar);
             tv_voting_percent_detail = itemView.findViewById(R.id.tv_voting_percent_detail);
+            tv_choijong = itemView.findViewById(R.id.tv_choijong);
 
             itemView.setClickable(true);
             tv_voting_percent_detail.setOnClickListener(new View.OnClickListener() {
