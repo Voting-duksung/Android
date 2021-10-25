@@ -72,6 +72,7 @@ public class VotingStateActivity extends AppCompatActivity {
         Userid = UserNumberIntent.getExtras().getString("Userid");
         placeid = UserNumberIntent.getExtras().getString("placeid");
         studentNum = UserNumberIntent.getExtras().getInt("studentNum");
+        System.out.println(placeid+"여기");
         //학번 짱 잘나옴
 
         //collegeTextView = (TextView) findViewById(R.id.doneCountTextView);
@@ -118,7 +119,7 @@ public class VotingStateActivity extends AppCompatActivity {
                         candidateName = jObject.getString("candidateName");
                         candidateresult = jObject.getInt("candidateresult");
                         count = jObject.getInt("count");
-//                        listViewCandidateList.add(new ListViewCandidate(candidate_name, start_regist_period, end_regist_period));
+
                         listViewVoteResultsList.add(new ListViewVoteResult(placeName, start_regist_period, end_regist_period, candidateName, candidateresult, count, studentNum, placeid));
                         //listViewVoteResultDetails.add(new ListViewVoteResultDetail(candidateName,candidateresult,studentNum));
                         adapter.notifyItemInserted(0);
