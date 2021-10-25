@@ -100,16 +100,19 @@ public class VoteListActivity extends AppCompatActivity {
                         int count = jObject.getInt("count");
                         studentNum = jObject.getInt("studentNum");
                         int placeCnt = jObject.getInt("placeCnt");
-                        float ratio = count/studentNum*100;
+                        double ratio = count/studentNum*100;
+                        int ratios = (int) ratio;
                         placeid = jObject.getString("placeid");
                         tv_starting_voting.setText("진행중인 투표 "+placeCnt+"개");
                         tv_user_name.setText(UserName);
                         System.out.println("votelist ratio : "+ ratio);
                         System.out.println("votelist placeCnt : "+ placeCnt);
                         System.out.println("count : "+count);
+                        System.out.println("ratios : "+ratios);
+                        System.out.println("studentNum : "+studentNum);
 
                         //아이템의 개수만큼 recyclerView에 객체 넣어주기
-                        listViewVoteList.add(new ListViewVote(contents, start_regist_period, end_regist_period, count, ratio, placeid));
+                        listViewVoteList.add(new ListViewVote(contents, start_regist_period, end_regist_period, count, ratios, placeid));
                         adapter.notifyItemInserted(0);
                     }
 

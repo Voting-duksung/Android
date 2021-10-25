@@ -8,7 +8,7 @@ public class ListViewVote {
     private String start_regist_peroid;
     private String end_regist_period;
     private int count;
-    private float ratio;
+    private int ratios;
     private String placeid;
 
     public void setContents(String contents) {
@@ -17,12 +17,12 @@ public class ListViewVote {
 
     public String getContents() { return this.contents;}
 
-    public ListViewVote(String contents, String start_regist_peroid, String end_regist_period, int count, float ratio, String placeid) {
+    public ListViewVote(String contents, String start_regist_peroid, String end_regist_period, int count, int ratios, String placeid) {
         this.contents = contents;
         this.start_regist_peroid = start_regist_peroid;
         this.end_regist_period = end_regist_period;
         this.count = count;
-        this.ratio = ratio;
+        this.ratios = ratios;
         this.placeid = placeid;
     }
 
@@ -44,9 +44,9 @@ public class ListViewVote {
 
     public int getCount() {return this.count;}
 
-    public void setRatio(float ratio) {ratio=ratio;}
+    public void setRatio(int ratios) {ratios=ratios;}
 
-    public float getRatio() { return this.ratio;}
+    public int getRatio() { return this.ratios;}
 
     public void setPlaceid(float placeid) {placeid=placeid;}
 
